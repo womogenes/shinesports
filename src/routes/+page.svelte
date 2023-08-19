@@ -15,16 +15,16 @@
 <div
   class="flex w-full flex-col items-center border-b-2 border-neutral-200 px-10 py-40"
 >
-  <div class="flex max-w-sm flex-col items-center">
+  <div class="flex w-full max-w-md flex-col items-center">
     <h1 class="mb-4 text-5xl font-bold">Find a team</h1>
-    <Input class="w-96" type="text" size="lg" placeholder="Location">
+    <Input class="w-full" type="text" size="lg" placeholder="Location">
       <Icon name="search-outline" slot="right" class="h-4 w-4" tabindex="-1" />
     </Input>
   </div>
 </div>
 
 <div class="flex w-full flex-col items-center px-4 py-40">
-  <div class="mb-6 flex w-full max-w-xl flex-col items-center">
+  <div class="mb-6 flex w-full max-w-3xl flex-col items-center">
     <h2 class="text-3xl">Reviews based on</h2>
     <div class="flex w-full justify-between">
       {#each reviewBases as [desc, icon]}
