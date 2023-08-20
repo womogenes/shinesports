@@ -24,11 +24,11 @@
 </div>
 
 <div class="flex w-full flex-col items-center px-4 py-40">
-  <div class="mb-6 flex w-full max-w-3xl flex-col items-center">
+  <div class="mb-6 flex w-full flex-col items-center sm:max-w-3xl">
     <h2 class="text-3xl">Reviews based on</h2>
-    <div class="flex w-full justify-between">
+    <div class="flex w-96 flex-wrap justify-between sm:w-full sm:flex-row">
       {#each reviewBases as [desc, icon]}
-        <div class="flex w-96 flex-col items-center p-6">
+        <div class="flex w-48 flex-col items-center p-6">
           <Icon class="mb-3 h-16 w-16" name={icon} tabindex="-1" />
           <p class="text-xl">{desc}</p>
         </div>
