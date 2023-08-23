@@ -1,6 +1,8 @@
 <script>
   import '../app.css';
   import Navbar from '$components/Navbar.svelte';
+
+  export let data;
 </script>
 
 <svelte:head>
@@ -8,7 +10,7 @@
   <link rel="icon" href="/favicon.svg" />
 </svelte:head>
 
-<Navbar />
+<Navbar user={data.user} />
 <div class="flex flex-col items-center">
   <slot />
 </div>
