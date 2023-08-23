@@ -1,3 +1,3 @@
-export function load({ locals }) {
-  return locals.session.data;
-}
+export const load = ({ locals }) => {
+  return { user: locals.session.data.user };
+};

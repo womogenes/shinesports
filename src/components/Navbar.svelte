@@ -29,12 +29,17 @@
     <NavLi href="/">Home</NavLi>
     <NavLi href="/about">About</NavLi>
   </NavUl>
-  <div class="flex md:order-2">
+  <div class="flex items-center md:order-2">
     {#if user}
       <Button class="ml-4 mr-2" size="sm" on:click={logout}>Log out</Button>
-      <img src={user.picture} width="40" alt="Profile" />
+      <a
+        class="h-10 w-10 rounded-full border-2 border-neutral-300"
+        href="/profile"
+      >
+        <img src={user.picture} alt="Profile" />
+      </a>
     {:else}
-      <Button class="ml-6" size="sm" href="/signup">Sign up</Button>
+      <Button class="ml-6" size="sm" href="/signin">Sign in</Button>
     {/if}
 
     <NavHamburger on:click={toggle} tabindex="-1" />
