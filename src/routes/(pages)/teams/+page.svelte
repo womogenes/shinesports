@@ -1,21 +1,33 @@
 <script>
   import { A, Button, Card } from 'flowbite-svelte';
+  import Fa from 'svelte-fa';
+  import {
+    faSchool,
+    faUsers,
+    faVenus,
+    faMars,
+    faVenusMars,
+    faNeuter,
+    faBroom,
+    faSkull,
+    faLocationDot,
+  } from '@fortawesome/free-solid-svg-icons';
 
   export let data;
   let { teamData } = data;
 </script>
 
-<svelte:head>
-  <script
-    src="https://kit.fontawesome.com/3f784ca570.js"
-    crossorigin="anonymous"
-  ></script>
-</svelte:head>
-
-<h1>Hello there</h1>
+<h1>Crew teams <i class="fa-solid fa-school" /></h1>
 <p>
   For now, all this data is fetched from Google Sheets instead of a proper
   database. 👿
+</p>
+<p>
+  <A
+    href="https://docs.google.com/spreadsheets/d/122yIAMXWzBnx5rYZhnzwix6LSAiOEfdUbItxP6JzWmA/edit#gid=0"
+    target="_blank"
+    >Spreadsheet
+  </A>
 </p>
 
 <div class="py-4">
@@ -34,16 +46,16 @@
 
         <!-- Actual content -->
         <div class="box-border p-6">
-          <h4 class="text-blue-800">{team.name}</h4>
+          <h4 class="text-sky-700">{team.name}</h4>
 
           <!-- Basic info -->
           <div class="mt-2 flex text-neutral-600">
             <!-- School or club -->
             <div>
               {#if team.schoolOrClub === 'School'}
-                <i class="fa-solid fa-school"></i>
+                <Fa icon={faSchool} />
               {:else}
-                <i class="fa-solid fa-users"></i>
+                <Fa icon={faUsers} />
               {/if}&nbsp;
               <span>{team.schoolOrClub}</span>
             </div>
@@ -53,14 +65,14 @@
             <!-- Team types (M/W/Co-Ed) -->
             <div>
               {#if team.teamTypes === 'Only W'}
-                <i class="fa-solid fa-venus"></i>
+                <Fa icon={faVenus} />
               {:else if team.teamTypes === 'Only M'}
-                <i class="fa-solid fa-mars"></i>
+                <Fa icon={faMars} />
               {:else if team.teamTypes === 'Separate M/W'}
-                <i class="fa-solid fa-venus"></i>
-                <i class="fa-solid fa-mars"></i>
+                <Fa icon={faVenus} />
+                <Fa icon={faMars} />
               {:else if team.teamTypes === 'Co-Ed'}
-                <i class="fa-solid fa-venus-mars"></i>
+                <Fa icon={faVenusMars} />
               {/if}&nbsp;
               <span>{team.teamTypes}</span>
             </div>
@@ -69,8 +81,8 @@
 
             <!-- Scull/sweep -->
             <div>
-              <i class="fa-solid fa-broom -mr-3"></i>
-              <i class="fa-solid fa-skull"></i>&nbsp;
+              <Fa class="-mr-3" icon={faBroom} />
+              <Fa icon={faSkull} />&nbsp;
               <span
                 >{team.scullSweep === 'B'
                   ? 'Scull/sweep both offered'
@@ -81,7 +93,7 @@
 
           <!-- Address -->
           <div>
-            <i class="fa-solid fa-location-dot"></i>&nbsp;
+            <Fa icon={faLocationDot} />&nbsp;
             <A
               class="text-neutral-600"
               href={`https://google.com/maps/place/${team.address}`}
@@ -94,3 +106,9 @@
     {/each}
   </div>
 </div>
+
+<style>
+  :global(.svelte-fa) {
+    display: inline;
+  }
+</style>
