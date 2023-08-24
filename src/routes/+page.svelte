@@ -1,5 +1,5 @@
 <script>
-  import { Alert, Input, Label } from 'flowbite-svelte';
+  import { A, Alert, Input, Label } from 'flowbite-svelte';
   import { Button } from 'flowbite-svelte';
 
   import { Icon } from 'flowbite-svelte-icons';
@@ -16,7 +16,8 @@
   class="flex w-full flex-col items-center border-b-2 border-neutral-200 px-10 py-40"
 >
   <div class="flex w-full max-w-md flex-col items-center">
-    <h1 class="mb-4">Find a team</h1>
+    <h1 class="mb-2">Find a team</h1>
+    <A class="mb-2" href="/teams">See all teams</A>
     <Input class="w-full" type="text" size="lg" placeholder="Location">
       <Icon name="search-outline" slot="right" class="h-4 w-4" tabindex="-1" />
     </Input>

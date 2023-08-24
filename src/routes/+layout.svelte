@@ -16,16 +16,22 @@
 </div>
 
 <style lang="postcss">
-  :global(h1),
-  :global(h2) {
+  :global(h1, h2, h3, h4) {
     font-weight: bold;
     letter-spacing: -0.7pt;
   }
 
   :global(h1) {
     @apply text-5xl;
+    @apply mb-1;
   }
   :global(h2) {
     @apply text-4xl;
+  }
+  :global(h4) {
+    @apply text-3xl;
+  }
+  :global(p) {
+    @apply mb-2;
   }
 </style>

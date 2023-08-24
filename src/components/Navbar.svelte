@@ -19,7 +19,6 @@
   onMount(() => {
     for (let selector of ['.nav-hamburger svg']) {
       let el = document.querySelector(selector);
-      console.log(el);
       el.tabIndex = -1;
     }
   });
@@ -29,13 +28,19 @@
   class="mx-auto flex w-full max-w-4xl items-center px-4 sm:px-6"
   let:hidden
   let:toggle
+  fluid
 >
   <NavBrand href="/">
-    <img src="/favicon.svg" class="h-4 sm:h-6" alt="Flowbite Logo" />
-    <span class="whitespace-nowrap p-4 font-semibold">ratemycrewteam</span>
+    <img src="/favicon.svg" class="mx-2 w-5 sm:w-6" alt="Flowbite Logo" />
+    <span class="whitespace-nowrap font-semibold">ratemycrewteam</span>
   </NavBrand>
 
-  <NavUl {hidden} class="order-1 ml-auto" tabindex="-1">
+  <NavUl
+    class="order-1 ml-auto"
+    tabindex="-1"
+    {hidden}
+    slideParams={{ delay: 0 }}
+  >
     <NavLi href="/">Home</NavLi>
     <NavLi href="/about">About</NavLi>
   </NavUl>
