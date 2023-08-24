@@ -18,6 +18,14 @@
 <style lang="postcss">
   :global(h1),
   :global(h2) {
+    font-weight: bold;
     letter-spacing: -0.7pt;
+  }
+
+  :global(h1) {
+    @apply text-5xl;
+  }
+  :global(h2) {
+    @apply text-4xl;
   }
 </style>
