@@ -1,9 +1,9 @@
 import { slugify } from '$lib/utils';
+import { GAPI_KEY } from '$env/static/private';
 
 export const load = async ({ fetch }) => {
   let spreadsheetID = '122yIAMXWzBnx5rYZhnzwix6LSAiOEfdUbItxP6JzWmA';
-  let gAPIKey = 'AIzaSyDViBIr7O3XmIfcR4oKFU-m0o3CvMu-SrQ';
-  let apiURL = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetID}/values/Sheet1?alt=json&key=${gAPIKey}`;
+  let apiURL = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetID}/values/Sheet1?alt=json&key=${GAPI_KEY}`;
   const json = await (await fetch(apiURL)).json();
 
   // Map some of this stuff
