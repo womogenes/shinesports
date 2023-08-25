@@ -2,10 +2,14 @@
 
 import { redirect } from '@sveltejs/kit';
 import { OAuth2Client } from 'google-auth-library';
-import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from '$env/static/private';
+import {
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+  OAUTH_REDIRECT,
+} from '$env/static/private';
 
 export const GET = async ({ url, locals }) => {
-  const redirectURL = 'http://localhost:5173/oauth';
+  const redirectURL = OAUTH_REDIRECT;
   const code = await url.searchParams.get('code');
   console.log(`code received: ${code}`);
 

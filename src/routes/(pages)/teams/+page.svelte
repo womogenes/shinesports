@@ -73,6 +73,8 @@
                 <Fa icon={faMars} />
               {:else if team.teamTypes === 'Co-Ed'}
                 <Fa icon={faVenusMars} />
+              {:else}
+                <Fa icon={faNeuter} />
               {/if}&nbsp;
               <span>{team.teamTypes}</span>
             </div>
@@ -92,10 +94,9 @@
           </div>
 
           <!-- Address -->
-          <div>
+          <div class="text-neutral-600">
             <Fa icon={faLocationDot} />&nbsp;
             <A
-              class="text-neutral-600"
               href={`https://google.com/maps/place/${team.address}`}
               target="_blank"
               >{team.address}
