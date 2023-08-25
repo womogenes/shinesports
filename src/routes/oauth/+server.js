@@ -1,3 +1,5 @@
+// Tutorial: https://youtu.be/4QwcC4hfqM0?si=v_0ohTnO45MuL0Qf
+
 import { redirect } from '@sveltejs/kit';
 import { OAuth2Client } from 'google-auth-library';
 import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from '$env/static/private';
