@@ -17,7 +17,7 @@
   <form method="post" action="?/OAuth2">
     <div>
       <Button type="submit">
-        <i class="fa-brands fa-google mr-2"></i>
+        <i class="fa-brands fa-google mr-4"></i>
         <span>Sign in with Google</span>
       </Button>
     </div>

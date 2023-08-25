@@ -1,4 +1,5 @@
 <script>
+  import { onMount } from 'svelte';
   import {
     Navbar,
     NavBrand,
@@ -6,6 +7,7 @@
     NavUl,
     NavHamburger,
     Button,
+    Avatar,
   } from 'flowbite-svelte';
   export let user;
 
@@ -13,35 +15,49 @@
     await fetch('/logout', { method: 'POST' });
     window.location.href = '/';
   };
+
+  onMount(() => {
+    for (let selector of ['.nav-hamburger svg']) {
+      let el = document.querySelector(selector);
+      el.tabIndex = -1;
+    }
+  });
 </script>
 
 <Navbar
-  class="mx-auto flex w-full max-w-4xl items-center"
+  class="mx-auto flex w-full max-w-4xl items-center px-4 sm:px-6"
   let:hidden
   let:toggle
+  fluid
 >
   <NavBrand href="/">
-    <img src="/favicon.svg" class="h-4 pl-4 sm:h-6" alt="Flowbite Logo" />
-    <span class="whitespace-nowrap p-4 font-semibold">ratemycrewteam</span>
+    <img src="/favicon.svg" class="mx-2 w-5 sm:w-6" alt="Flowbite Logo" />
+    <span class="whitespace-nowrap font-semibold">ratemycrewteam</span>
   </NavBrand>
 
-  <NavUl {hidden} class="order-1 ml-auto" tabindex="-1">
+  <NavUl
+    class="order-1 ml-auto"
+    tabindex="-1"
+    {hidden}
+    slideParams={{ delay: 0 }}
+  >
     <NavLi href="/">Home</NavLi>
     <NavLi href="/about">About</NavLi>
   </NavUl>
   <div class="flex items-center md:order-2">
     {#if user}
       <Button class="ml-4 mr-2" size="sm" on:click={logout}>Log out</Button>
-      <a
-        class="h-10 w-10 rounded-full border-2 border-neutral-300"
-        href="/profile"
-      >
-        <img src={user.picture} alt="Profile" />
-      </a>
+      <Avatar href="/profile" src={user.picture} />
     {:else}
-      <Button class="ml-6" size="sm" href="/signin">Sign in</Button>
+      <Button class="ml-2" size="sm" href="/signin">Sign in</Button>
     {/if}
 
-    <NavHamburger on:click={toggle} tabindex="-1" />
+    <NavHamburger class="nav-hamburger" on:click={toggle} />
   </div>
 </Navbar>
+
+<style>
+  :global(.nav-hamburger svg):focus {
+    outline: none;
+  }
+</style>
