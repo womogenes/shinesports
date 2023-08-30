@@ -29,7 +29,7 @@
     @apply text-4xl;
   }
   :global(h4) {
-    @apply text-3xl;
+    @apply text-2xl;
   }
   :global(p) {
     @apply mb-2;
