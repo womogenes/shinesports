@@ -2,6 +2,23 @@
   import '../app.css';
   import Navbar from '$components/Navbar.svelte';
 
+  // Show progress bar while navigating
+  // https://devdojo.com/posandu/how-to-add-nprogress-to-sveltekit
+  import '$lib/nprogress/nprogress.css';
+  import { NProgress } from '$lib/nprogress/nprogress';
+  import { navigating } from '$app/stores';
+  NProgress.configure({
+    // Full list: https://github.com/rstacruz/nprogress#configuration
+    minimum: 0.16,
+  });
+  $: {
+    if ($navigating) {
+      NProgress.start();
+    } else {
+      NProgress.done();
+    }
+  }
+
   export let data;
 </script>
 

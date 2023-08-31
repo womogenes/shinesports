@@ -41,7 +41,7 @@
   <div class="flex flex-col gap-4 md:flex-row">
     <!-- Search fields -->
     <div
-      class="flex gap-4 rounded border border-neutral-200 p-4 pb-6 md:flex-col"
+      class="flex min-w-[12rem] gap-4 rounded border border-neutral-200 p-4 pb-6 md:flex-col"
     >
       <div class="flex flex-col gap-2">
         <b>Team association</b>
