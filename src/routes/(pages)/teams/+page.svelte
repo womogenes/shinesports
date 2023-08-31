@@ -41,7 +41,7 @@
   <div class="flex flex-col gap-4 md:flex-row">
     <!-- Search fields -->
     <div
-      class="flex gap-4 rounded border-2 border-neutral-200 p-4 pb-6 md:flex-col"
+      class="flex gap-4 rounded border border-neutral-200 p-4 pb-6 md:flex-col"
     >
       <div class="flex flex-col gap-2">
         <b>Team association</b>
@@ -67,8 +67,8 @@
     <div class="flex w-full flex-col gap-4">
       {#each teamData as team (team.slug)}
         <a
-          class="border-0.5 flex w-full flex-row items-center justify-between gap-0 rounded-sm border-2 border-neutral-200 transition-shadow hover:shadow-xl sm:gap-4"
-          href="/{team.slug}"
+          class="border-0.5 flex w-full flex-row items-center justify-between gap-0 rounded-sm border border-neutral-200 transition-shadow hover:shadow-xl sm:gap-4"
+          href="/teams/{team.slug}"
         >
           <!-- Actual content -->
           <div class="box-border p-6">
@@ -82,7 +82,7 @@
                   <Fa icon={faSchool} />
                 {:else}
                   <Fa icon={faUsers} />
-                {/if}&nbsp;
+                {/if}
                 <span>{team.schoolOrClub}</span>
               </div>
 
@@ -101,7 +101,7 @@
                   <Fa icon={faVenusMars} />
                 {:else}
                   <Fa icon={faNeuter} />
-                {/if}&nbsp;
+                {/if}
                 <span>{team.teamTypes}</span>
               </div>
 
@@ -109,8 +109,8 @@
 
               <!-- Scull/sweep -->
               <div>
-                <Fa class="-mr-3" icon={faBroom} />
-                <Fa icon={faSkull} />&nbsp;
+                <Fa icon={faSkull} />
+                <Fa icon={faBroom} />
                 <span
                   >{team.scullSweep === 'B'
                     ? 'Scull/sweep both offered'
@@ -132,7 +132,7 @@
           </div>
 
           <img
-            class="m-4 w-24 object-contain"
+            class="m-4 h-24 w-24 object-contain"
             src={team.logoURL}
             alt="Team logo"
           />

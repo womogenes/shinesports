@@ -1,13 +1,11 @@
 import { slugify } from '$lib/utils';
-import { GAPI_KEY } from '$env/static/private';
+import { fetchSpreadsheet } from './fetchSpreadsheet';
 
-export const load = async ({ fetch }) => {
-  let spreadsheetID = '122yIAMXWzBnx5rYZhnzwix6LSAiOEfdUbItxP6JzWmA';
-  let apiURL = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheetID}/values/Sheet1?alt=json&key=${GAPI_KEY}`;
-  const json = await (await fetch(apiURL)).json();
+export const load = async () => {
+  const sheet1 = await fetchSpreadsheet('Sheet1');
 
   // Map some of this stuff
-  let teamData = json.values.slice(1).map((row) => {
+  let teamData = sheet1.values.slice(1).map((row) => {
     let googleDriveRegex = /file\/d\/(.+)\/view/g.exec(row[5]);
 
     let imgURL;
