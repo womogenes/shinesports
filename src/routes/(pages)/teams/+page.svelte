@@ -41,7 +41,7 @@
   <div class="flex flex-col gap-4 md:flex-row">
     <!-- Search fields -->
     <div
-      class="flex flex-row gap-4 rounded border-2 border-neutral-200 p-4 pb-6 md:flex-col"
+      class="flex gap-4 rounded border-2 border-neutral-200 p-4 pb-6 md:flex-col"
     >
       <div class="flex flex-col gap-2">
         <b>Team association</b>
@@ -67,7 +67,7 @@
     <div class="flex w-full flex-col gap-4">
       {#each teamData as team (team.slug)}
         <a
-          class="border-0.5 flex w-full flex-col-reverse justify-between gap-0 rounded-sm border-2 border-neutral-200 transition-shadow hover:shadow-xl sm:flex-row sm:gap-4"
+          class="border-0.5 flex w-full flex-row items-center justify-between gap-0 rounded-sm border-2 border-neutral-200 transition-shadow hover:shadow-xl sm:gap-4"
           href="/{team.slug}"
         >
           <!-- Actual content -->
@@ -132,7 +132,7 @@
           </div>
 
           <img
-            class="mx-auto h-24 w-full object-contain sm:mx-0 sm:w-24"
+            class="m-4 w-24 object-contain"
             src={team.logoURL}
             alt="Team logo"
           />
