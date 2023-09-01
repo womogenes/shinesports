@@ -23,7 +23,7 @@
   <div class="flex flex-col gap-4 md:flex-row">
     <!-- Search fields -->
     <div
-      class="flex min-w-[12rem] gap-4 border border-neutral-200 p-4 pb-6 md:flex-col"
+      class="flex min-w-[12rem] flex-col gap-4 border border-neutral-200 p-4 pb-6"
     >
       <div class="flex flex-col gap-2">
         <b>Team association</b>
@@ -55,12 +55,11 @@
           <!-- Actual content -->
           <div class="box-border p-5">
             <h4 class="mb-1 text-[#346dc2]">{team.name}</h4>
-
             <TeamLineInfo data={team} />
           </div>
 
           <img
-            class="m-5 h-24 w-24 object-contain"
+            class="m-2 h-12 w-12 object-contain sm:m-4 sm:h-24 sm:w-24"
             src={team.logoURL}
             alt="Team logo"
           />

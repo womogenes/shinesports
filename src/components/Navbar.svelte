@@ -31,8 +31,10 @@
   fluid
 >
   <NavBrand href="/">
-    <img src="/favicon.svg" class="mx-2 w-5 sm:w-6" alt="Flowbite Logo" />
-    <span class="whitespace-nowrap font-semibold">ratemycrewteam</span>
+    <img src="/favicon.svg" class="ml-0 mr-2 w-5 sm:w-6" alt="Flowbite Logo" />
+    <span class=" whitespace-nowrap font-semibold sm:block">
+      ratemycrewteam
+    </span>
   </NavBrand>
 
   <NavUl
@@ -43,15 +45,20 @@
   >
     <NavLi href="/">Home</NavLi>
     <NavLi href="/about">About</NavLi>
+
+    <!-- Extra stuff below main nav links -->
+    <div>
+      {#if user}
+        <Button class="mr-2 sm:ml-4" size="sm" on:click={logout}>
+          Log out
+        </Button>
+      {:else}
+        <Button class="ml-2" size="sm" href="/signin">Sign in</Button>
+      {/if}
+    </div>
   </NavUl>
   <div class="flex items-center md:order-2">
-    {#if user}
-      <Button class="ml-4 mr-2" size="sm" on:click={logout}>Log out</Button>
-      <Avatar href="/profile" src={user.picture} />
-    {:else}
-      <Button class="ml-2" size="sm" href="/signin">Sign in</Button>
-    {/if}
-
+    <Avatar href="/profile" src={user.picture} />
     <NavHamburger class="nav-hamburger" on:click={toggle} />
   </div>
 </Navbar>
