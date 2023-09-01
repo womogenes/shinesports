@@ -45,6 +45,9 @@
   :global(h2) {
     @apply text-4xl;
   }
+  :global(h3) {
+    @apply text-3xl;
+  }
   :global(h4) {
     @apply text-2xl;
   }
