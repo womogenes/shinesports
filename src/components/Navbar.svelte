@@ -39,26 +39,25 @@
 
   <NavUl
     class="order-1 ml-auto"
+    classUl="flex sm:items-center items-stretch sm:py-0 py-4"
     tabindex="-1"
     {hidden}
     slideParams={{ delay: 0 }}
   >
-    <NavLi href="/">Home</NavLi>
-    <NavLi href="/about">About</NavLi>
+    <NavLi class="flex justify-center" href="/">Home</NavLi>
+    <NavLi class="flex justify-center" href="/about">About</NavLi>
 
     <!-- Extra stuff below main nav links -->
-    <div>
+    <div class="w-full sm:w-auto">
       {#if user}
-        <Button class="mr-2 sm:ml-4" size="sm" on:click={logout}>
-          Log out
-        </Button>
+        <Button class="mr-2 w-full" size="sm" on:click={logout}>Log out</Button>
       {:else}
-        <Button class="ml-2" size="sm" href="/signin">Sign in</Button>
+        <Button class="mr-2 w-full" size="sm" href="/signin">Sign in</Button>
       {/if}
     </div>
   </NavUl>
   <div class="flex items-center md:order-2">
-    <Avatar href="/profile" src={user.picture} />
+    {#if user}<Avatar href="/profile" src={user.picture} />{/if}
     <NavHamburger class="nav-hamburger" on:click={toggle} />
   </div>
 </Navbar>

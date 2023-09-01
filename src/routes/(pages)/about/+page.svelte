@@ -1,7 +1,7 @@
 <script>
 </script>
 
-<main class="mt-4 max-w-3xl px-6">
+<main class="mt-4 max-w-3xl">
   <!-- App Bar -->
   <h1 class="mb-2 text-4xl font-bold">About</h1>
   <p>This page is pretty blank right now, but content will be added later.</p>

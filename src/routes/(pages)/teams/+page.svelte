@@ -20,10 +20,10 @@
 </p>
 
 <div class="py-4">
-  <div class="flex flex-col gap-4 md:flex-row">
+  <div class="relative flex flex-col items-start gap-4 md:flex-row">
     <!-- Search fields -->
     <div
-      class="flex min-w-[12rem] flex-col gap-4 border border-neutral-200 p-4 pb-6"
+      class="sticky top-4 flex min-w-[12rem] flex-col gap-4 border border-neutral-200 p-4 pb-6"
     >
       <div class="flex flex-col gap-2">
         <b>Team association</b>

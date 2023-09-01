@@ -15,7 +15,7 @@
   export let data;
 </script>
 
-<div class="text-sm">
+<div class="flex flex-col gap-2 text-sm">
   <div class="flex flex-wrap items-center gap-x-2 text-neutral-600">
     <!-- School or club -->
     <div class="flex items-center gap-2">
@@ -65,8 +65,8 @@
   </div>
 
   <!-- Address -->
-  <div class="flex items-center gap-2 text-neutral-600">
-    <Fa icon={faLocationDot} />
+  <div class="flex items-start gap-2 text-neutral-600">
+    <Fa class="mt-0.5" icon={faLocationDot} />
     <a
       class="underline-offset-2 hover:underline"
       href={`https://google.com/maps/place/${data.address}`}

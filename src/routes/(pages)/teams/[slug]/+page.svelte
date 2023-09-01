@@ -16,7 +16,7 @@
   </div>
   <div class="relative">
     <div
-      class="absolute -top-8 left-0 bg-white px-4 py-1 font-medium shadow-xl sm:left-8"
+      class="absolute -top-7 left-0 bg-white px-4 py-1 font-medium shadow-xl sm:left-8"
     >
       {data.basicInfo.schoolOrClub}
     </div>
