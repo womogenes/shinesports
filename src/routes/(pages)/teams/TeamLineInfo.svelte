@@ -32,20 +32,20 @@
     <!-- Team types (M/W/Co-Ed) -->
     <div class="flex items-center gap-2">
       <div class="flex gap-1">
-        {#if data.teamGender === 'Only W'}
+        {#if data.teamTypes === 'Only W'}
           <Fa icon={faVenus} />
-        {:else if data.teamGender === 'Only M'}
+        {:else if data.teamTypes === 'Only M'}
           <Fa icon={faMars} />
-        {:else if data.teamGender === 'Separate M/W'}
+        {:else if data.teamTypes === 'Separate M/W'}
           <Fa icon={faVenus} />
           <Fa icon={faMars} />
-        {:else if data.teamGender === 'Co-Ed'}
+        {:else if data.teamTypes === 'Co-Ed'}
           <Fa icon={faVenusMars} />
         {:else}
           <Fa icon={faNeuter} />
         {/if}
       </div>
-      <span>{data.teamGender}</span>
+      <span>{data.teamTypes}</span>
     </div>
 
     <span>&bull;</span>

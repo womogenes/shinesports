@@ -54,7 +54,7 @@
     width: 100%;
   }
 
-  :global(img.leaflet-marker-icon div.leaflet-control-container) {
+  :global(img.leaflet-zoom-animated div.leaflet-control-container) {
     pointer-events: none !important;
   }
 </style>

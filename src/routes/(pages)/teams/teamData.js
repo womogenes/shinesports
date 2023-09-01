@@ -25,7 +25,7 @@ export const parseSheet1Row = (row) => {
     schoolOrClub: row[0],
     name: row[1],
     address: row[2],
-    teamGender: row[3],
+    teamTypes: row[3],
     scullSweep: row[4],
     logoURL: imgURL,
   };
