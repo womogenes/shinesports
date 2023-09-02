@@ -36,7 +36,7 @@
   </div>
 </div>
 
-<div class="px-4 sm:px-8">
+<div class="px-0 sm:px-8">
   <p>
     Data comes from the second sheet of
     <A
@@ -47,9 +47,13 @@
   </p>
 
   <p>
-    Team website: <A href={allTeamsInfo.website} target="_blank"
-      >{allTeamsInfo.website}</A
+    Team website: <A
+      class="inline break-words"
+      href={allTeamsInfo.website}
+      target="_blank"
     >
+      {allTeamsInfo.website}
+    </A>
   </p>
   <p><b>Age range:</b> {allTeamsInfo.ageRange}</p>
 
