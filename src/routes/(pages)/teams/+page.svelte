@@ -48,7 +48,7 @@
   <div class="flex w-full flex-col gap-4">
     {#each teamData as team (team.slug)}
       <a
-        class="border-0.5 flex w-full flex-row items-center justify-between gap-0 border border-neutral-200 transition-colors hover:bg-slate-50 sm:gap-4"
+        class="border-0.5 flex w-full flex-row items-center justify-between gap-0 border border-neutral-200 transition-all hover:bg-neutral-50 sm:gap-4"
         href="/teams/{team.slug}"
       >
         <!-- Actual content -->

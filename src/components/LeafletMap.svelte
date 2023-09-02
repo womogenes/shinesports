@@ -42,10 +42,6 @@
 <style>
   @import 'leaflet/dist/leaflet.css';
 
-  * {
-    pointer-events: none !important;
-  }
-
   div#leaflet-map {
     z-index: 0;
     min-width: 100px;
@@ -54,7 +50,7 @@
     width: 100%;
   }
 
-  :global(img.leaflet-zoom-animated div.leaflet-control-container) {
+  :global(img.leaflet-marker-icon, div.leaflet-control-container) {
     pointer-events: none !important;
   }
 </style>

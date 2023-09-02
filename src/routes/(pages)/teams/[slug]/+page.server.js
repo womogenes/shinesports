@@ -37,7 +37,7 @@ export const load = async ({ params }) => {
       coachName: row[2],
       contactEmail: row[3],
       contactNumber: row[4] || teamRows[0][4],
-      teamSize: row[5],
+      teamSize: row[5]?.replace('-', '–'),
       practiceSchedule: row[6],
     };
   });

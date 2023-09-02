@@ -1,15 +1,13 @@
 <script>
   import {
     Footer,
-    FooterCopyright,
     FooterLinkGroup,
     FooterLink,
     FooterBrand,
-    FooterIcon,
   } from 'flowbite-svelte';
 </script>
 
-<Footer class="flex justify-center !p-0" footerType="socialmedia">
+<Footer class="flex justify-center border-t-2 !p-0" footerType="socialmedia">
   <div class="w-full max-w-4xl p-6 sm:p-12 md:flex md:justify-between">
     <div class="mb-6 md:mb-0">
       <FooterBrand

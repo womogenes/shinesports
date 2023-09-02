@@ -58,7 +58,10 @@
   <p><b>Age range:</b> {allTeamsInfo.ageRange}</p>
 
   <!-- Different teams -->
-  <div class="flex w-full flex-col justify-between gap-4 sm:flex-row">
+  <div
+    class="flex w-full flex-col justify-between gap-4 sm:flex-row"
+    class:mt-8={teamRows.length > 1}
+  >
     {#each teamRows as teamRow}
       <div class="w-full">
         {#if teamRow.teamType}<h4>{teamRow.teamType}</h4>{/if}
