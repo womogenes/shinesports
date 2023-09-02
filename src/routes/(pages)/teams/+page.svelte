@@ -1,9 +1,39 @@
 <script>
-  import { A, Checkbox } from 'flowbite-svelte';
+  import { A, Checkbox, Radio } from 'flowbite-svelte';
   import TeamLineInfo from './TeamLineInfo.svelte';
+  import { flip } from 'svelte/animate';
+  import { fade, fly } from 'svelte/transition';
 
   export let data;
-  let { teamData } = data;
+  let { allTeams } = data;
+
+  let filters = {
+    schoolOrClub: 'Any',
+    hasWomens: false,
+    hasMens: false,
+    hasCoed: false,
+  };
+
+  $: filteredTeams = allTeams.filter((team) => {
+    // School/club filter
+    if (
+      filters.schoolOrClub !== 'Any' &&
+      filters.schoolOrClub !== team.schoolOrClub
+    ) {
+      return false;
+    }
+
+    // Team types filter
+    if (filters.hasWomens && ['Only M', 'Co-Ed'].includes(team.teamTypes))
+      return false;
+    if (filters.hasMens && ['Only W', 'Co-Ed'].includes(team.teamTypes))
+      return false;
+    if (filters.hasCoed && team.teamTypes !== 'Co-Ed') return false;
+
+    // Scull/sweep filter
+
+    return true;
+  });
 </script>
 
 <h1>Crew teams <i class="fa-solid fa-school" /></h1>
@@ -19,6 +49,10 @@
   </A>
 </p>
 
+<div class="flex w-full flex-col items-end text-sm">
+  <p>Showing {filteredTeams.length} of {allTeams.length} total teams</p>
+</div>
+
 <div class="relative flex flex-col items-start gap-4 md:flex-row">
   <!-- Search fields -->
   <div
@@ -26,30 +60,42 @@
   >
     <div class="flex flex-col gap-2">
       <b>Team association</b>
-      <Checkbox>School</Checkbox>
-      <Checkbox>Club</Checkbox>
+      <Radio
+        name="schoolOrClub"
+        value="School"
+        bind:group={filters.schoolOrClub}
+      >
+        School
+      </Radio>
+      <Radio name="schoolOrClub" value="Club" bind:group={filters.schoolOrClub}>
+        Club
+      </Radio>
+      <Radio name="schoolOrClub" value="Any" bind:group={filters.schoolOrClub}>
+        Both
+      </Radio>
     </div>
     <hr />
     <div class="flex flex-col gap-2">
       <b>Team type</b>
-      <Checkbox>Has womens</Checkbox>
-      <Checkbox>Has mens</Checkbox>
-      <Checkbox>Has co-ed</Checkbox>
+      <Checkbox bind:checked={filters.hasWomens}>Has womens</Checkbox>
+      <Checkbox bind:checked={filters.hasMens}>Has mens</Checkbox>
+      <Checkbox bind:checked={filters.hasCoed}>Has co-ed</Checkbox>
     </div>
     <hr />
     <div class="flex flex-col gap-2">
       <b>Scull/sweep</b>
-      <Checkbox>Womens team</Checkbox>
-      <Checkbox>Mens team</Checkbox>
+      <Checkbox>B</Checkbox>
     </div>
   </div>
 
   <!-- Main list -->
   <div class="flex w-full flex-col gap-4">
-    {#each teamData as team (team.slug)}
+    {#each filteredTeams as team (team.slug)}
       <a
         class="border-0.5 flex w-full flex-row items-center justify-between gap-0 border border-neutral-200 transition-all hover:bg-neutral-50 sm:gap-4"
         href="/teams/{team.slug}"
+        in:fade={{ duration: 500 }}
+        animate:flip={{ duration: 500 }}
       >
         <!-- Actual content -->
         <div class="box-border p-5">
@@ -63,6 +109,8 @@
           alt="Team logo"
         />
       </a>
+    {:else}
+      <p in:fade>No teams match your filters ☹️ Try loosening them.</p>
     {/each}
   </div>
 </div>
