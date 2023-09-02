@@ -27,7 +27,7 @@ export const load = async ({ params }) => {
 
   const allTeamsInfo = {
     website: teamRows[0][1],
-    ageRange: teamRows[0][7],
+    ageRange: teamRows[0][7].replace('-', '–'),
   };
 
   teamRows = teamRows.map((row) => {
