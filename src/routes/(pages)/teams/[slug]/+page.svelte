@@ -1,8 +1,8 @@
 <script>
   import Fa from 'svelte-fa';
-  import { faArrowLeft, faLeftLong } from '@fortawesome/free-solid-svg-icons';
+  import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
   import { A } from 'flowbite-svelte';
-  import LeafletMap from '../../../../lib/LeafletMap.svelte';
+  import LeafletMap from '$components/LeafletMap.svelte';
   import TeamLineInfo from '../TeamLineInfo.svelte';
 
   export let data;

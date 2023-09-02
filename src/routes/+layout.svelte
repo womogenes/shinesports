@@ -1,6 +1,7 @@
 <script>
   import '../app.css';
   import Navbar from '$components/Navbar.svelte';
+  import Footer from '$components/Footer.svelte';
 
   // Show progress bar while navigating
   // https://devdojo.com/posandu/how-to-add-nprogress-to-sveltekit
@@ -31,6 +32,7 @@
 <div class="flex flex-col items-center">
   <slot />
 </div>
+<Footer />
 
 <style lang="postcss">
   :global(h1, h2, h3, h4) {
