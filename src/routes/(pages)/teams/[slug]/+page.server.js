@@ -12,7 +12,7 @@ export const load = async ({ params }) => {
       return slugify(row[1]) === params.slug;
     }),
   );
-  const geocoded = await geocode(basicInfo.address);
+  const geocoded = await geocode(basicInfo.address.replace('\n', ' '));
   const coords = [parseFloat(geocoded.lat), parseFloat(geocoded.lon)];
 
   // Sheet 2 o.O

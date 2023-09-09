@@ -14,5 +14,5 @@ export const geocode = async (query) => {
   )[0];
   cache.set(query, res);
 
-  return await res;
+  return res;
 };
