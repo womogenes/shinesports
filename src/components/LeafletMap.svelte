@@ -11,22 +11,21 @@
   let map;
 
   onMount(async () => {
-    if (browser) {
-      const leaflet = await import('leaflet');
+    if (!browser) return;
 
-      map = leaflet.map(mapElement).setView(coords, 11);
+    const leaflet = await import('leaflet');
+    map = leaflet.map(mapElement).setView(coords, 11);
 
-      leaflet
-        .tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        })
-        .addTo(map);
+    leaflet
+      .tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution:
+          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+      })
+      .addTo(map);
 
-      leaflet.marker(coords).addTo(map);
-      /* .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+    leaflet.marker(coords).addTo(map);
+    /* .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
         .openPopup(); */
-    }
   });
 
   onDestroy(async () => {
