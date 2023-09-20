@@ -57,7 +57,7 @@
     </div>
   </NavUl>
   <div class="flex items-center md:order-2">
-    {#if user}<Avatar href="/profile" src={user.picture} />{/if}
+    {#if user}<Avatar href="/profile" src={user.picture} size="sm" />{/if}
     <NavHamburger class="nav-hamburger" on:click={toggle} />
   </div>
 </Navbar>

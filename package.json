@@ -22,6 +22,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@builder.io/sdk-svelte": "^0.6.2",
 		"@fortawesome/free-brands-svg-icons": "^6.4.2",
 		"@fortawesome/free-solid-svg-icons": "^6.4.2",
 		"flowbite": "^1.8.1",

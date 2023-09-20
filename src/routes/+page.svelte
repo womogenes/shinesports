@@ -1,45 +1,24 @@
+<!-- src/routes/+page.svelte -->
 <script>
-  import { A, Alert, Input, Label } from 'flowbite-svelte';
-  import { Button } from 'flowbite-svelte';
+  import { Content, isPreviewing } from '@builder.io/sdk-svelte';
 
-  import { Icon } from 'flowbite-svelte-icons';
+  // Add your Public API Key
+  const YOUR_API_KEY = 'b86a0f0d073946c7a8c2c111e79ed09a';
 
-  let reviewBases = [
-    ['Culture', 'users-group-outline'],
-    ['Coach', 'user-circle-solid'],
-    ['Recuritment', 'thumbs-up-outline'],
-    ['Results', 'rocket-solid'],
-  ];
+  export let data;
+  const { content } = data;
 </script>
 
-<div
-  class="flex w-full flex-col items-center border-b-2 border-neutral-200 px-10 py-40"
->
-  <div class="flex w-full max-w-md flex-col items-center">
-    <h1 class="mb-2">Find a team</h1>
-    <A class="mb-2" href="/teams">See all teams</A>
-    <Input class="w-full" type="text" size="lg" placeholder="Location">
-      <Icon name="search-outline" slot="right" class="h-4 w-4" tabindex="-1" />
-    </Input>
-  </div>
-</div>
+<main class="max-w-4xl px-6 py-10">
+  <h1>Welcome to your Builder-integrated Svelte app</h1>
+  <p>Below is your Builder Content:</p>
 
-<div class="flex w-full flex-col items-center px-4 py-40">
-  <div class="mb-6 flex w-full flex-col items-center sm:max-w-3xl">
-    <h2 class="text-3xl">Reviews based on</h2>
-    <div class="flex w-96 flex-wrap justify-between sm:w-full sm:flex-row">
-      {#each reviewBases as [desc, icon]}
-        <div class="flex w-48 flex-col items-center p-6">
-          <Icon class="mb-3 h-16 w-16" name={icon} tabindex="-1" />
-          <p class="text-xl">{desc}</p>
-        </div>
-      {/each}
-    </div>
-  </div>
+  <pre class="overflow-x-scroll p-4 border text-sm break-all">{JSON.stringify(content, null, 2)}</pre>
 
-  <h2 class="mb-2 text-3xl">Have something to say?</h2>
-  <Button href="/signup">
-    <span class="mr-2">Sign up today</span>
-    <Icon name="angle-right-solid" tabindex="-1" size="xs" />
-  </Button>
-</div>
+  {#if data.content || isPreviewing()}
+    <!-- Render builder content with all required props -->
+    <Content model="page" {content} apiKey={YOUR_API_KEY} />
+  {:else}
+    <p>Loading...</p>
+  {/if}
+</main>
