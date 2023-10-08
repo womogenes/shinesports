@@ -53,7 +53,7 @@
   :global(h4) {
     @apply text-2xl;
   }
-  :global(p) {
-    @apply mb-2;
+  :global(button) {
+    @apply border px-4 py-2;
   }
 </style>

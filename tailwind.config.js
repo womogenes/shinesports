@@ -8,6 +8,9 @@ export default {
     fontFamily: {
       sans: ['Inter', 'Arial', 'sans-serif'],
     },
+    letterSpacing: {
+      widest: '.25em',
+    },
     extend: {
       colors: {
         // flowbite-svelte
