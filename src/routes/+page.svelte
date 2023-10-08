@@ -133,7 +133,7 @@
   </div>
 </div>
 
-<div class="relative -mt-40 flex w-full justify-center overflow-clip pb-40">
+<div class="relative flex w-full justify-center overflow-clip pb-40 lg:-mt-40">
   <!-- Big squiggle -->
   <div class="absolute -z-10 h-0 w-full">
     <svg
@@ -147,8 +147,8 @@
     </svg>
   </div>
 
-  <div class="flex p-10 pt-96 text-white">
-    <div class="w-full p-6">
+  <div class="flex p-10 pt-48 text-white sm:pt-96 2xl:pt-[35rem]">
+    <div class="w-full max-w-3xl p-6">
       <img
         class="rounded"
         src="https://source.unsplash.com/random/1920x1080/?tools"
@@ -171,9 +171,11 @@
   </div>
 </div>
 
-<div class="flex">
-  <div class="flex w-full flex-col items-end px-20 py-40 text-green-700">
-    <div class="flex flex-col gap-4">
+<div class="flex w-full flex-col md:flex-row">
+  <div
+    class="flex w-full flex-col px-6 py-40 text-green-700 md:items-end md:px-20"
+  >
+    <div class="flex max-w-sm flex-col gap-4">
       <p class="font-medium uppercase tracking-widest">Choose your team</p>
       <p class="text-3xl font-bold">
         Everything you need to make your decision.
@@ -186,9 +188,9 @@
     </div>
   </div>
 
-  <div class="w-full bg-green-600 px-20 py-40">
+  <div class="w-full bg-green-600 px-6 py-40">
     <img
-      class="rounded"
+      class="max-w-sm rounded"
       src="https://source.unsplash.com/random/1920x1080/?decision"
       alt=""
     />
@@ -246,7 +248,7 @@
 </div>
 
 <div class="flex w-full justify-center px-10 py-40">
-  <div class="flex w-full max-w-3xl gap-20">
+  <div class="flex w-full max-w-3xl flex-col gap-20 sm:flex-row">
     <div class="flex w-full max-w-sm flex-col gap-4">
       <p class="font-medium uppercase tracking-widest">Partner with us</p>
       <p class="text-4xl font-bold">For coaches and captains</p>
