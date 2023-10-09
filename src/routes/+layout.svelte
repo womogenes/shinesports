@@ -1,6 +1,5 @@
 <script>
   import '../app.css';
-  import Navbar from '$components/Navbar.svelte';
   import Footer from '$components/Footer.svelte';
 
   // Show progress bar while navigating
@@ -19,8 +18,6 @@
       NProgress.done();
     }
   }
-
-  export let data;
 </script>
 
 <svelte:head>
@@ -28,7 +25,6 @@
   <link rel="icon" href="/favicon.svg" />
 </svelte:head>
 
-<Navbar user={data.user} />
 <div class="flex flex-col items-center">
   <slot />
 </div>
