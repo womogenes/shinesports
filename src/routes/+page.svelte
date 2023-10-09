@@ -48,10 +48,11 @@
           Start your search
         </p>
 
-        <div class="flex flex-col gap-4 md:flex-row">
-          <button>Button 1</button>
-          <button>Button 2</button>
-          <button>Button 3</button>
+        <div class="flex flex-col gap-4 md:flex-row" style="">
+          <select name="sports">
+            <option value="crew" style="color: black; background-color: #348bcf;">Crew</option>
+            <option value="swim" style="color: black; background-color: #348bcf;">Swim</option>
+          </select>
         </div>
       </div>
     </div>

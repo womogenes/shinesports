@@ -56,4 +56,8 @@
   :global(button) {
     @apply border px-4 py-2;
   }
+
+  #sports-dropdown :global(){
+    background-color:black;
+  }
 </style>
