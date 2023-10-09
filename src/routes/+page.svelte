@@ -20,7 +20,7 @@
 </script>
 
 <div
-  class="sticky top-0 z-20 flex w-full justify-center bg-white bg-opacity-90 shadow-xl backdrop-blur"
+  class="sticky top-0 z-20 flex w-full justify-center bg-white bg-opacity-90 shadow backdrop-blur-sm"
 >
   <Navbar class="bg-transparent" user={data.user} />
 </div>
@@ -44,7 +44,7 @@
       </div>
 
       <div class="mb-10 mt-5 w-60">
-        <Squiggle class="w-80 stroke-blue-700" />
+        <Squiggle class="max-w-80 stroke-blue-700" />
       </div>
 
       <p class="text-lg">
@@ -84,7 +84,7 @@
   </div>
 </div>
 
-<div class="flex w-full justify-center px-10 py-40">
+<div class="flex w-full justify-center px-10 py-10 sm:py-40">
   <div class="flex flex-col items-center gap-4 rounded-lg bg-white text-center">
     <div class="flex flex-col items-center gap-6 text-blue-900">
       <p class="uppercase tracking-widest">
@@ -101,14 +101,16 @@
       your search as easy as possible.
     </p>
 
-    <div class="my-4 grid max-w-3xl grid-cols-3 gap-10">
+    <div
+      class="my-4 flex max-w-xs flex-col gap-4 sm:max-w-3xl sm:flex-row sm:gap-10"
+    >
       <div class="flex flex-col items-center gap-4">
         <img
           class="rounded"
           src="https://source.unsplash.com/random/100x100/?lifting"
           alt=""
         />
-        <p class="flex h-12 items-center font-bold uppercase text-green-700">
+        <p class="flex items-center font-bold uppercase text-green-700">
           No heavy lifting
         </p>
         <p>We analyze the data so you don't have to.</p>
@@ -119,7 +121,7 @@
           src="https://source.unsplash.com/random/100x100/?scale"
           alt=""
         />
-        <p class="flex h-12 items-center font-bold uppercase text-orange-700">
+        <p class="flex items-center font-bold uppercase text-orange-700">
           The good, the bad, & the honest
         </p>
         <p>
@@ -133,7 +135,7 @@
           src="https://source.unsplash.com/random/100x100/?glove"
           alt=""
         />
-        <p class="flex h-12 items-center font-bold uppercase text-pink-800">
+        <p class="flex items-center font-bold uppercase text-pink-800">
           Like a glove
         </p>
         <p>We personalize your search based on what's most important to you.</p>
@@ -143,7 +145,7 @@
 </div>
 
 <div
-  class="relative flex w-full justify-center overflow-clip bg-sky-800 px-10 py-10 md:py-40"
+  class="relative flex w-full justify-center bg-sky-800 px-10 py-10 md:py-40"
 >
   <div class="flex w-full flex-col justify-end gap-10 text-white md:flex-row">
     <div class="flex w-full items-center justify-end">
