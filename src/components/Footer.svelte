@@ -18,12 +18,13 @@
       />
     </div>
     <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:gap-16">
+      <!-- Resources -->
       <div>
-        <h2
-          class="mb-2 text-sm font-semibold uppercase tracking-normal text-gray-900 dark:text-white"
+        <p
+          class="tracking-normal mb-2 text-sm font-semibold uppercase text-gray-900 dark:text-white"
         >
           Resources
-        </h2>
+        </p>
         <FooterLinkGroup>
           <FooterLink
             liClass="mb-2"
@@ -33,12 +34,14 @@
           </FooterLink>
         </FooterLinkGroup>
       </div>
+
+      <!-- Socials -->
       <div>
-        <h2
-          class="mb-2 text-sm font-semibold uppercase tracking-normal text-gray-900 dark:text-white"
+        <p
+          class="tracking-normal mb-2 text-sm font-semibold uppercase text-gray-900 dark:text-white"
         >
           Follow us
-        </h2>
+        </p>
         <FooterLinkGroup>
           <FooterLink
             liClass="mb-2"
@@ -47,12 +50,14 @@
           >
         </FooterLinkGroup>
       </div>
+
+      <!-- Legal -->
       <div>
-        <h2
-          class="mb-2 text-sm font-semibold uppercase tracking-normal text-gray-900 dark:text-white"
+        <p
+          class="tracking-normal mb-2 text-sm font-semibold uppercase text-gray-900 dark:text-white"
         >
           Legal
-        </h2>
+        </p>
         <FooterLinkGroup>
           <FooterLink liClass="mb-2" href="/about">Privacy Policy</FooterLink>
         </FooterLinkGroup>

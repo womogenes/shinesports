@@ -11,6 +11,9 @@
   } from 'flowbite-svelte';
   export let user;
 
+  let _class = '';
+  export { _class as class };
+
   const logout = async () => {
     await fetch('/logout', { method: 'POST' });
     window.location.href = '/';
@@ -25,7 +28,7 @@
 </script>
 
 <Navbar
-  class="mx-auto flex w-full max-w-4xl items-center px-4 sm:px-6"
+  class="flex w-full max-w-4xl items-center px-4 sm:px-6 {_class}"
   let:hidden
   let:toggle
   fluid
