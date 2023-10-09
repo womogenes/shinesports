@@ -53,18 +53,14 @@
         ones for you.
       </p>
 
-      <div class="mt-10 flex flex-col gap-4">
+      <div class="mt-10 flex w-full max-w-sm flex-col gap-4">
         <p class="text-lg font-semibold uppercase tracking-widest">
           Start your search
         </p>
 
-        <div class="flex flex-col gap-4 md:flex-row">
-          <button class="transition-colors hover:bg-blue-950">
-            School teams
-          </button>
-          <button class="transition-colors hover:bg-blue-950">
-            Club teams
-          </button>
+        <div class="grid w-full grid-rows-2 gap-4 md:grid-cols-2">
+          <Button>School teams</Button>
+          <Button>Club teams</Button>
         </div>
       </div>
     </div>

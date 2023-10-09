@@ -50,6 +50,6 @@
     @apply text-2xl;
   }
   :global(button) {
-    @apply border px-4 py-2;
+    @apply transition-colors;
   }
 </style>

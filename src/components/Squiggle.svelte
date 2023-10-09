@@ -7,7 +7,7 @@
   xmlns="http://www.w3.org/2000/svg"
   viewBox="0 0 186 17"
   fill="none"
-  class="w-full {_class}"
+  class={_class}
   style="stroke-linecap: round; stroke-width: 4;"
 >
   <path
