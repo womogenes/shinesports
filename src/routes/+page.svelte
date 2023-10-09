@@ -58,6 +58,11 @@
           Start your search
         </p>
 
+        <div class="flex flex-col gap-4 md:flex-row" style="">
+          <select name="sports">
+            <option value="crew" style="color: black; background-color: #348bcf;">Crew</option>
+            <option value="swim" style="color: black; background-color: #348bcf;">Swim</option>
+          </select>
         <div class="grid w-full grid-rows-2 gap-4 md:grid-cols-2">
           <Button>School teams</Button>
           <Button>Club teams</Button>
