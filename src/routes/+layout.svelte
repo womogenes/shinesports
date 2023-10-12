@@ -52,8 +52,4 @@
   :global(button) {
     @apply transition-colors;
   }
-
-  #sports-dropdown :global(){
-    background-color:black;
-  }
 </style>

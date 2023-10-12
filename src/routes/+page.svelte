@@ -1,6 +1,8 @@
 <script>
   import { A, Alert, Input, Label } from 'flowbite-svelte';
   import { Button } from 'flowbite-svelte';
+  import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
+  // import { ChevronDownSolid } from 'flowbite-svelte-icons';
 
   import Navbar from '$components/Navbar.svelte';
 
@@ -33,6 +35,7 @@
       alt=""
     />
   </div>
+</div>
 
   <div
     class="flex w-full flex-col items-center gap-4 bg-blue-900 px-10 py-16 text-center text-white sm:py-40"
@@ -57,20 +60,23 @@
         <p class="text-lg font-semibold uppercase tracking-widest">
           Start your search
         </p>
-
-        <div class="flex flex-col gap-4 md:flex-row" style="">
-          <select name="sports">
-            <option value="crew" style="color: black; background-color: #348bcf;">Crew</option>
-            <option value="swim" style="color: black; background-color: #348bcf;">Swim</option>
-          </select>
-        <div class="grid w-full grid-rows-2 gap-4 md:grid-cols-2">
-          <Button>School teams</Button>
-          <Button>Club teams</Button>
+        <div class="container-fluid">
+            <div class="grid grid-cols-2 gap-4 sm:gap-6">
+              <div class="flex flex-col gap-4 rounded-lg p-4 transition-colors hover:bg-blue-950">
+                <Button>Sport ⌵</Button>
+                <Dropdown class="flex w-full grid grid-rows-2">
+                  <DropdownItem class="flex flex-row gap-4 justify-center">Crew</DropdownItem>
+                  <DropdownItem class="flex flex-row gap-4 justify-center">Swimming</DropdownItem>
+                </Dropdown>
+              </div>
+              <div class="flex flex-col gap-4 rounded-lg p-4 transition-colors hover:bg-blue-950">
+                <Input type="text" placeholder="Zip Code" maxlength="5" required></Input>
+              </div>
+            </div>            
+          </div>
         </div>
-      </div>
     </div>
   </div>
-</div>
 
 <!-- Page squiggle -->
 <div class="w-full">
