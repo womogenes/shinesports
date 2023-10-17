@@ -1,5 +1,7 @@
 <script>
-  import { A, Alert, Input, Label } from 'flowbite-svelte';
+  import Utils from './utils.js';
+
+  import { A, Alert, Helper, Input, Label } from 'flowbite-svelte';
   import { Button } from 'flowbite-svelte';
   import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
   // import { ChevronDownSolid } from 'flowbite-svelte-icons';
@@ -17,6 +19,8 @@
     ['Recuritment', 'thumbs-up-outline'],
     ['Results', 'rocket-solid'],
   ];
+
+  let utils = new Utils();
 
   export let data;
 </script>
@@ -61,20 +65,28 @@
           Start your search
         </p>
         <div class="container-fluid">
+          <form method="POST" action="/search" id="search">
             <div class="grid grid-cols-2 gap-4 sm:gap-6">
               <div class="flex flex-col gap-4 rounded-lg p-4 transition-colors hover:bg-blue-950">
                 <Button>Sport ⌵</Button>
                 <Dropdown class="flex w-full grid grid-rows-2">
-                  <DropdownItem class="flex flex-row gap-4 justify-center">Crew</DropdownItem>
-                  <DropdownItem class="flex flex-row gap-4 justify-center">Swimming</DropdownItem>
+                  <DropdownItem class="flex flex-row gap-4 justify-center" id="sport1" on:click={() => utils.sportsCheck(1)}>Crew</DropdownItem>
+                  <DropdownItem class="flex flex-row gap-4 justify-center" id="sport2" on:click={() => utils.sportsCheck(2)}>Swimming</DropdownItem>
                 </Dropdown>
+                <Input type="checkbox" name="id1" value="crew" style="opacity: 0; position: absolute;"></Input>
+                <Input type="checkbox" name="id2" value="swim" style="opacity: 0; position: absolute;"></Input>
               </div>
               <div class="flex flex-col gap-4 rounded-lg p-4 transition-colors hover:bg-blue-950">
-                <Input type="text" placeholder="Zip Code" maxlength="5" required></Input>
+                  <Input type="text" name="zip" placeholder="Zip Code" maxlength="5" value="" on:input={() => utils.zipCheck()} required></Input>
               </div>
-            </div>            
-          </div>
+            </div>
+            <br>
+            <div style="margin: auto; text-align: center;">
+              <Button>Search!</Button>
+            </div>
+          </form>            
         </div>
+      </div>
     </div>
   </div>
 
