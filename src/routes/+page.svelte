@@ -3,7 +3,12 @@
 
   import { A, Alert, Helper, Input, Label } from 'flowbite-svelte';
   import { Button } from 'flowbite-svelte';
-  import { Dropdown, DropdownItem, DropdownDivider, DropdownHeader } from 'flowbite-svelte';
+  import {
+    Dropdown,
+    DropdownItem,
+    DropdownDivider,
+    DropdownHeader,
+  } from 'flowbite-svelte';
   // import { ChevronDownSolid } from 'flowbite-svelte-icons';
 
   import Navbar from '$components/Navbar.svelte';
@@ -12,13 +17,6 @@
   import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
   import Squiggle from '$components/Squiggle.svelte';
-
-  let reviewBases = [
-    ['Culture', 'users-group-outline'],
-    ['Coach', 'user-circle-solid'],
-    ['Recuritment', 'thumbs-up-outline'],
-    ['Results', 'rocket-solid'],
-  ];
 
   let utils = new Utils();
 
@@ -41,54 +39,83 @@
   </div>
 </div>
 
-  <div
-    class="flex w-full flex-col items-center gap-4 bg-blue-900 px-10 py-16 text-center text-white sm:py-40"
-  >
-    <div class="flex max-w-lg flex-col items-center">
-      <div class="flex flex-col items-center uppercase">
-        <p class="text-lg font-semibold tracking-widest">Find the team</p>
-        <p class="text-4xl font-extrabold">That fits you best</p>
-      </div>
+<div
+  class="flex w-full flex-col items-center gap-4 bg-blue-900 px-10 py-16 text-center text-white sm:py-40"
+>
+  <div class="flex max-w-lg flex-col items-center">
+    <div class="flex flex-col items-center uppercase">
+      <p class="text-lg font-semibold tracking-widest">Find the team</p>
+      <p class="text-4xl font-extrabold">That fits you best</p>
+    </div>
 
-      <div class="mb-10 mt-5 w-60">
-        <Squiggle class="max-w-80 stroke-blue-700" />
-      </div>
+    <div class="mb-10 mt-5 w-60">
+      <Squiggle class="max-w-80 stroke-blue-700" />
+    </div>
 
-      <p class="text-lg">
-        Finding the right sports team shouldn’t be hard. From crew clans to
-        [other teams], we make it easy to discover and connect with the best
-        ones for you.
+    <p class="text-lg">
+      Finding the right sports team shouldn’t be hard. From crew clans to [other
+      teams], we make it easy to discover and connect with the best ones for
+      you.
+    </p>
+
+    <div class="mt-10 flex w-full max-w-sm flex-col gap-4">
+      <p class="text-lg font-semibold uppercase tracking-widest">
+        Start your search
       </p>
-
-      <div class="mt-10 flex w-full max-w-sm flex-col gap-4">
-        <p class="text-lg font-semibold uppercase tracking-widest">
-          Start your search
-        </p>
-        <div class="container-fluid">
-          <form method="[POST, GET]" action="/teams" id="search">
-            <div class="grid grid-cols-2 gap-4 sm:gap-6">
-              <div class="flex flex-col gap-4 rounded-lg p-4 transition-colors hover:bg-blue-950">
-                <Button>Sport ⌵</Button>
-                <Dropdown class="flex w-full grid grid-rows-2">
-                  <DropdownItem class="flex flex-row gap-4 justify-center" id="sport1" on:click={() => utils.sportsCheck(1)}>Crew</DropdownItem>
-                  <DropdownItem class="flex flex-row gap-4 justify-center" id="sport2" on:click={() => utils.sportsCheck(2)}>Swimming</DropdownItem>
-                </Dropdown>
-                <Input type="checkbox" name="id1" value="crew" style="opacity: 0; position: absolute;"></Input>
-                <Input type="checkbox" name="id2" value="swim" style="opacity: 0; position: absolute;"></Input>
-              </div>
-              <div class="flex flex-col gap-4 rounded-lg p-4 transition-colors hover:bg-blue-950">
-                  <Input type="text" name="zip" placeholder="Zip Code" maxlength="5" value="" on:input={() => utils.zipCheck()} required></Input>
-              </div>
+      <div class="container-fluid">
+        <form method="[POST, GET]" action="/teams" id="search">
+          <div class="grid grid-cols-2 gap-4 sm:gap-6">
+            <div class="relative mb-6">
+              <Button class="w-full">Sport ⌵</Button>
+              <Dropdown class="grid w-full grid-rows-2">
+                <DropdownItem
+                  class="flex flex-row justify-center gap-4"
+                  id="sport1"
+                  on:click={() => utils.sportsCheck(1)}
+                >
+                  Crew
+                </DropdownItem>
+                <DropdownItem
+                  class="flex flex-row justify-center gap-4"
+                  id="sport2"
+                  on:click={() => utils.sportsCheck(2)}
+                >
+                  Swimming
+                </DropdownItem>
+              </Dropdown>
+              <Input
+                type="checkbox"
+                name="id1"
+                value="crew"
+                class="absolute opacity-0"
+              ></Input>
+              <Input
+                type="checkbox"
+                name="id2"
+                value="swim"
+                style="opacity: 0; position: absolute;"
+              ></Input>
             </div>
-            <br>
-            <div style="margin: auto; text-align: center;">
-              <Button type="submit" class="w-full" value="Submit" >Search!</Button>
+            <div>
+              <Input
+                type="text"
+                name="zip"
+                placeholder="Zip Code"
+                maxlength="5"
+                value=""
+                on:input={() => utils.zipCheck()}
+                required
+              ></Input>
             </div>
-          </form>            
-        </div>
+          </div>
+          <div style="margin: auto; text-align: center;">
+            <Button type="submit" class="w-full" value="Submit">Search!</Button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+</div>
 
 <!-- Page squiggle -->
 <div class="w-full">
