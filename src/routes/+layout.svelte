@@ -21,8 +21,8 @@
 </script>
 
 <svelte:head>
-  <title>ratemycrewteam</title>
-  <link rel="icon" href="/favicon.svg" />
+  <title>Shine</title>
+  <link rel="icon" href="/favicon.png" />
 </svelte:head>
 
 <div class="flex flex-col items-center">

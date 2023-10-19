@@ -34,9 +34,9 @@
   fluid
 >
   <NavBrand href="/">
-    <img src="/favicon.svg" class="ml-0 mr-2 w-5 sm:w-6" alt="Flowbite Logo" />
+    <img src="/favicon.png" class="ml-0 mr-2 w-5 sm:w-6" alt="shine-logo" />
     <span class=" whitespace-nowrap font-semibold sm:block">
-      ratemycrewteam
+      Shine
     </span>
   </NavBrand>
 
