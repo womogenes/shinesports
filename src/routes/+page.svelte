@@ -37,81 +37,83 @@
       alt=""
     />
   </div>
-</div>
 
-<div
-  class="flex w-full flex-col items-center gap-4 bg-blue-900 px-10 py-16 text-center text-white sm:py-40"
->
-  <div class="flex max-w-lg flex-col items-center">
-    <div class="flex flex-col items-center uppercase">
-      <p class="text-lg font-semibold tracking-widest">Find the team</p>
-      <p class="text-4xl font-extrabold">That fits you best</p>
-    </div>
+  <div
+    class="flex w-full flex-col items-center gap-4 bg-blue-900 px-10 py-16 text-center text-white sm:py-40"
+  >
+    <div class="flex max-w-lg flex-col items-center">
+      <div class="flex flex-col items-center uppercase">
+        <p class="text-lg font-semibold tracking-widest">Find the team</p>
+        <p class="text-4xl font-extrabold">That fits you best</p>
+      </div>
 
-    <div class="mb-10 mt-5 w-60">
-      <Squiggle class="max-w-80 stroke-blue-700" />
-    </div>
+      <div class="mb-10 mt-5 w-60">
+        <Squiggle class="max-w-80 stroke-blue-700" />
+      </div>
 
-    <p class="text-lg">
-      Finding the right sports team shouldn’t be hard. From crew clans to [other
-      teams], we make it easy to discover and connect with the best ones for
-      you.
-    </p>
-
-    <div class="mt-10 flex w-full max-w-sm flex-col gap-4">
-      <p class="text-lg font-semibold uppercase tracking-widest">
-        Start your search
+      <p class="text-lg">
+        Finding the right sports team shouldn’t be hard. From crew clans to
+        [other teams], we make it easy to discover and connect with the best
+        ones for you.
       </p>
-      <div class="container-fluid">
-        <form method="[POST, GET]" action="/teams" id="search">
-          <div class="grid grid-cols-2 gap-4 sm:gap-6">
-            <div class="relative mb-6">
-              <Button class="w-full">Sport ⌵</Button>
-              <Dropdown class="grid w-full grid-rows-2">
-                <DropdownItem
-                  class="flex flex-row justify-center gap-4"
-                  id="sport1"
-                  on:click={() => utils.sportsCheck(1)}
-                >
-                  Crew
-                </DropdownItem>
-                <DropdownItem
-                  class="flex flex-row justify-center gap-4"
-                  id="sport2"
-                  on:click={() => utils.sportsCheck(2)}
-                >
-                  Swimming
-                </DropdownItem>
-              </Dropdown>
-              <Input
-                type="checkbox"
-                name="id1"
-                value="crew"
-                class="absolute opacity-0"
-              ></Input>
-              <Input
-                type="checkbox"
-                name="id2"
-                value="swim"
-                style="opacity: 0; position: absolute;"
-              ></Input>
+
+      <div class="mt-10 flex w-full max-w-sm flex-col gap-4">
+        <p class="text-lg font-semibold uppercase tracking-widest">
+          Start your search
+        </p>
+        <div class="container-fluid">
+          <form method="[POST, GET]" action="/teams" id="search">
+            <div class="grid grid-cols-2 gap-4 sm:gap-6">
+              <div class="relative mb-6">
+                <Button class="w-full">Sport ⌵</Button>
+                <Dropdown class="grid w-full grid-rows-2">
+                  <DropdownItem
+                    class="flex flex-row justify-center gap-4"
+                    id="sport1"
+                    on:click={() => utils.sportsCheck(1)}
+                  >
+                    Crew
+                  </DropdownItem>
+                  <DropdownItem
+                    class="flex flex-row justify-center gap-4"
+                    id="sport2"
+                    on:click={() => utils.sportsCheck(2)}
+                  >
+                    Swimming
+                  </DropdownItem>
+                </Dropdown>
+                <Input
+                  type="checkbox"
+                  name="id1"
+                  value="crew"
+                  class="absolute opacity-0"
+                ></Input>
+                <Input
+                  type="checkbox"
+                  name="id2"
+                  value="swim"
+                  style="opacity: 0; position: absolute;"
+                ></Input>
+              </div>
+              <div>
+                <Input
+                  type="text"
+                  name="zip"
+                  placeholder="Zip Code"
+                  maxlength="5"
+                  value=""
+                  on:input={() => utils.zipCheck()}
+                  required
+                ></Input>
+              </div>
             </div>
-            <div>
-              <Input
-                type="text"
-                name="zip"
-                placeholder="Zip Code"
-                maxlength="5"
-                value=""
-                on:input={() => utils.zipCheck()}
-                required
-              ></Input>
+            <div style="margin: auto; text-align: center;">
+              <Button type="submit" class="w-full" value="Submit"
+                >Search!</Button
+              >
             </div>
-          </div>
-          <div style="margin: auto; text-align: center;">
-            <Button type="submit" class="w-full" value="Submit">Search!</Button>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -152,7 +154,7 @@
     </p>
 
     <div
-      class="my-4 flex max-w-xs flex-col gap-4 sm:max-w-3xl sm:flex-row sm:gap-10"
+      class="my-4 grid max-w-xs grid-rows-3 gap-4 sm:max-w-3xl sm:grid-cols-3 sm:grid-rows-1 sm:gap-10"
     >
       <div class="flex flex-col items-center gap-4">
         <img
