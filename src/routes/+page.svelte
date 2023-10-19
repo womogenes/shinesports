@@ -65,7 +65,7 @@
           Start your search
         </p>
         <div class="container-fluid">
-          <form method="GET" action="/teams" id="search">
+          <form method="[POST, GET]" action="/teams" id="search">
             <div class="grid grid-cols-2 gap-4 sm:gap-6">
               <div class="flex flex-col gap-4 rounded-lg p-4 transition-colors hover:bg-blue-950">
                 <Button>Sport ⌵</Button>

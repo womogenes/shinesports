@@ -12,9 +12,9 @@
     <div class="mb-6 md:mb-0">
       <FooterBrand
         href="/"
-        src="/favicon.svg"
-        alt="RateMyCrewTeam logo"
-        name="ratemycrewteam"
+        src="/favicon.png"
+        alt="Shine logo"
+        name="Shine"
       />
     </div>
     <div class="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:gap-16">
