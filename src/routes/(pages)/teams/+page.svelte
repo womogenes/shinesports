@@ -5,6 +5,17 @@
   import { fade, fly } from 'svelte/transition';
 
   export let data;
+
+  // export const actions = {
+  //   login: async ({request}) => {
+  //     const selection = await request.formData();
+  //   }
+  // }
+
+  // console.log(actions.login(selection));
+
+  //https://kit.svelte.dev/docs/form-actions
+
   let { allTeams } = data;
 
   let filters = {

@@ -65,24 +65,30 @@
           <form method="[POST, GET]" action="/teams" id="search">
             <div class="grid grid-cols-2 gap-4 sm:gap-6">
               <div class="relative mb-6">
-                <Button class="w-full">Sport ⌵</Button>
-                <Dropdown class="grid w-full grid-rows-2">
+                <Input list="list" placeholder="Sport" required></Input>
+                <datalist id="list">
+                  <option value="Crew"></option>
+                  <option value="Swim"></option>
+                  <option value="Soccer"></option>
+                </datalist>
+                <!-- <Dropdown class="grid w-full grid-rows-2">
                   <DropdownItem
-                    class="flex flex-row justify-center gap-4"
+                    class="flex flex-row justify-center"
                     id="sport1"
+                    value="crew"
                     on:click={() => utils.sportsCheck(1)}
                   >
                     Crew
                   </DropdownItem>
                   <DropdownItem
-                    class="flex flex-row justify-center gap-4"
+                    class="flex flex-row justify-center"
                     id="sport2"
                     on:click={() => utils.sportsCheck(2)}
                   >
                     Swimming
-                  </DropdownItem>
-                </Dropdown>
-                <Input
+                  </DropdownItem> -->
+                <!-- </Dropdown> -->
+                <!-- <Input
                   type="checkbox"
                   name="id1"
                   value="crew"
@@ -93,7 +99,7 @@
                   name="id2"
                   value="swim"
                   style="opacity: 0; position: absolute;"
-                ></Input>
+                ></Input> -->
               </div>
               <div>
                 <Input
