@@ -39,7 +39,7 @@
             </h2>
             <Squiggle class="m-auto w-40 stroke-white"/>
           </div>
-          <p class="text-xl text-left">
+          <p class="text-xl text-left m-5">
             Shine strives to provide junior athletes and their parents & guardians with the information necessary to make educated and well-informed decisions when choosing a sports team. We make various key decision making factors of this process transparent, such as the team’s culture, coaching style, competition ranking, practice logistics, cost of attendance, and so on. We believe athletes deserve to be on teams that will make them shine, especially during the most formative years of their life.
           </p>
         </div>
@@ -52,7 +52,7 @@
             </h2>
             <Squiggle class="m-auto w-40 stroke-green-900"/>
           </div>
-          <p class="text-xl text-left">
+          <p class="text-xl text-left m-5">
             The International Olympic Committee (IOC) defines Safe Sport as an environment where athletes can train and compete in healthy and supportive surroundings; an environment which is respectful, equitable, and free from all forms of harassment and abuse.
           </p>
         </div>
