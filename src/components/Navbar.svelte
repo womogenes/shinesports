@@ -28,34 +28,36 @@
 </script>
 
 <Navbar
-  class="flex w-full max-w-4xl items-center px-4 sm:px-6 {_class}"
+  class="flex w-full max-w-4xl h-20 items-center px-4 sm:px-6 {_class}"
   let:hidden
   let:toggle
   fluid
 >
-  <NavBrand href="/">
-    <img src="/favicon.png" class="ml-0 mr-2 w-5 sm:w-6" alt="shine-logo" />
-    <span class=" whitespace-nowrap font-semibold sm:block">
+  <NavBrand href="/" class="flex-auto">
+    <div class="h-20 w-20 content-center justify-center">
+      <img src="/favicon.png" class="object-fill w-full h-full ml-0 mr-2" alt="shine-logo" />
+    </div>
+    <span class=" whitespace-nowrap font-semibold sm:block text-5xl">
       Shine
     </span>
   </NavBrand>
 
   <NavUl
-    class="order-1 ml-auto"
+    class="flex-auto order-1"
     classUl="flex sm:items-center items-stretch sm:py-0 py-4"
     tabindex="-1"
     {hidden}
     slideParams={{ delay: 0 }}
   >
-    <NavLi class="flex justify-center" href="/">Home</NavLi>
-    <NavLi class="flex justify-center" href="/about">About</NavLi>
+    <NavLi class="flex justify-center text-xl" href="/">Home</NavLi>
+    <NavLi class="flex justify-center text-xl" href="/about">About</NavLi>
 
     <!-- Extra stuff below main nav links -->
     <div class="w-full sm:w-auto">
       {#if user}
-        <Button class="mr-2 w-full" size="sm" on:click={logout}>Log out</Button>
+        <Button class="mr-2 w-full" size="lg" on:click={logout}>Log out</Button>
       {:else}
-        <Button class="mr-2 w-full" size="sm" href="/signin">Sign in</Button>
+        <Button class="mr-2 w-full" size="lg" href="/signin">Sign in</Button>
       {/if}
     </div>
   </NavUl>

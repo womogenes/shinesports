@@ -9,6 +9,15 @@
     DropdownDivider,
     DropdownHeader,
   } from 'flowbite-svelte';
+
+  import { onMount } from 'svelte';
+  export let user;
+
+  const logout = async () => {
+    await fetch('/logout', { method: 'POST' });
+    window.location.href = '/';
+  };
+  
   // import { ChevronDownSolid } from 'flowbite-svelte-icons';
 
   import Navbar from '$components/Navbar.svelte';
@@ -52,8 +61,7 @@
       </div>
 
       <p class="text-lg">
-        Finding the right sports team shouldn’t be hard. From crew clans to
-        [other teams], we make it easy to discover and connect with the best
+        Finding the right sports team shouldn’t be hard. We make it easy to discover and connect with the best
         ones for you.
       </p>
 
@@ -145,59 +153,64 @@
 <div class="flex w-full justify-center px-10 py-10 sm:py-40">
   <div class="flex flex-col items-center gap-4 rounded-lg bg-white text-center">
     <div class="flex flex-col items-center gap-6 text-blue-900">
-      <p class="uppercase tracking-widest">
-        Find <b class="font-extrabold">your</b> team
-      </p>
-      <p class="text-center text-3xl font-bold">
-        Your search is unique. <br />
-        Just like you.
+      <p class="text-center text-5xl font-bold mb-10">
+        Reviews Based On
       </p>
     </div>
-    <Squiggle />
-    <p class="max-w-md">
-      We give you all of the data, reviews, and insights in one place to make
-      your search as easy as possible.
-    </p>
 
     <div
-      class="my-4 grid max-w-xs grid-rows-3 gap-4 sm:max-w-3xl sm:grid-cols-3 sm:grid-rows-1 sm:gap-10"
+      class="my-4 grid max-w-xs grid-rows-3 gap-4 sm:max-w-3xl sm:grid-cols-4 sm:grid-rows-1 sm:gap-10"
     >
       <div class="flex flex-col items-center gap-4">
         <img
-          class="rounded"
-          src="https://source.unsplash.com/random/100x100/?lifting"
+          class="rounded object-cover h-28 w-28"
+          src="teamculture.jpg"
           alt=""
         />
         <p class="flex items-center font-bold uppercase text-green-700">
-          No heavy lifting
+          Culture
         </p>
-        <p>We analyze the data so you don't have to.</p>
       </div>
       <div class="flex flex-col items-center gap-4">
         <img
-          class="rounded"
-          src="https://source.unsplash.com/random/100x100/?scale"
+          class="rounded object-cover h-28 w-28"
+          src="coaching.jpg"
           alt=""
         />
         <p class="flex items-center font-bold uppercase text-orange-700">
-          The good, the bad, & the honest
-        </p>
-        <p>
-          Our user reviews let you hear directly from athletes to give you an
-          honest and holistic view.
+          Coaches
         </p>
       </div>
       <div class="flex flex-col items-center gap-4">
         <img
-          class="rounded"
-          src="https://source.unsplash.com/random/100x100/?glove"
+          class="rounded object-cover h-28 w-28"
+          src="competition.jpg"
           alt=""
         />
         <p class="flex items-center font-bold uppercase text-pink-800">
-          Like a glove
+          Competition
         </p>
-        <p>We personalize your search based on what's most important to you.</p>
       </div>
+      <div class="flex flex-col items-center gap-4">
+        <img
+          class="rounded object-cover h-28 w-28"
+          src="recruitment.jpg"
+          alt=""
+        />
+        <p class="flex items-center font-bold uppercase text-blue-900">
+          Recruitment
+        </p>
+      </div>
+    </div>
+    <p class="flex items-center font-bold uppercase text-blue-500">
+      Have Something to Say?
+    </p>
+    <div class="w-full sm:w-auto">
+      {#if user}
+        <A class="mr-2 w-full" size="xl">Search for a team and review!</A>
+      {:else}
+        <Button class="mr-2 w-full" size="xl" href="/signin">Sign Up!</Button>
+      {/if}
     </div>
   </div>
 </div>
