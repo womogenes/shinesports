@@ -29,7 +29,7 @@
     </p>
     <div class="grid grid-rows-7 gap-20 justify-evenly">
       <div class="w-full grid grid-cols-2 justify-evenly gap-10 bg-sky-800 p-10 text-white">
-        <div class="flex flex-wrap bg-gray-50 content-center justify-center text-black">
+        <div class="rounded flex flex-wrap bg-gray-50 content-center justify-center text-black">
           <div>Insert Image Here</div>
         </div>
         <div>
@@ -57,7 +57,7 @@
           </p>
         </div>
         <div class="flex flex-wrap content-center justify-center">
-          <img class="" src="/logo.png" alt=""/>
+          <img class="rounded" src="/logo.png" alt=""/>
         </div>
       </div>
       <div class="bg-blue-50 p-10">
@@ -69,7 +69,7 @@
         <div class="w-full grid grid-rows-2 grid-cols-2 justify-evenly gap-10">
           <div class="w-full flex flex-col gap-10">
             <div class="flex flex-wrap h-full content-center justify-center">
-              <img class="" src="/kaitlin.jpg" alt=""/>
+              <img class="rounded" src="/kaitlin.jpg" alt=""/>
             </div>
             <div class="flex-none justify-center grid grid-rows-2">
               <h3 class="text-lg text-center">
@@ -82,7 +82,7 @@
           </div>
           <div class="w-full flex flex-col gap-10">
             <div class="flex flex-wrap h-full content-center justify-center">
-              <img class="" src="/bill.jpg" alt=""/>
+              <img class="rounded" src="/bill.jpg" alt=""/>
             </div>
             <div class="flex-none justify-center grid grid-rows-2">
               <h3 class="text-lg text-center">
@@ -95,7 +95,7 @@
           </div>
           <div class="w-full flex flex-col gap-10">
             <div class="flex flex-wrap content-center justify-center">
-              <img class="" src="/ayden.jpg" alt=""/>
+              <img class="rounded" src="/ayden.jpg" alt=""/>
             </div>
             <div class="flex-none justify-center grid grid-rows-2">
               <h3 class="text-lg text-center">
@@ -108,14 +108,14 @@
           </div>
           <div class="w-full flex flex-col gap-10">
             <div class="flex flex-wrap content-center justify-center">
-              <img class="" src="/felix.jpg" alt=""/>
+              <img class="rounded" src="/felix.jpg" alt=""/>
             </div>
             <div class="flex-none justify-center grid grid-rows-2">
               <h3 class="text-lg text-center">
                 Felix Yu (SVP) 
               </h3>
               <p>
-                Developer of Among Us in real life and former crew athlete.
+                Developer of <span class="italic">Among Us Real Life Edition</span> and former crew athlete.
               </p>
             </div>
           </div>
