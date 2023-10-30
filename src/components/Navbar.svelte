@@ -43,14 +43,14 @@
   </NavBrand>
 
   <NavUl
-    class="flex-auto order-1"
+    class="order-1"
     classUl="flex sm:items-center items-stretch sm:py-0 py-4"
     tabindex="-1"
     {hidden}
     slideParams={{ delay: 0 }}
   >
-    <NavLi class="flex justify-center text-xl" href="/">Home</NavLi>
-    <NavLi class="flex justify-center text-xl" href="/about">About</NavLi>
+    <NavLi class="flex justify-center text-lg" href="/">Home</NavLi>
+    <NavLi class="flex justify-center text-lg" href="/about">About</NavLi>
 
     <!-- Extra stuff below main nav links -->
     <div class="w-full sm:w-auto">

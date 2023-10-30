@@ -46,7 +46,6 @@
       alt=""
     />
   </div>
-
   <div
     class="flex w-full flex-col items-center gap-4 bg-blue-900 px-10 py-16 text-center text-white sm:py-40"
   >
@@ -64,7 +63,7 @@
         Finding the right sports team shouldn’t be hard. We make it easy to discover and connect with the best
         ones for you.
       </p>
-
+      <span id="top"></span>
       <div class="mt-10 flex w-full max-w-sm flex-col gap-4">
         <p class="text-lg font-semibold uppercase tracking-widest">
           Start your search
@@ -207,7 +206,7 @@
     </p>
     <div class="w-full sm:w-auto">
       {#if user}
-        <A class="mr-2 w-full" size="xl">Search for a team and review!</A>
+        <a class="mr-2 w-full " size="xl" href="#top">Search for a team and review!</a>
       {:else}
         <Button class="mr-2 w-full" size="xl" href="/signin">Sign Up!</Button>
       {/if}
