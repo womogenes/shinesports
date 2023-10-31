@@ -18,7 +18,7 @@
 
   let reviews = [
     {'text': 'I really loved the team culture, coach was definitely really tough though!', 'image': 'https://source.unsplash.com/random/400x400/?rowing'}, 
-    {'text': 'I really wished the team would have set me up better for college recruitment.', 'image': 'https://source.unsplash.com/random/400x400/?swimming'},
+    {'text': 'This team set me up well for college recruitment.', 'image': 'https://source.unsplash.com/random/400x400/?swimming'},
     {'text': 'Should have won more competitions!', 'image': 'https://source.unsplash.com/random/400x400/?running'},
     {'text': 'Yeah Boi', 'image': 'https://source.unsplash.com/random/400x400/?cat'}
   ]

@@ -7,8 +7,8 @@
     <div class="left-0 rounded" style="width: 400px; height: 400px; background-image: url({image});" id="image">
     </div>
     <div class="flex justify-end items-center">
-        <div class="relative bubble-bottom-left flex bg-white justify-end items-center p-10 rounded-3xl">
-            <p class="text-left text-3xl text-black leading-relaxed">{text}</p>
+        <div class="relative bubble-bottom-left flex justify-end items-center p-10 rounded-3xl" style="background-color: #ef4444">
+            <p class="text-left text-3xl text-white font-bold leading-relaxed">{text}</p>
         </div>
         <img class="bottom-0 m-10 rounded-full object-cover" src="https://source.unsplash.com/random/50x50/?portrait" alt="" style="width: 75px; height: 75px;"/>
     </div>
@@ -27,13 +27,13 @@
         content: "";
         width: 0px;
         height: 0px;
-        margin-top: 75px;
+        margin-top: 70px;
         position: absolute;
-        border-right: 24px solid #fff;
+        border-right: 24px solid #ef4444;
         border-left: 12px solid transparent;
-        border-top: 12px solid #fff;
+        border-top: 12px solid #ef4444;
         border-bottom: 20px solid transparent;
-        right: -23px;
+        right: -30px;
         rotate: -90deg;
     }
 </style>
