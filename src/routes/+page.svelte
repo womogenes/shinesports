@@ -1,7 +1,8 @@
 <script>
   import Utils from './utils.js';
   import Carousel from '../components/Carousel.svelte'
-  import { A, Alert, Helper, Input, Label } from 'flowbite-svelte';
+  import ReviewExample from '../components/ReviewExample.svelte'
+  import { A, Alert, Helper, Input, Label, Review } from 'flowbite-svelte';
   import { Button } from 'flowbite-svelte';
   import {
     Dropdown,
@@ -12,6 +13,15 @@
 
   import { onMount } from 'svelte';
   export let user;
+
+  let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+
+  let reviews = [
+    {'text': 'I really loved the team culture, coach was definitely really tough though!', 'image': 'https://source.unsplash.com/random/400x400/?rowing'}, 
+    {'text': 'I really wished the team would have set me up better for college recruitment.', 'image': 'https://source.unsplash.com/random/400x400/?swimming'},
+    {'text': 'Should have won more competitions!', 'image': 'https://source.unsplash.com/random/400x400/?running'},
+    {'text': 'Yeah Boi', 'image': 'https://source.unsplash.com/random/400x400/?cat'}
+  ]
 
   const logout = async () => {
     await fetch('/logout', { method: 'POST' });
@@ -37,7 +47,7 @@
 >
   <Navbar class="bg-transparent" user={data.user} />
 </div>
-
+<span id="top"></span>
 <div class="flex w-full flex-col sm:flex-row" id="hero">
   <div class="w-full">
     <img
@@ -63,7 +73,6 @@
         Finding the right sports team shouldn’t be hard. We make it easy to discover and connect with the best
         ones for you.
       </p>
-      <span id="top"></span>
       <div class="mt-10 flex w-full max-w-sm flex-col gap-4">
         <p class="text-lg font-semibold uppercase tracking-widest">
           Start your search
@@ -186,55 +195,15 @@
 </div>
 
 <div
-  class="relative flex w-full justify-center bg-sky-800 px-10 py-10 md:py-40"
+  class="relative w-full bg-sky-800 px-10 py-10 md:py-40 text-center"
 >
-  <div class="flex w-full flex-col justify-end gap-10 text-white md:flex-row">
-    <div class="flex w-full items-center justify-end">
-      <img
-        class="rounded object-cover md:max-w-sm"
-        src="https://source.unsplash.com/random/1920x1080/?hammer"
-        alt=""
-      />
-    </div>
-
-    <div class="flex w-full items-center">
-      <div class="flex max-w-xs flex-col gap-4">
-        <p class="font-semibold uppercase tracking-widest">Stay on track</p>
-        <p class="text-3xl font-bold">Tools to organize your team search.</p>
-        <Squiggle class="w-40 stroke-white" />
-        <p>
-          We'll help you build your list, track your progress, and get new
-          recommendations as your search narrows.
-        </p>
-        <a class="underline" href="/">Start Exploring</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="flex w-full flex-col sm:flex-row">
-  <div
-    class="flex w-full flex-col px-10 py-10 text-green-700 sm:items-end sm:py-40"
-  >
-    <div class="flex max-w-sm flex-col gap-4">
-      <p class="font-medium uppercase tracking-widest">Choose your team</p>
-      <p class="text-3xl font-bold">
-        Everything you need to make your decision.
-      </p>
-      <Squiggle class="w-40 stroke-green-700" />
-      <p class="text-black">
-        With the information you care about on every (almost) team in America,
-        we make it easy for you to compare teams to make your decision.
-      </p>
-    </div>
-  </div>
-
-  <div class="w-full bg-green-600 p-0 sm:p-10 sm:py-40">
-    <img
-      class="h-full w-full rounded object-cover sm:max-w-sm"
-      src="https://source.unsplash.com/random/1920x1080/?thinking"
-      alt=""
-    />
+  <h1 class="text-white mb-20">See Reviews from Real Athletes!</h1>
+  <div class="w-full">
+    <Carousel autoplay="5000">
+      {#each reviews as review}
+        <ReviewExample text={review['text']} image={review['image']}></ReviewExample>
+      {/each}
+    </Carousel>
   </div>
 </div>
 

@@ -1,5 +1,5 @@
 <div class="carousel">
-	<div class="slides" bind:this={siema}>
+	<div style="width: 75%;" bind:this={siema}>
 		<slot></slot>
     </div>
 </div>
@@ -17,7 +17,7 @@
 	import Siema from 'siema'
 	import { onMount, createEventDispatcher } from 'svelte'
 	
-	export let perPage = 3
+	export let perPage = 1
 	export let loop = true
 	export let autoplay = 0
 	export let duration = 200
