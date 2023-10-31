@@ -197,7 +197,7 @@
 <div
   class="relative w-full bg-sky-800 px-10 py-10 md:py-40 text-center"
 >
-  <h1 class="text-white mb-20">See Reviews from Real Athletes!</h1>
+  <h1 class="text-white mb-20">See Reviews From Real Athletes!</h1>
   <div class="w-full">
     <Carousel autoplay="5000">
       {#each reviews as review}
