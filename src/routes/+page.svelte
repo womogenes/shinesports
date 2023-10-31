@@ -1,6 +1,6 @@
 <script>
   import Utils from './utils.js';
-
+  import Carousel from '../components/Carousel.svelte'
   import { A, Alert, Helper, Input, Label } from 'flowbite-svelte';
   import { Button } from 'flowbite-svelte';
   import {
@@ -78,35 +78,6 @@
                   <option value="Swim"></option>
                   <option value="Soccer"></option>
                 </datalist>
-                <!-- <Dropdown class="grid w-full grid-rows-2">
-                  <DropdownItem
-                    class="flex flex-row justify-center"
-                    id="sport1"
-                    value="crew"
-                    on:click={() => utils.sportsCheck(1)}
-                  >
-                    Crew
-                  </DropdownItem>
-                  <DropdownItem
-                    class="flex flex-row justify-center"
-                    id="sport2"
-                    on:click={() => utils.sportsCheck(2)}
-                  >
-                    Swimming
-                  </DropdownItem> -->
-                <!-- </Dropdown> -->
-                <!-- <Input
-                  type="checkbox"
-                  name="id1"
-                  value="crew"
-                  class="absolute opacity-0"
-                ></Input>
-                <Input
-                  type="checkbox"
-                  name="id2"
-                  value="swim"
-                  style="opacity: 0; position: absolute;"
-                ></Input> -->
               </div>
               <div>
                 <Input
