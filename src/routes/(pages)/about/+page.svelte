@@ -29,9 +29,7 @@
     </p>
     <div class="grid grid-rows-7 gap-20 justify-evenly">
       <div class="w-full grid grid-cols-2 justify-evenly gap-10 bg-sky-800 p-10 text-white">
-        <div class="rounded flex flex-wrap bg-gray-50 content-center justify-center text-black">
-          <div>Insert Image Here</div>
-        </div>
+        <img class="rounded" src="/teamimage.jpg" alt=""/>
         <div>
           <div class="mb-10">
             <h2 class="text-4xl m-5">
@@ -76,7 +74,7 @@
                 Kaitlin Yeoh (Founder & CEO) 
               </h3>
               <p>
-                Insert Bio Here...
+                Current crew athlete (coxswain), former lacrosse player
               </p>
             </div>
           </div>
@@ -102,7 +100,7 @@
                 Ayden Tan (SVP)
               </h3>
               <p>
-                Insert Bio Here...
+                Swimmer, programmer
               </p>
             </div>
           </div>

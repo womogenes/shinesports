@@ -49,7 +49,6 @@
 >
   <Navbar class="bg-transparent" user={data.user} />
 </div>
-<span id="top"></span>
 <div class="flex w-full flex-col sm:flex-row" id="hero">
   <div class="w-full">
     <img
@@ -151,6 +150,9 @@
         <p class="flex items-center font-bold uppercase text-green-700">
           Culture
         </p>
+        <p class="flex items-center text-sm italic text-green-700">
+          Athletes deserve to thrive socially and athletically. Hear directly from athletes about their experiences on a team
+        </p>
       </div>
       <div class="flex flex-col items-center gap-4">
         <img
@@ -160,6 +162,9 @@
         />
         <p class="flex items-center font-bold uppercase text-orange-700">
           Coaches
+        </p>
+        <p class="flex items-center text-sm italic text-orange-700">
+          Each athlete deserves coaches who can help them grow to their fullest potential. Find a team where the coaching style fits you
         </p>
       </div>
       <div class="flex flex-col items-center gap-4">
@@ -171,6 +176,9 @@
         <p class="flex items-center font-bold uppercase text-pink-800">
           Competition
         </p>
+        <p class="flex items-center text-sm italic text-pink-800">
+          We analyze the data for you. Choose the team with the athletic goals that match yours
+        </p>
       </div>
       <div class="flex flex-col items-center gap-4">
         <img
@@ -181,6 +189,9 @@
         <p class="flex items-center font-bold uppercase text-blue-900">
           Recruitment
         </p>
+        <p class="flex items-center text-sm italic text-blue-900">
+          The athletic journey doesn’t have to stop in high school. See which teams are getting recruited to which colleges
+        </p>
       </div>
     </div>
     <p class="flex items-center font-bold uppercase text-blue-500">
@@ -188,7 +199,7 @@
     </p>
     <div class="w-full sm:w-auto">
       {#if user}
-        <a class="mr-2 w-full " size="xl" href="#top">Search for a team and review!</a>
+        <a class="mr-2 w-full " size="xl" href="/">Search for a team and review!</a>
       {:else}
         <Button class="mr-2 w-full" size="xl" href="/signin">Sign Up!</Button>
       {/if}
@@ -219,7 +230,7 @@
 
 <div class="flex w-full justify-center bg-blue-900 px-10 py-10 sm:py-40">
   <div class="flex flex-col items-center gap-4 text-center text-white">
-    <p class="font-medium uppercase tracking-widest text-amber-500">
+    <!-- <p class="font-medium uppercase tracking-widest text-amber-500">
       {new Date().getFullYear() + 1} rankings
     </p>
     <p class="text-4xl font-bold">
@@ -265,10 +276,10 @@
         />
         <p>Best Recruitment</p>
       </a>
-    </div>
+    </div> -->
   </div>
 </div>
-
+<!-- 
 <div class="flex w-full justify-center px-10 py-10 sm:py-40">
   <div class="flex w-full max-w-3xl flex-col gap-10 sm:flex-row">
     <div class="flex w-full max-w-sm flex-col justify-center gap-4">
@@ -292,4 +303,4 @@
       />
     </div>
   </div>
-</div>
+</div> -->
