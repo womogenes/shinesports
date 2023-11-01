@@ -17,6 +17,7 @@
 		"prettier": "^3.0.1",
 		"prettier-plugin-tailwindcss": "^0.5.2",
 		"svelte": "^4.0.5",
+		"svelte-carousel": "^1.0.25",
 		"tailwindcss": "^3.3.3",
 		"vite": "^4.4.2"
 	},

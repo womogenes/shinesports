@@ -1,6 +1,8 @@
 <script>
   import Utils from './utils.js';
-  import Carousel from '../components/Carousel.svelte'
+  // import Carousel from '../components/Carousel.svelte'
+  // import { Carousel } from 'flowbite-svelte';
+  import Carousel from 'svelte-carousel';
   import ReviewExample from '../components/ReviewExample.svelte'
   import { A, Alert, Helper, Input, Label, Review } from 'flowbite-svelte';
   import { Button } from 'flowbite-svelte';
@@ -17,10 +19,10 @@
   let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
 
   let reviews = [
-    {'text': 'I really loved the team culture, coach was definitely really tough though!', 'image': 'https://source.unsplash.com/random/400x400/?rowing'}, 
-    {'text': 'This team set me up well for college recruitment.', 'image': 'https://source.unsplash.com/random/400x400/?swimming'},
-    {'text': 'Should have won more competitions!', 'image': 'https://source.unsplash.com/random/400x400/?running'},
-    {'text': 'Yeah Boi', 'image': 'https://source.unsplash.com/random/400x400/?cat'}
+    {'text': 'Before I joined my team, I had no idea what I was getting myself into. I would’ve loved getting to hear from older athletes on the team about their experiences before joining so the adjustment period could be smoother.', 'image': 'https://source.unsplash.com/random/400x400/?rowing'}, 
+    {'text': 'The best coaches I had were ones who gave me the tools and the “how” to succeed rather than telling me what to improve on. Over the years, I’ve met coaches who’ve made me the player I am by pushing me both mentally and physically–but it took a long time to find coaches who could do that best for me.', 'image': 'https://source.unsplash.com/random/400x400/?tennis'},
+    {'text': 'The athletic environment people are first introduced to often shapes what they deem as ‘normal.’ If we want to shift the culture of certain sports, we need to shift the way athletes view these cultures.', 'image': 'https://source.unsplash.com/random/400x400/?swimming'},
+    {'text': 'It took me a lot of trial and error and networking to understand what the various teams in my region were like. I could’ve saved a lot of time if I had a tool to help me with that process', 'image': 'https://source.unsplash.com/random/400x400/?lacrosse'}
   ]
 
   const logout = async () => {
@@ -199,11 +201,19 @@
 >
   <h1 class="text-white mb-20">See Reviews From Real Athletes!</h1>
   <div class="w-full">
-    <Carousel autoplay="5000">
+    <!-- <Carousel autoplay="7500">
       {#each reviews as review}
         <ReviewExample text={review['text']} image={review['image']}></ReviewExample>
       {/each}
-    </Carousel>
+    </Carousel> -->
+    <!-- <Carousel
+      autoplay
+      autoplayDuration={7500}
+    >
+      {#each reviews as review}
+        <ReviewExample text={review['text']} image={review['image']}></ReviewExample>
+      {/each}
+    </Carousel> -->
   </div>
 </div>
 

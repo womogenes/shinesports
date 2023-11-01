@@ -1,5 +1,5 @@
 <div class="carousel flex">
-	<div style="width: 75%;" bind:this={siema}>
+	<div style="width: 75%" bind:this={siema}>
 		<slot></slot>
     </div>
 </div>
