@@ -1,4 +1,18 @@
 <script>
+
+// Firebase
+
+  // import db from '../firebase.js';
+  // import { addDoc, collection } from 'firebase/firestore';
+  // let input;
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   await addDoc(collection(db, "todos"), {
+  //     todoText: input,
+  //     Id: crypto.randomUUID(),
+  //   });
+  // };
+
   import Utils from './utils.js';
   // import Carousel from '../components/Carousel.svelte'
   // import { Carousel } from 'flowbite-svelte';
@@ -57,6 +71,10 @@
       alt=""
     />
   </div>
+    <!-- <form on:submit={handleSubmit}>
+      <input type="text" bind:value={input} />
+      <button type="submit">Submit</button>
+    </form> -->
   <div
     class="flex w-full flex-col items-center gap-4 bg-blue-900 px-10 py-16 text-center text-white sm:py-40"
   >
