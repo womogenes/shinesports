@@ -48,7 +48,7 @@
 </script>
 
 <h1>Crew teams <i class="fa-solid fa-school" /></h1>
-<p>
+<!-- <p>
   For now, all this data is fetched from Google Sheets instead of a proper
   database. 👿
 </p>
@@ -58,7 +58,7 @@
     target="_blank"
     >Spreadsheet
   </A>
-</p>
+</p> -->
 
 <div class="flex w-full flex-col items-end text-sm">
   <p>Showing {filteredTeams.length} of {allTeams.length} total teams</p>

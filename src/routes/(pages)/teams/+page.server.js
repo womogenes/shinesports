@@ -13,11 +13,13 @@ import db from '/firebase.js';
 
 import { collection, where } from "firebase/firestore";
 
-const q = query(collection(db, "teams"), where("sport", "==", "crew"));
+export const load = async () => {
+  const q = query(collection(db, "teams"), where("sport", "==", "crew"));
 
-const allTeams = await getDocs(q);
-allTeams.forEach((doc) => {
-  console.log(doc.id, " => ", doc.data());
-})
-
-return { allTeams };
+  const allTeams = await getDocs(q);
+  allTeams.forEach((doc) => {
+    console.log(doc.id, " => ", doc.data());
+  })
+  
+  return { allTeams };
+};
