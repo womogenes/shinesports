@@ -5,21 +5,28 @@
 
 //   // Map some of this stuff
 //   let allTeams = sheet1.values?.slice(1).map(parseSheet1Row);
-
+//   console.log(allTeams);
 //   return { allTeams };
 // };
 
-import db from '/firebase.js';
+import { parseData } from './teamData.js';
 
-import { collection, where } from "firebase/firestore";
+import db from '/src/firebase.js';
+
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 export const load = async () => {
   const q = query(collection(db, "teams"), where("sport", "==", "crew"));
 
-  const allTeams = await getDocs(q);
-  allTeams.forEach((doc) => {
-    console.log(doc.id, " => ", doc.data());
-  })
+  const qTeams = await getDocs(q);
   
+  let teamList = [];
+  qTeams.forEach((doc) => {
+    teamList.push(doc);
+  })
+
+  let allTeams = teamList.map(parseData);
+
+
   return { allTeams };
 };

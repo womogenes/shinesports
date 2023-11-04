@@ -30,3 +30,24 @@ export const parseSheet1Row = (row) => {
     logoURL: imgURL,
   };
 };
+
+export const parseData = (doc) => {
+
+  let googleDriveRegex = /file\/d\/(.+)\/view/g.exec(doc.data()["logo"]);
+
+  let imgURL;
+  if (googleDriveRegex) {
+    imgURL = `https://lh3.googleusercontent.com/d/${googleDriveRegex[1]}=s200`;
+  } else {
+    imgURL = doc.data()["logo"];
+  }
+  return {
+    slug: slugify(doc.id),
+    schoolOrClub: doc.data()["school/club"],
+    name: doc.id,
+    address: doc.data()["address"],
+    teamTypes: doc.data()["m/w"],
+    scullSweep: doc.data()["scull/sweep"],
+    logoURL: imgURL,
+  }
+};
