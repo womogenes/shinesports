@@ -2,16 +2,16 @@
 
 // Firebase
 
-  // import db from '../firebase.js';
-  // import { addDoc, collection } from 'firebase/firestore';
-  // let input;
-  // const handleSubmit = async (e) => {
-  //   e.preventDefault();
-  //   await addDoc(collection(db, "todos"), {
-  //     todoText: input,
-  //     Id: crypto.randomUUID(),
-  //   });
-  // };
+  import db from '../firebase.js';
+  import { addDoc, collection } from 'firebase/firestore';
+  let input;
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await addDoc(collection(db, "todos"), {
+      todoText: input,
+      Id: crypto.randomUUID(),
+    });
+  };
 
   import Utils from './utils.js';
   // import Carousel from '../components/Carousel.svelte'
