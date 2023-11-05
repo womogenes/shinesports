@@ -14,12 +14,12 @@
         <img src="/logo.png" alt="Shine logo"/>
       </a>
     </div>
-    <div class="w-full grid grid-rows-3 flex items-center text-center justify-center">
-      <h1 class="text-lg">Where athletes shine, teams shine</h1>
+    <div class="w-full grid grid-rows-3 flex items-center justify-center">
+      <h1 class="text-lg m-5">Where athletes shine, teams shine</h1>
       <hr>
-      <div class="grid grid-cols-2 gap-4 flex justify-center">
+      <div class="grid grid-cols-2 flex justify-center m-5">
         <!-- Socials -->
-        <div>
+        <div class="text-left">
           <a href="/">Discover Teams</a>
           <!-- <FooterLinkGroup>
             <FooterLink
@@ -31,7 +31,7 @@
         </div>
 
         <!-- About Us -->
-        <div>
+        <div class="text-right">
           <a href="/about">About Us</a>
           <!-- <FooterLinkGroup>
             <FooterLink liClass="mb-2" href="/about">About Us</FooterLink>
