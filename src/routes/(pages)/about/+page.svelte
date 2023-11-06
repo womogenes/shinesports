@@ -29,7 +29,7 @@
     </p>
     <div class="grid grid-rows-7 gap-20 justify-evenly">
       <div class="w-full grid grid-cols-2 justify-evenly gap-10 bg-sky-800 p-10 text-white">
-        <img class="rounded" src="/teamimage.jpg" alt=""/>
+        <img class="m-auto rounded" src="/teamimage.jpg" alt=""/>
         <div>
           <div class="mb-10">
             <h2 class="text-4xl m-5">
@@ -55,7 +55,7 @@
           </p>
         </div>
         <div class="flex flex-wrap content-center justify-center">
-          <img class="rounded" src="/logo.png" alt=""/>
+          <img class="m-auto rounded" src="/logo.png" alt=""/>
         </div>
       </div>
       <div class="bg-blue-50 p-10">
@@ -64,26 +64,24 @@
             Meet the Team
           </h2>
         </div>
-        <div class="w-full grid grid-rows-2 grid-cols-2 justify-evenly gap-10">
-          <div class="w-full flex flex-col gap-10">
-            <div class="flex flex-wrap h-full content-center justify-center">
-              <img class="rounded" src="/kaitlin.jpg" alt=""/>
-            </div>
-            <div class="flex-none justify-center grid grid-rows-2">
-              <h3 class="text-lg text-center">
+        <div class="w-full grid grid-rows-2 gap-10">
+          <div class="w-full grid grid-cols-2 gap-20">
+            <div>
+              <div class="flex flex-wrap content-center justify-center">
+                <img class="rounded" src="/kaitlin.jpg" alt=""/>
+              </div>
+              <h3 class="text-lg text-center m-5">
                 Kaitlin Yeoh (Founder & CEO) 
               </h3>
               <p>
                 Current crew athlete (coxswain), former lacrosse player
               </p>
             </div>
-          </div>
-          <div class="w-full flex flex-col gap-10">
-            <div class="flex flex-wrap h-full content-center justify-center">
-              <img class="rounded" src="/bill.jpg" alt=""/>
-            </div>
-            <div class="flex-none justify-center grid grid-rows-2">
-              <h3 class="text-lg text-center">
+            <div>
+              <div class="flex flex-wrap content-center justify-center">
+                <img class="rounded" src="/bill.jpg" alt=""/>
+              </div>
+              <h3 class="text-lg text-center m-5">
                 William Feng (CTO)
               </h3>
               <p>
@@ -91,25 +89,24 @@
               </p>
             </div>
           </div>
-          <div class="w-full flex flex-col gap-10">
-            <div class="flex flex-wrap content-center justify-center">
-              <img class="rounded" src="/ayden.jpg" alt=""/>
-            </div>
-            <div class="flex-none justify-center grid grid-rows-2">
-              <h3 class="text-lg text-center">
+
+          <div class="w-full grid grid-cols-2 gap-20">
+            <div>
+              <div class="flex flex-wrap content-center justify-center">
+                <img class="rounded" src="/ayden.jpg" alt=""/>
+              </div>
+              <h3 class="text-lg text-center m-5">
                 Ayden Tan (SVP)
               </h3>
               <p>
                 Swimmer, programmer
               </p>
             </div>
-          </div>
-          <div class="w-full flex flex-col gap-10">
-            <div class="flex flex-wrap content-center justify-center">
-              <img class="rounded" src="/felix.jpg" alt=""/>
-            </div>
-            <div class="flex-none justify-center grid grid-rows-2">
-              <h3 class="text-lg text-center">
+            <div>
+              <div class="flex flex-wrap content-center justify-center">
+                <img class="rounded" src="/felix.jpg" alt=""/>
+              </div>
+              <h3 class="text-lg text-center m-5">
                 Felix Yu (SVP) 
               </h3>
               <p>
