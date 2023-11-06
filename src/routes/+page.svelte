@@ -232,11 +232,11 @@
 >
   <h1 class="text-white mb-20">See Reviews From Real Athletes!</h1>
   <div class="m-auto flex justify-center grow" style="max-width: 2000px;">
-    <!-- <Carousel autoplay="10000" pauseOnFocus={true} swiping={true} arrows={false} dots={false}>
+    <Carousel autoplay="10000" pauseOnFocus={true} swiping={true} arrows={false} dots={false}>
       {#each reviews as review}
         <ReviewExample text={review['text']} image={review['image']}></ReviewExample>
       {/each}
-    </Carousel> -->
+    </Carousel>
   </div>
 </div>
 
