@@ -210,14 +210,14 @@
 <div
   class="relative w-full bg-sky-800 px-10 py-10 md:py-40 text-center"
 >
-<h1 class="text-white mb-20">See Reviews From Real Athletes!</h1>
-<div class="m-auto flex justify-center grow" style="max-width: 2000px;">
-  <Carousel autoplay="10000" pauseOnFocus={true} swiping={true} arrows={false} dots={false}>
-    {#each reviews as review}
-      <ReviewExample text={review['text']} image={review['image']}></ReviewExample>
-    {/each}
-  </Carousel>
-</div>
+  <h1 class="text-white mb-20">See Reviews From Real Athletes!</h1>
+  <div class="m-auto flex justify-center grow" style="max-width: 2000px;">
+    <Carousel autoplay="10000" pauseOnFocus={true} swiping={true} arrows={false} dots={false}>
+      {#each reviews as review}
+        <ReviewExample text={review['text']} image={review['image']}></ReviewExample>
+      {/each}
+    </Carousel>
+  </div>
 </div>
 
 <!-- <div class="flex w-full justify-center bg-blue-900 px-10 py-10 sm:py-40">
