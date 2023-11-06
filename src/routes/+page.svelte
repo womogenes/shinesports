@@ -296,3 +296,9 @@
     </div>
   </div>
 </div> -->
+
+<style>
+  .grow { transition: all .2s ease-in-out; }
+
+  .grow:hover { transform: scale(1.02); }
+</style>
