@@ -6,6 +6,6 @@
 
 <Navbar user={data.user} />
 
-<main class="box-border w-full max-w-4xl px-6 pb-12 pt-12 sm:px-12">
+<main class="w-full">
   <slot />
 </main>

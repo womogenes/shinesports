@@ -51,6 +51,7 @@
   >
     <NavLi class="flex justify-center text-lg" href="/">Home</NavLi>
     <NavLi class="flex justify-center text-lg" href="/about">About</NavLi>
+    <NavLi class="flex justify-center text-lg" href="/faq">FAQ</NavLi>
 
     <!-- Extra stuff below main nav links -->
     <div class="w-full sm:w-auto">

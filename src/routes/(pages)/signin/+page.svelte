@@ -4,7 +4,7 @@
   import { Button } from 'flowbite-svelte';
 </script>
 
-<main class="max-w-sm p-6">
+<main class="max-w-sm p-6 m-auto my-20">
   <h1 class="text-4xl font-bold">Sign in</h1>
   <p class="my-2">
     We've implemented sign in with Google. Click the button below to sign in!
