@@ -16,7 +16,7 @@ import db from '/src/firebase.js';
 import { collection, query, where, getDocs } from "firebase/firestore";
 
 export const load = async () => {
-  const q = query(collection(db, "teams"), where("sport", "==", "crew"));
+  const q = query(collection(db, "teams"));
 
   const qTeams = await getDocs(q);
   

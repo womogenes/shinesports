@@ -51,3 +51,24 @@ export const parseData = (doc) => {
     logoURL: imgURL,
   }
 };
+
+export const parseData2 = (doc) => {
+
+  let googleDriveRegex = /file\/d\/(.+)\/view/g.exec(doc.data()["logo"]);
+
+  let imgURL;
+  if (googleDriveRegex) {
+    imgURL = `https://lh3.googleusercontent.com/d/${googleDriveRegex[1]}=s200`;
+  } else {
+    imgURL = doc.data()["logo"];
+  }
+  return {
+    slug: slugify(doc.id),
+    schoolOrClub: slugify(doc.data()["school/club"]),
+    name: slugify(doc.id),
+    address: slugify(doc.data()["address"]),
+    teamTypes: slugify(doc.data()["m/w"]),
+    scullSweep: slugify(doc.data()["scull/sweep"]),
+    logoURL: slugify(imgURL),
+  }
+};
