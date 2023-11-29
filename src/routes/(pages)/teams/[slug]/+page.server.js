@@ -1,8 +1,8 @@
-import { fetchSpreadsheet, parseSheet1Row, parseData2 } from '../teamData.js';
+import { fetchSpreadsheet, parseSheet1Row, parseData } from '../teamData.js';
 
 import db from '/src/firebase.js';
 
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { doc, collection, query, where, getDoc } from "firebase/firestore";
 
 import { geocode } from '$lib/geocode.js';
 import { slugify } from '$lib/utils.js';
@@ -11,18 +11,15 @@ export const load = async ({ params }) => {
   // Search for this team in the spreadsheet
   // const sheet1 = await fetchSpreadsheet('Sheet1');
 
-  const q = query(collection(db, "teams"));
+  console.log(params.slug);
 
-  const qTeams = await getDocs(q);
+  const q = query(doc(db, "teams", params.slug));
 
-  let teamList = [];
-  qTeams.forEach((doc) => {
-    teamList.push(doc);
-  })
+  const qTeam = await getDoc(q);
 
-  const basicInfo = teamList.map(parseData2);
+  console.log(qTeam);
 
-  const geocoded = await geocode(basicInfo.address.replace('\n', ' '));
+  const geocoded = await geocode(basicInfo.address);
   const coords = [parseFloat(geocoded.lat), parseFloat(geocoded.lon)];
 
   // Sheet 2 o.O
@@ -35,8 +32,12 @@ export const load = async ({ params }) => {
   //   return slugify(name[name.length - 1]) === params.slug;
   // });
 
-  const teamListInfo = teamList.map((doc) => {
-    return doc.collection("teams");
+  let teamRows =  ""
+
+  const teamListInfo = teamList.map(async (doc) => {
+    const subQuery = query(collection(db, "teams", doc.id, "teams"));
+    const subCollection = await getDocs(subQuery);
+    return subCollection;
   });
 
   const allTeamsInfo = {
@@ -44,18 +45,20 @@ export const load = async ({ params }) => {
       return doc.data()["website"];
     }),
     ageRange: teamList.map((doc) => {
-      return doc.data()["age"].replace('-', '-');
+      return doc.data()["age"]
     }),
   };
 
-  const teamRows = teamRows.map((doc) => {
+  teamRows = teamListInfo.map((doc) => {
+    let teamType = doc.id.includes(' - ') ? doc.id.split(' - ')[0] : '';
+    let teamName = doc.id.includes(' - ') ? doc.id.split(' - ')[1] : '';
     return {
       teamType,
-      coachName: row[2],
-      contactEmail: row[3],
-      contactNumber: row[4] || teamRows[0][4],
-      teamSize: row[5]?.replace('-', '–'),
-      practiceSchedule: row[6],
+      coachName: doc.data()["coach"],
+      contactEmail: doc.data()["email"],
+      contactNumber: teamList.filter((doc) => {doc.id == teamName}).data()["contact"] || teamRows[0],
+      teamSize: doc.data()["size"],
+      practiceSchedule: doc.data()["schedule"],
     };
   });
 
@@ -106,6 +109,11 @@ export const load = async ({ params }) => {
 //       practiceSchedule: row[6],
 //     };
 //   });
+
+//   console.log("basicInfo: " + basicInfo)
+//   console.log("coords: " + coords)
+//   console.log("teamRows: " + teamRows)
+//   console.log("allTeamsInfo: " + allTeamsInfo)
 
 //   return {
 //     basicInfo,
