@@ -15,6 +15,10 @@ import db from '/src/firebase.js';
 
 import { collection, query, where, getDocs } from "firebase/firestore";
 
+import { actions } from './+page.server.js';
+
+// const { sport, zip } = actions;
+
 export const load = async () => {
   const q = query(collection(db, "teams"));
 
@@ -27,6 +31,9 @@ export const load = async () => {
 
   let allTeams = teamList.map(parseData);
 
+  // console.log(actions);
+
+  // console.log("sport: " + sport + ", zip" + zip);
 
   return { allTeams };
 };

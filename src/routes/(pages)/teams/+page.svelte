@@ -6,6 +6,10 @@
 
   export let data;
 
+  export let form;
+
+  // let { sport, zip } = form;
+
   // export const actions = {
   //   login: async ({request}) => {
   //     const selection = await request.formData();
@@ -49,6 +53,8 @@
 
 <div class="w-full flex justify-center items-center">
   <div class="w-full max-w-4xl m-10">
+    <!-- <h1>{sport}</h1>
+    <h1>{zip}</h1> -->
     <h1>Crew teams <i class="fa-solid fa-school" /></h1>
     <!-- <p>
       For now, all this data is fetched from Google Sheets instead of a proper

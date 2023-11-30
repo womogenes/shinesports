@@ -27,8 +27,6 @@ export const load = async ({ params }) => {
   const teamRef = doc(db, "teams", teamName)
   const teamQuery = await getDoc(teamRef);
 
-  console.log(teamQuery.data());
-
   const geocoded = await geocode(teamQuery.data()["address"].replace('\n', ' '));
   const coords = [parseFloat(geocoded.lat), parseFloat(geocoded.lon)];
 
