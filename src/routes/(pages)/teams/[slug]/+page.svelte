@@ -3,7 +3,12 @@
   import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
   import { A } from 'flowbite-svelte';
   import LeafletMap from '$components/LeafletMap.svelte';
+  import Modal from '$components/Modal.svelte';
+  import StarRating from '$components/StarRating.svelte';
   import TeamLineInfo from '../TeamLineInfo.svelte';
+  import { Button, Input } from 'flowbite-svelte';
+
+  let showModal = false;
 
   export let data;
   // const { teamRows, allTeamsInfo } = data;
@@ -63,7 +68,7 @@
     </div>
     
       <div
-        class="flex w-full flex-col justify-between gap-4 sm:flex-row p-5"
+        class="flex w-full flex-col justify-between gap-4 sm:flex-row p-10"
         class:mt-8={subList.length > 1}
       >
         {#each subList as team}
@@ -91,6 +96,22 @@
           </div>
         {/each}
       </div>
+      <div class="w-full m-10">
+        <h3>Reviews</h3>
+        <Button on:click={() => (showModal = true)}>Write a Review!</Button>
+      </div>
+      <div>
+        <StarRating/>
+      </div>
+      <Modal bind:showModal>
+        <div class="bg-gray-50">
+          <form>
+            <StarRating/>
+            <label for="comment">Comments:</label>
+            <textarea id="comment" name="comment" maxlength=5000></textarea>          
+          </form>
+        </div>
+      </Modal>   
     </div>
   </div>
 </div>

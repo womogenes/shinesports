@@ -1,7 +1,6 @@
 <script>
   import Utils from './utils.js';
-  import { A, Alert, Helper, Input, Label, Review } from 'flowbite-svelte';
-  import { Button } from 'flowbite-svelte';
+  import { A, Alert, Helper, Input, Label, Review, Button } from 'flowbite-svelte';
   export let user;
 
   let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];

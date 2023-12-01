@@ -16,8 +16,8 @@ export const actions = {
     const sport = formData.get('sport');
     const zip = formData.get('zip');
     // Process the form data and perform actions
-    // search.sport = sport;
-    // search.zip = zip;
+    search.sport = sport;
+    search.zip = zip;
     return { success: true, sport: sport, zip: zip };
   },
 };
