@@ -1,15 +1,13 @@
 <script>
   import Squiggle from '$components/Squiggle.svelte';
-  import Dropdown from '/src/components/Dropdown.svelte'
+  import Dropdown from '/src/components/Dropdown.svelte';
 </script>
 
-<div class="mt-4 w-full">
+<div class="w-full">
   <div class="w-full text-center">
-    <div class="bg-blue-900 p-10 w-full">
-      <div class="m-10 h-96 flex justify-center items-center">
-        <h1 class="text-7xl text-white">
-          FAQ
-        </h1>
+    <div class="w-full bg-blue-900 p-10">
+      <div class="m-10 flex h-96 items-center justify-center">
+        <h1 class="text-7xl text-white">FAQ</h1>
       </div>
     </div>
     <div class="w-full">
@@ -27,33 +25,50 @@
         </svg>
       </div>
     </div>
-    <div class="w-full my-20 flex justify-center">
+    <div class="my-20 flex w-full justify-center">
       <div class="w-full max-w-5xl">
-        <h4 class="text-left uppercase my-10 text-blue-900">
-          About Shine
-        </h4>
-        <Dropdown title={"How does your website generate revenue?"} text={"The majority of our revenue will be through teams who advertising to sponsor themselves on our website and paying for marketing to show up on the top of a user feed. Besides this, we’ll also have a premium account version for athletes that will give users greater access to information about teams."}></Dropdown>
-        <Dropdown title={"Do coaches/team officials get to choose to be on the website? How will they add additional information? "} text={"If a team’s information is publicly available, their team will most likely be on the site. We are currently working on an option for coaches/officials to “claim” their team through a verification process, in which they’d be able to change information about the team accordingly. "}></Dropdown>
-        <Dropdown title={"What are the phases of release and functionality for future versions?"} text={"Our first release will involve a website where users can find information about crew teams in their area and post reviews. Users will be able to search for teams and create their own list of saved teams to review later. Future versions will expand to include sports other than crew, review monitoring, a more advanced search system, a way for users to contact experienced athletes, and a paid team advertising system."}></Dropdown>
-        <hr>
-        <h4 class="text-left uppercase my-10 text-blue-900">
-          Review System
-        </h4>
-        <Dropdown title={"If a team improves over time, are new reviews/ratings weighted higher than old reviews?"} text={"Yes, they are. After every “season” of the sport ends, any reviews made in that season will be weighted lower than new reviews coming in. "}></Dropdown>
-        <Dropdown title={"What prevents fake reviews? Will there be a verified member feature?"} text={"We are looking into ways in which large platforms such as Google, Yelp, or Amazon deal with fake reviews. They often will use a sort of AI algorithm to detect bots or fake reviews. Since we don’t have this AI yet, for the time being, we’ll start off with a dedicated team to filter through fake reviews or consider implementing a verification system for users before they post reviews."}></Dropdown>
-        <hr>
-        <h4 class="text-left uppercase my-10 text-blue-900">
-          Privacy
-        </h4>
-        <Dropdown title={"Are reviews anonymous? What if I use my account to leave a review?"} text={"All reviews will show up as being left by “anonymous,” even if you use your account to leave a review. Having an account is merely for your benefit to track reviews you have made, follow teams, or compare teams; no one else can track your reviews through your account. "}></Dropdown>
-        <Dropdown title={"Can I delete my reviews and/or account? "} text={"Yes, you can. Please understand that all personal information will be deleted and this data may not be retrievable after."}></Dropdown>
-        <Dropdown title={"If an athlete leaves a review with more serious allegations, will there be a system/connections that serious reports can be made to?"} text={"We plan to partner with Safe Sports from the IOC or similar organizations to ensure that reviews like these will not be glossed over. "}></Dropdown>
-        <hr>
+        <h4 class="my-10 text-left uppercase text-blue-900">About Shine</h4>
+        <Dropdown
+          title={'How does your website generate revenue?'}
+          text={'The majority of our revenue will be through teams who advertising to sponsor themselves on our website and paying for marketing to show up on the top of a user feed. Besides this, we’ll also have a premium account version for athletes that will give users greater access to information about teams.'}
+        ></Dropdown>
+        <Dropdown
+          title={'Do coaches/team officials get to choose to be on the website? How will they add additional information? '}
+          text={'If a team’s information is publicly available, their team will most likely be on the site. We are currently working on an option for coaches/officials to “claim” their team through a verification process, in which they’d be able to change information about the team accordingly. '}
+        ></Dropdown>
+        <Dropdown
+          title={'What are the phases of release and functionality for future versions?'}
+          text={'Our first release will involve a website where users can find information about crew teams in their area and post reviews. Users will be able to search for teams and create their own list of saved teams to review later. Future versions will expand to include sports other than crew, review monitoring, a more advanced search system, a way for users to contact experienced athletes, and a paid team advertising system.'}
+        ></Dropdown>
+        <hr />
+        <h4 class="my-10 text-left uppercase text-blue-900">Review System</h4>
+        <Dropdown
+          title={'If a team improves over time, are new reviews/ratings weighted higher than old reviews?'}
+          text={'Yes, they are. After every “season” of the sport ends, any reviews made in that season will be weighted lower than new reviews coming in. '}
+        ></Dropdown>
+        <Dropdown
+          title={'What prevents fake reviews? Will there be a verified member feature?'}
+          text={'We are looking into ways in which large platforms such as Google, Yelp, or Amazon deal with fake reviews. They often will use a sort of AI algorithm to detect bots or fake reviews. Since we don’t have this AI yet, for the time being, we’ll start off with a dedicated team to filter through fake reviews or consider implementing a verification system for users before they post reviews.'}
+        ></Dropdown>
+        <hr />
+        <h4 class="my-10 text-left uppercase text-blue-900">Privacy</h4>
+        <Dropdown
+          title={'Are reviews anonymous? What if I use my account to leave a review?'}
+          text={'All reviews will show up as being left by “anonymous,” even if you use your account to leave a review. Having an account is merely for your benefit to track reviews you have made, follow teams, or compare teams; no one else can track your reviews through your account. '}
+        ></Dropdown>
+        <Dropdown
+          title={'Can I delete my reviews and/or account? '}
+          text={'Yes, you can. Please understand that all personal information will be deleted and this data may not be retrievable after.'}
+        ></Dropdown>
+        <Dropdown
+          title={'If an athlete leaves a review with more serious allegations, will there be a system/connections that serious reports can be made to?'}
+          text={'We plan to partner with Safe Sports from the IOC or similar organizations to ensure that reviews like these will not be glossed over. '}
+        ></Dropdown>
+        <hr />
       </div>
     </div>
   </div>
 </div>
 
 <style>
-  
 </style>

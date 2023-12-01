@@ -2,13 +2,11 @@
   import Squiggle from '$components/Squiggle.svelte';
 </script>
 
-<div class="mt-4 w-full">
+<div class="w-full">
   <div class="w-full text-center">
-    <div class="bg-blue-900 p-10 w-full">
-      <div class="m-10 h-96 flex justify-center items-center">
-        <h1 class="text-7xl text-white">
-          The Shine Story
-        </h1>
+    <div class="w-full bg-blue-900 p-10">
+      <div class="m-10 flex h-96 items-center justify-center">
+        <h1 class="text-7xl text-white">The Shine Story</h1>
       </div>
     </div>
     <div class="w-full">
@@ -26,102 +24,101 @@
         </svg>
       </div>
     </div>
-    <div class="w-full flex justify-center">
-      <p class="max-w-5xl text-3xl text-center text-blue-900 font-bold m-10 h-56 flex justify-center items-center">
-        Our mission is to empower junior athletes to shine in a healthy and supportive environment that fits their individual needs and dreams.
+    <div class="flex w-full justify-center">
+      <p
+        class="m-10 flex h-56 max-w-5xl items-center justify-center text-center text-3xl font-bold text-blue-900"
+      >
+        Our mission is to empower junior athletes to shine in a healthy and
+        supportive environment that fits their individual needs and dreams.
       </p>
     </div>
     <div>
       <!-- About Shine -->
-      <div class="w-full min-h-7xl bg-sky-800 p-10 py-20 text-white flex justify-center my-10">
-        <div class="w-full max-w-7xl grid grid-cols-2 justify-evenly gap-10">
-          <img class="m-auto rounded" src="/teamimage.jpg" alt=""/>
+      <div
+        class="min-h-7xl my-10 flex w-full justify-center bg-sky-800 p-10 py-20 text-white"
+      >
+        <div class="grid w-full max-w-7xl grid-cols-2 justify-evenly gap-10">
+          <img class="m-auto rounded" src="/teamimage.jpg" alt="" />
           <div>
             <div class="mb-10">
-              <h2 class="text-4xl m-5">
-                About Shine
-              </h2>
-              <Squiggle class="m-auto w-40 stroke-white"/>
+              <h2 class="m-5 text-4xl">About Shine</h2>
+              <Squiggle class="m-auto w-40 stroke-white" />
             </div>
-            <p class="text-xl text-left m-5">
-              Shine strives to provide junior athletes and their parents & guardians with the information necessary to make educated and well-informed decisions when choosing a sports team. We make various key decision making factors of this process transparent, such as the team’s culture, coaching style, competition ranking, practice logistics, cost of attendance, and so on. We believe athletes deserve to be on teams that will make them shine, especially during the most formative years of their life.
+            <p class="m-5 text-left text-xl">
+              Shine strives to provide junior athletes and their parents &
+              guardians with the information necessary to make educated and
+              well-informed decisions when choosing a sports team. We make
+              various key decision making factors of this process transparent,
+              such as the team’s culture, coaching style, competition ranking,
+              practice logistics, cost of attendance, and so on. We believe
+              athletes deserve to be on teams that will make them shine,
+              especially during the most formative years of their life.
             </p>
           </div>
         </div>
       </div>
       <!-- Safe Sports -->
-      <div class="w-full py-20 flex justify-center">
-        <div class="max-w-7xl grid grid-cols-2 justify-evenly gap-10">
+      <div class="flex w-full justify-center py-20">
+        <div class="grid max-w-7xl grid-cols-2 justify-evenly gap-10">
           <div>
             <div class="m-10">
-              <h2 class="text-4xl m-5 text-green-900">
-                Safe Sport
-              </h2>
-              <Squiggle class="m-auto w-40 stroke-green-900"/>
+              <h2 class="m-5 text-4xl text-green-900">Safe Sport</h2>
+              <Squiggle class="m-auto w-40 stroke-green-900" />
             </div>
-            <p class="text-xl text-left m-5">
-              The International Olympic Committee (IOC) defines Safe Sport as an environment where athletes can train and compete in healthy and supportive surroundings; an environment which is respectful, equitable, and free from all forms of harassment and abuse.
+            <p class="m-5 text-left text-xl">
+              The International Olympic Committee (IOC) defines Safe Sport as an
+              environment where athletes can train and compete in healthy and
+              supportive surroundings; an environment which is respectful,
+              equitable, and free from all forms of harassment and abuse.
             </p>
           </div>
           <div class="flex flex-wrap content-center justify-center">
-            <img class="m-auto rounded" src="/logo.png" alt=""/>
+            <img class="m-auto rounded" src="/logo.png" alt="" />
           </div>
         </div>
       </div>
-      <div class="bg-blue-50 p-10 py-20 mt-10">
+      <div class="mt-10 bg-blue-50 p-10 py-20">
         <div>
-          <h2 class="m-10">
-            Meet the Team
-          </h2>
+          <h2 class="m-10">Meet the Team</h2>
         </div>
-        <div class="w-full flex justify-center">
-          <div class="w-full max-w-3xl grid grid-rows-2 gap-10">
-            <div class="w-full grid grid-cols-2 gap-20">
+        <div class="flex w-full justify-center">
+          <div class="grid w-full max-w-3xl grid-rows-2 gap-10">
+            <div class="grid w-full grid-cols-2 gap-20">
               <div>
                 <div class="flex flex-wrap content-center justify-center">
-                  <img class="rounded" src="/kaitlin.jpg" alt=""/>
+                  <img class="rounded" src="/kaitlin.jpg" alt="" />
                 </div>
-                <h3 class="text-lg text-center m-5">
-                  Kaitlin Yeoh (Founder & CEO) 
+                <h3 class="m-5 text-center text-lg">
+                  Kaitlin Yeoh (Founder & CEO)
                 </h3>
-                <p>
-                  Current crew athlete (coxswain), former lacrosse player
-                </p>
+                <p>Current crew athlete (coxswain), former lacrosse player</p>
               </div>
               <div>
                 <div class="flex flex-wrap content-center justify-center">
-                  <img class="rounded" src="/bill.jpg" alt=""/>
+                  <img class="rounded" src="/bill.jpg" alt="" />
                 </div>
-                <h3 class="text-lg text-center m-5">
-                  William Feng (CTO)
-                </h3>
-                <p>
-                  Web dev, recreational badminton player.
-                </p>
+                <h3 class="m-5 text-center text-lg">William Feng (CTO)</h3>
+                <p>Web dev, recreational badminton player.</p>
               </div>
             </div>
-  
-            <div class="w-full grid grid-cols-2 gap-20">
+
+            <div class="grid w-full grid-cols-2 gap-20">
               <div>
                 <div class="flex flex-wrap content-center justify-center">
-                  <img class="rounded" src="/ayden.jpg" alt=""/>
+                  <img class="rounded" src="/ayden.jpg" alt="" />
                 </div>
-                <h3 class="text-lg text-center m-5">
-                  Ayden Tan (SVP)
-                </h3>
-                <p>
-                  Swimmer, programmer
-                </p>
+                <h3 class="m-5 text-center text-lg">Ayden Tan (SVP)</h3>
+                <p>Swimmer, programmer</p>
               </div>
               <div>
                 <div class="flex flex-wrap content-center justify-center">
-                  <img class="rounded" src="/felix.jpg" alt=""/>
+                  <img class="rounded" src="/felix.jpg" alt="" />
                 </div>
-                <h3 class="text-lg text-center m-5">
-                  Felix Yu (SVP) 
-                </h3>
+                <h3 class="m-5 text-center text-lg">Felix Yu (SVP)</h3>
                 <p>
-                  Developer of <span class="italic">Among Us Real Life Edition</span> and former crew athlete.
+                  Developer of <span class="italic"
+                    >Among Us Real Life Edition</span
+                  > and former crew athlete.
                 </p>
               </div>
             </div>
@@ -133,5 +130,4 @@
 </div>
 
 <style>
-  
 </style>

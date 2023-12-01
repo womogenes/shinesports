@@ -26,14 +26,14 @@
 </svelte:head>
 
 <div class="flex flex-col items-center">
-  <slot/>
+  <slot />
 </div>
 <Footer />
 
 <style lang="postcss">
   :global(h1, h2, h3, h4) {
     font-weight: bold;
-    letter-spacing: -0.7pt;
+    letter-spacing: -0.4em;
   }
 
   :global(h1) {

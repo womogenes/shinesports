@@ -19,15 +19,14 @@ class Utils {
   }
 
   dropdown(contentId, signId) {
-    let open = document.getElementById(signId).innerHTML == "-";
+    let open = document.getElementById(signId).innerHTML == '-';
     console.log(open);
-    if(open){
+    if (open) {
       document.getElementById(contentId).style.display = 'none';
-      document.getElementById(signId).innerHTML = "+"
-    }
-    else{
+      document.getElementById(signId).innerHTML = '+';
+    } else {
       document.getElementById(contentId).style.display = 'inline';
-      document.getElementById(signId).innerHTML = "-"
+      document.getElementById(signId).innerHTML = '-';
     }
   }
 }
