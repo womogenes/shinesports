@@ -12,12 +12,11 @@
 import { parseData } from './teamData.js';
 import db from '/src/firebase.js';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { search } from './+page.server.js';
 
 // const { sport, zip } = actions;
 
-export const load = async () => {
-  console.log('results: ' + search);
+export const load = async (search) => {
+  console.log('results: ' + JSON.stringify(search));
 
   const q = query(collection(db, 'teams'));
 
