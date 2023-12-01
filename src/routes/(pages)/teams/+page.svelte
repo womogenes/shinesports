@@ -6,8 +6,6 @@
 
   export let data;
 
-  export let form;
-
   // let { sport, zip } = form;
 
   // export const actions = {

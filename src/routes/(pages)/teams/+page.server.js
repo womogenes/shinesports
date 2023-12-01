@@ -15,11 +15,14 @@ import db from '/src/firebase.js';
 
 import { collection, query, where, getDocs } from "firebase/firestore";
 
-import { actions } from './+page.server.js';
+import { search } from './+page.server.js';
 
 // const { sport, zip } = actions;
 
 export const load = async () => {
+
+  console.log('results: ' + search);
+
   const q = query(collection(db, "teams"));
 
   const qTeams = await getDocs(q);

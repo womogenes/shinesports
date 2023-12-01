@@ -18,8 +18,6 @@
     await fetch('/logout', { method: 'POST' });
     window.location.href = '/';
   };
-  
-  // import { ChevronDownSolid } from 'flowbite-svelte-icons';
 
   import Navbar from '$components/Navbar.svelte';
 
@@ -61,11 +59,15 @@
         ones for you.
       </p>
       <div class="mt-10 flex w-full max-w-sm flex-col gap-4">
+        <!-- <form method="POST" action="about">
+          <Input type="text" name="test"></Input>
+          <button type="submit">Click here!</button>
+        </form> -->
         <p class="text-lg font-semibold uppercase tracking-widest">
           Start your search
         </p>
         <div class="container-fluid">
-          <form method="[POST, GET]" action="/teams" id="search">
+          <form method="GET" action="teams" id="search">
             <div class="grid grid-cols-2 gap-4 sm:gap-6">
               <div class="relative mb-6">
                 <Input list="list" placeholder="Sport" required></Input>
@@ -88,8 +90,7 @@
               </div>
             </div>
             <div style="margin: auto; text-align: center;">
-              <Button type="submit" class="w-full" value="Submit"
-                >Search!</Button
+              <Button type="submit" class="w-full">Search!</Button
               >
             </div>
           </form>
