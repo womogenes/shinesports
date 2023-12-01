@@ -1,18 +1,29 @@
 <script>
-
   import Utils from './utils.js';
   import { A, Alert, Helper, Input, Label, Review } from 'flowbite-svelte';
   import { Button } from 'flowbite-svelte';
   export let user;
 
-  let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple']
+  let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
 
   let reviews = [
-    {'text': 'Before I joined my team, I had no idea what I was getting myself into. I would’ve loved getting to hear from older athletes on the team about their experiences before joining so the adjustment period could be smoother.', 'image': 'https://source.unsplash.com/random/400x400/?rowing'}, 
-    {'text': 'The best coaches I had were ones who gave me the tools and the “how” to succeed rather than telling me what to improve on. Over the years, I’ve met coaches who’ve made me the player I am by pushing me both mentally and physically–but it took a long time to find coaches who could do that best for me.', 'image': 'https://source.unsplash.com/random/400x400/?tennis'},
-    {'text': 'The athletic environment people are first introduced to often shapes what they deem as ‘normal.’ If we want to shift the culture of certain sports, we need to shift the way athletes view these cultures.', 'image': 'https://source.unsplash.com/random/400x400/?swimming'},
-    {'text': 'It took me a lot of trial and error and networking to understand what the various teams in my region were like. I could’ve saved a lot of time if I had a tool to help me with that process', 'image': 'https://source.unsplash.com/random/400x400/?lacrosse'}
-  ]
+    {
+      text: 'Before I joined my team, I had no idea what I was getting myself into. I would’ve loved getting to hear from older athletes on the team about their experiences before joining so the adjustment period could be smoother.',
+      image: 'https://source.unsplash.com/random/400x400/?rowing',
+    },
+    {
+      text: 'The best coaches I had were ones who gave me the tools and the “how” to succeed rather than telling me what to improve on. Over the years, I’ve met coaches who’ve made me the player I am by pushing me both mentally and physically–but it took a long time to find coaches who could do that best for me.',
+      image: 'https://source.unsplash.com/random/400x400/?tennis',
+    },
+    {
+      text: 'The athletic environment people are first introduced to often shapes what they deem as ‘normal.’ If we want to shift the culture of certain sports, we need to shift the way athletes view these cultures.',
+      image: 'https://source.unsplash.com/random/400x400/?swimming',
+    },
+    {
+      text: 'It took me a lot of trial and error and networking to understand what the various teams in my region were like. I could’ve saved a lot of time if I had a tool to help me with that process',
+      image: 'https://source.unsplash.com/random/400x400/?lacrosse',
+    },
+  ];
 
   const logout = async () => {
     await fetch('/logout', { method: 'POST' });
@@ -55,14 +66,10 @@
       </div>
 
       <p class="text-lg">
-        Finding the right sports team shouldn’t be hard. We make it easy to discover and connect with the best
-        ones for you.
+        Finding the right sports team shouldn’t be hard. We make it easy to
+        discover and connect with the best ones for you.
       </p>
       <div class="mt-10 flex w-full max-w-sm flex-col gap-4">
-        <!-- <form method="POST" action="about">
-          <Input type="text" name="test"></Input>
-          <button type="submit">Click here!</button>
-        </form> -->
         <p class="text-lg font-semibold uppercase tracking-widest">
           Start your search
         </p>
@@ -90,8 +97,7 @@
               </div>
             </div>
             <div style="margin: auto; text-align: center;">
-              <Button type="submit" class="w-full">Search!</Button
-              >
+              <Button type="submit" class="w-full">Search!</Button>
             </div>
           </form>
         </div>
@@ -120,9 +126,7 @@
 <div class="flex w-full justify-center px-10 py-10 sm:py-40">
   <div class="flex flex-col items-center gap-4 rounded-lg bg-white text-center">
     <div class="flex flex-col items-center gap-6 text-blue-900">
-      <p class="text-center text-5xl font-bold mb-10">
-        Reviews Based On
-      </p>
+      <p class="mb-10 text-center text-5xl font-bold">Reviews Based On</p>
     </div>
 
     <div
@@ -130,7 +134,7 @@
     >
       <div class="flex flex-col items-center gap-4">
         <img
-          class="rounded object-cover h-28 w-28"
+          class="h-28 w-28 rounded object-cover"
           src="teamculture.jpg"
           alt=""
         />
@@ -138,25 +142,23 @@
           Culture
         </p>
         <p class="flex items-center text-sm italic text-green-700">
-          Athletes deserve to thrive socially and athletically. Hear directly from athletes about their experiences on a team
+          Athletes deserve to thrive socially and athletically. Hear directly
+          from athletes about their experiences on a team
         </p>
       </div>
       <div class="flex flex-col items-center gap-4">
-        <img
-          class="rounded object-cover h-28 w-28"
-          src="coaching.jpg"
-          alt=""
-        />
+        <img class="h-28 w-28 rounded object-cover" src="coaching.jpg" alt="" />
         <p class="flex items-center font-bold uppercase text-orange-700">
           Coaches
         </p>
         <p class="flex items-center text-sm italic text-orange-700">
-          Each athlete deserves coaches who can help them grow to their fullest potential. Find a team where the coaching style fits you
+          Each athlete deserves coaches who can help them grow to their fullest
+          potential. Find a team where the coaching style fits you
         </p>
       </div>
       <div class="flex flex-col items-center gap-4">
         <img
-          class="rounded object-cover h-28 w-28"
+          class="h-28 w-28 rounded object-cover"
           src="competition.jpg"
           alt=""
         />
@@ -164,12 +166,13 @@
           Competition
         </p>
         <p class="flex items-center text-sm italic text-pink-800">
-          We analyze the data for you. Choose the team with the athletic goals that match yours
+          We analyze the data for you. Choose the team with the athletic goals
+          that match yours
         </p>
       </div>
       <div class="flex flex-col items-center gap-4">
         <img
-          class="rounded object-cover h-28 w-28"
+          class="h-28 w-28 rounded object-cover"
           src="recruitment.jpg"
           alt=""
         />
@@ -177,7 +180,8 @@
           Recruitment
         </p>
         <p class="flex items-center text-sm italic text-blue-900">
-          The athletic journey doesn’t have to stop in high school. See which teams are getting recruited to which colleges
+          The athletic journey doesn’t have to stop in high school. See which
+          teams are getting recruited to which colleges
         </p>
       </div>
     </div>
@@ -186,7 +190,9 @@
     </p>
     <div class="w-full sm:w-auto">
       {#if user}
-        <a class="mr-2 w-full " size="xl" href="/">Search for a team and review!</a>
+        <a class="mr-2 w-full" size="xl" href="/"
+          >Search for a team and review!</a
+        >
       {:else}
         <Button class="mr-2 w-full" size="xl" href="/signin">Sign Up!</Button>
       {/if}
@@ -194,10 +200,8 @@
   </div>
 </div>
 
-<div
-  class="relative w-full bg-sky-800 px-10 py-10 md:py-40 text-center"
->
-  <h1 class="text-white mb-20">See Reviews From Real Athletes!</h1>
+<div class="relative w-full bg-sky-800 px-10 py-10 text-center md:py-40">
+  <h1 class="mb-20 text-white">See Reviews From Real Athletes!</h1>
   <div class="w-full">
     <!-- <Carousel autoplay="7500">
       {#each reviews as review}
@@ -217,7 +221,6 @@
 
 <div class="flex w-full justify-center bg-blue-900 px-10 py-10 sm:py-40">
   <div class="flex flex-col items-center gap-4 text-center text-white">
-    
     <!-- <p class="font-medium uppercase tracking-widest text-amber-500">
       {new Date().getFullYear() + 1} rankings
     </p>

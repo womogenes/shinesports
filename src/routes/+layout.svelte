@@ -33,7 +33,7 @@
 <style lang="postcss">
   :global(h1, h2, h3, h4) {
     font-weight: bold;
-    letter-spacing: -0.4em;
+    letter-spacing: -0.005em;
   }
 
   :global(h1) {
