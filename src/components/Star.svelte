@@ -12,7 +12,7 @@
 		stroke: #999;
 	}
 	.filled {
-		fill: yellow;
+		fill: rgb(255, 179, 57);
 	}
 </style>
 

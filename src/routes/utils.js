@@ -29,6 +29,13 @@ class Utils {
       document.getElementById(signId).innerHTML = '-';
     }
   }
+
+  countChar() {
+    const textArea = document.getElementById("comment").value
+    document.getElementById("current").value = textArea.length
+    console.log("is this working?")
+    return true
+  }
 }
 
 export default Utils;

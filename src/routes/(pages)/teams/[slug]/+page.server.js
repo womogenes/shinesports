@@ -88,6 +88,11 @@ export const load = async ({ params }) => {
   };
 };
 
+const countChar = () => {
+  const textArea = document.getElementById("comment").value
+  document.getElementById("current").value = textArea.length
+}
+
 // export const load = async ({ params }) => {
 //   // Search for this team in the spreadsheet
 //   const sheet1 = await fetchSpreadsheet('Sheet1');

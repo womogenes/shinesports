@@ -28,7 +28,6 @@
 		margin: auto;
 		height: 1000px;
 		width: 1000px;
-		background-color: brown;
 		border-radius: 0.2em;
 		border: none;
 		padding: 0;

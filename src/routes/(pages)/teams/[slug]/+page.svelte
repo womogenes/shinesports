@@ -7,6 +7,9 @@
   import StarRating from '$components/StarRating.svelte';
   import TeamLineInfo from '../TeamLineInfo.svelte';
   import { Button, Input } from 'flowbite-svelte';
+  import Utils from '/src/routes/utils.js'
+
+  let rating = null
 
   let showModal = false;
 
@@ -101,14 +104,20 @@
         <Button on:click={() => (showModal = true)}>Write a Review!</Button>
       </div>
       <div>
-        <StarRating/>
       </div>
       <Modal bind:showModal>
-        <div class="bg-gray-50">
-          <form>
-            <StarRating/>
-            <label for="comment">Comments:</label>
-            <textarea id="comment" name="comment" maxlength=5000></textarea>          
+        <div class="p-10">
+          <form class="grid grid-rows-5 gap-2">
+            <StarRating bind:rating={rating}/>
+            <Input type="hidden" name="rating" value={rating}></Input>
+            <div class="flex flex-col">
+              <label for="comment">Comments:</label>
+              <textarea id="comment" name="comment" maxlength=5000 on:input={() => Utils.countChar()}></textarea>  
+            </div>
+            <div id="the-count">
+              <span id="current">0</span>
+              <span id="maximum">/ 5000</span>
+            </div>        
           </form>
         </div>
       </Modal>   
