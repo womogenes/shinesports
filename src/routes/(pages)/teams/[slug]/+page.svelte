@@ -8,48 +8,55 @@
   import TeamLineInfo from '../TeamLineInfo.svelte';
   import { Button, Input } from 'flowbite-svelte';
   import Utils from '/src/routes/utils.js';
-  // import Reviews from './reviews.js';
+  import db from "/src/firebase.js";
+  import {
+    setDoc,
+    collection,
+    onSnapshot,
+    deleteDoc,
+    doc,
+  } from "firebase/firestore";
+  import { onMount } from "svelte";
 
-  // import db from '/src/firebase.js';
 
-  // import { doc, ref, set, collection, query, where, getDoc, getDocs } from "firebase/firestore";
+  export let data;
+  // const { teamRows, allTeamsInfo } = data;
+  const { team, coords, subList } = data;
 
-  // class Reviews {
-  //     submit(username, teamname, type) {
-  //         // const date = new Date();
-  //         // const time = date.getTime();
-  //         // const star = document.getElementById("rating").value;
-  //         // const title = document.getElementById("title").value;
-  //         // const comment = document.getElementById("comment").value;
-  //         // set(ref(db, "teams", teamname, "reviews"), {
-  //         //     username: username,
-  //         //     time: time,
-  //         //     type: type,
-  //         //     star: star,
-  //         //     title: title,
-  //         //     comment: comment,
-  //         // });
-  //         console.log("success!")
-  //     }
-  //   }
-    
-  //   export default Reviews;
-    
+  let snap;
+
+  onMount(() => {
+    onSnapshot(collection(db, "teams", team.name, "reviews"), (snapshot) => {
+      snap = snapshot.docs;
+    });
+  });
 
   const testUser = {
     name: 'test'
   }
 
-  let utils = new Utils();
-  // let reviews = new Reviews();
+  let rating;
+  let title;
+  let comment;
 
-  let rating = null
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const Id = crypto.randomUUID();
+    const date = new Date();
+    const time = date.getTime();
+    await setDoc(doc(db, "teams", team.name, "reviews", Id), {
+      username: testUser,
+      time: time,
+      type: "star",
+      star: rating,
+      title: title,
+      comment: comment,
+    });
+  };
+
+  let utils = new Utils();
 
   let showModal = false;
-
-  export let data;
-  // const { teamRows, allTeamsInfo } = data;
-  const { team, coords, subList } = data;
 </script>
 
 <div class="w-full my-20 flex justify-center">
@@ -141,19 +148,19 @@
       </div>
       <Modal bind:showModal>
         <div class="p-10">
-          <form class="grid grid-rows-6 gap-2">
+          <form class="grid grid-rows-6 gap-2" on:submit={handleSubmit}>
             <StarRating bind:rating={rating}/>
             <Input type="hidden" id="rating" name="rating" value={rating}></Input>
-            <input class="p-5 w-32 h-10 px-3 my-5" type="text" id="title" name="title" placeholder="Title" maxlength=100/>
+            <input class="p-5 w-32 h-10 px-3 my-5" type="text" id="title" name="title" placeholder="Title" maxlength=100 bind:value={title}/>
             <div class="flex flex-col">
-              <textarea class="h-32" id="comment" name="comment" placeholder="Comments" style="resize: none;" maxlength=5000 on:input={() => utils.countChar()}></textarea>  
+              <textarea class="h-32" id="comment" name="comment" placeholder="Comments" style="resize: none;" maxlength=5000 bind:value={comment} on:input={() => utils.countChar()}></textarea>  
             </div>
             <div id="the-count">
               <span id="current">0</span>
               <span id="maximum">/ 5000</span>
             </div>
             <div class="w-full flex justify-center items-center">
-              <!-- <Button class="w-64" on:click={() => reviews.submit(testUser.name, team.name, "star")}>Submit Review!</Button>        -->
+              <Button class="w-64" type="submit" on:click={() => (showModal = false)}>Submit Review!</Button>       
             </div> 
           </form>
         </div>
