@@ -6,6 +6,10 @@
 	export let rating = null;
 	let hoverRating = null;
 
+	export let staticStars;
+
+	export let setRating;
+
 	const handleHover = (id) => () => {
 		hoverRating = id;
 	}
@@ -29,13 +33,23 @@
 </script>
 
 <div class="flex justify-evenly max-w-xs w-44">
-	{#each stars as star (star.id)}
+	{#if staticStars}
+		{#each stars as star (star.id)}
 		<Star 
-			filled={hoverRating ? (hoverRating >= star.id) : (rating >= star.id)} 
+			filled={setRating ? (setRating >= star.id) : (setRating >= star.id)} 
 			starId={star.id}
-			on:mouseover={handleHover(star.id)} 
-			on:mouseleave={() => hoverRating = null}
-			on:click={handleRate(star.id)}
 		/>
-	{/each}
+		{/each}	
+
+	{:else}
+		{#each stars as star (star.id)}
+			<Star 
+				filled={hoverRating ? (hoverRating >= star.id) : (rating >= star.id)} 
+				starId={star.id}
+				on:mouseover={handleHover(star.id)} 
+				on:mouseleave={() => hoverRating = null}
+				on:click={handleRate(star.id)}
+			/>
+		{/each}
+	{/if}
 </div>

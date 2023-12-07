@@ -81,10 +81,77 @@ export const load = async ({ params }) => {
     }
   })
 
+  const teamReviewRef = collection(db, "teams", teamName, "reviews")
+  const teamReview = await getDocs(teamReviewRef);
+
+  let reviewList = []
+  
+  teamReview.forEach((doc) => {
+    const review = 
+    {
+      id: doc.id,
+      username: doc.data()["username"],
+      star: doc.data()["star"],
+      title: doc.data()["title"],
+      comment: doc.data()["comment"],
+      date: doc.data()["date"],
+      type: doc.data()["type"],
+    }
+    reviewList.push(review);
+  })
+
   return {
     team,
     coords,
     subList,
+    reviewList,
   };
 };
 
+
+// export const load = async ({ params }) => {
+//   // Search for this team in the spreadsheet
+//   const sheet1 = await fetchSpreadsheet('Sheet1');
+
+//   const basicInfo = parseSheet1Row(
+//     sheet1.values.find((row, idx) => {
+//       if (idx === 0) return false;
+//       return slugify(row[1]) === params.slug;
+//     }),
+//   );
+//   const geocoded = await geocode(basicInfo.address.replace('\n', ' '));
+//   const coords = [parseFloat(geocoded.lat), parseFloat(geocoded.lon)];
+
+//   // Sheet 2 o.O
+//   // Find the row that contains this team
+//   const sheet2 = await fetchSpreadsheet('Sheet2');
+//   let teamRows = sheet2.values.filter((row, idx) => {
+//     if (idx === 0) return false;
+//     if (row.length === 0) return false;
+//     const name = row[0].split(' - ');
+//     return slugify(name[name.length - 1]) === params.slug;
+//   });
+
+//   const allTeamsInfo = {
+//     website: teamRows[0][1],
+//     ageRange: teamRows[0][7].replace('-', '–'),
+//   };
+
+//   teamRows = teamRows.map((row) => {
+//     let teamType = row[0].includes(' - ') ? row[0].split(' - ')[0] : '';
+//     return {
+//       teamType,
+//       coachName: row[2],
+//       contactEmail: row[3],
+//       contactNumber: row[4] || teamRows[0][4],
+//       teamSize: row[5]?.replace('-', '–'),
+//       practiceSchedule: row[6],
+//     };
+//   });
+//   return {
+//     basicInfo,
+//     coords,
+//     teamRows,
+//     allTeamsInfo,
+//   };
+// };

@@ -15,12 +15,11 @@
 >
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div on:click|stopPropagation>
-		<slot name="header" />
-		<hr />
+		<div class="w-full flex justify-end">
+			<button class="text-xl" on:click={() => dialog.close()}>&#10006;</button>
+		</div>
 		<slot />
-		<hr />
 		<!-- svelte-ignore a11y-autofocus -->
-		<button autofocus on:click={() => dialog.close()}>close modal</button>
 	</div>
 </dialog>
 

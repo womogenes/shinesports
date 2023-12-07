@@ -3,6 +3,7 @@
   import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
   import { A } from 'flowbite-svelte';
   import LeafletMap from '$components/LeafletMap.svelte';
+  import Review from '$components/Review.svelte';
   import Modal from '$components/Modal.svelte';
   import StarRating from '$components/StarRating.svelte';
   import TeamLineInfo from '../TeamLineInfo.svelte';
@@ -21,7 +22,7 @@
 
   export let data;
   // const { teamRows, allTeamsInfo } = data;
-  const { team, coords, subList } = data;
+  const { team, coords, subList, reviewList } = data;
 
   let snap;
 
@@ -45,13 +46,16 @@
     const date = new Date();
     const time = date.getTime();
     await setDoc(doc(db, "teams", team.name, "reviews", Id), {
-      username: testUser,
+      username: testUser.name,
       time: time,
       type: "star",
       star: rating,
       title: title,
       comment: comment,
     });
+    rating = null;
+    title = "";
+    comment = "";
   };
 
   let utils = new Utils();
@@ -142,14 +146,17 @@
       </div>
       <div class="w-full m-10">
         <h3>Reviews</h3>
+        {#each reviewList as review}
+          <Review bind:review></Review>
+        {/each}
         <Button on:click={() => (showModal = true)}>Write a Review!</Button>
       </div>
       <div>
       </div>
-      <Modal bind:showModal>
-        <div class="p-10">
-          <form class="grid grid-rows-6 gap-2" on:submit={handleSubmit}>
-            <StarRating bind:rating={rating}/>
+      <Modal bind:showModal on:close{utils.countChar()}>
+        <div class="p-10 max-h-32">
+          <form class="grid grid-rows-6" on:submit={handleSubmit}>
+            <StarRating bind:rating={rating} staticStars="{false}"/>
             <Input type="hidden" id="rating" name="rating" value={rating}></Input>
             <input class="p-5 w-32 h-10 px-3 my-5" type="text" id="title" name="title" placeholder="Title" maxlength=100 bind:value={title}/>
             <div class="flex flex-col">
