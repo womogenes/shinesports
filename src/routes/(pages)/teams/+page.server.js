@@ -16,7 +16,7 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 // const { sport, zip } = actions;
 
 export const load = async (search) => {
-  console.log('results: ' + JSON.stringify(search));
+  // console.log('results: ' + JSON.stringify(search));
 
   const q = query(collection(db, 'teams'));
 

@@ -7,7 +7,41 @@
   import StarRating from '$components/StarRating.svelte';
   import TeamLineInfo from '../TeamLineInfo.svelte';
   import { Button, Input } from 'flowbite-svelte';
-  import Utils from '/src/routes/utils.js'
+  import Utils from '/src/routes/utils.js';
+  // import Reviews from './reviews.js';
+
+  // import db from '/src/firebase.js';
+
+  // import { doc, ref, set, collection, query, where, getDoc, getDocs } from "firebase/firestore";
+
+  // class Reviews {
+  //     submit(username, teamname, type) {
+  //         // const date = new Date();
+  //         // const time = date.getTime();
+  //         // const star = document.getElementById("rating").value;
+  //         // const title = document.getElementById("title").value;
+  //         // const comment = document.getElementById("comment").value;
+  //         // set(ref(db, "teams", teamname, "reviews"), {
+  //         //     username: username,
+  //         //     time: time,
+  //         //     type: type,
+  //         //     star: star,
+  //         //     title: title,
+  //         //     comment: comment,
+  //         // });
+  //         console.log("success!")
+  //     }
+  //   }
+    
+  //   export default Reviews;
+    
+
+  const testUser = {
+    name: 'test'
+  }
+
+  let utils = new Utils();
+  // let reviews = new Reviews();
 
   let rating = null
 
@@ -107,17 +141,20 @@
       </div>
       <Modal bind:showModal>
         <div class="p-10">
-          <form class="grid grid-rows-5 gap-2">
+          <form class="grid grid-rows-6 gap-2">
             <StarRating bind:rating={rating}/>
-            <Input type="hidden" name="rating" value={rating}></Input>
+            <Input type="hidden" id="rating" name="rating" value={rating}></Input>
+            <input class="p-5 w-32 h-10 px-3 my-5" type="text" id="title" name="title" placeholder="Title" maxlength=100/>
             <div class="flex flex-col">
-              <label for="comment">Comments:</label>
-              <textarea id="comment" name="comment" maxlength=5000 on:input={() => Utils.countChar()}></textarea>  
+              <textarea class="h-32" id="comment" name="comment" placeholder="Comments" style="resize: none;" maxlength=5000 on:input={() => utils.countChar()}></textarea>  
             </div>
             <div id="the-count">
               <span id="current">0</span>
               <span id="maximum">/ 5000</span>
-            </div>        
+            </div>
+            <div class="w-full flex justify-center items-center">
+              <!-- <Button class="w-64" on:click={() => reviews.submit(testUser.name, team.name, "star")}>Submit Review!</Button>        -->
+            </div> 
           </form>
         </div>
       </Modal>   

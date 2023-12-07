@@ -30,11 +30,17 @@ class Utils {
     }
   }
 
-  countChar() {
-    const textArea = document.getElementById("comment").value
-    document.getElementById("current").value = textArea.length
-    console.log("is this working?")
-    return true
+  countChar(){
+    const textArea = document.getElementById("comment").value;
+    document.getElementById("current").textContent = textArea.length;
+    if (parseInt(document.getElementById("current").textContent) >= 5000) {
+      document.getElementById("current").style.color = "red";
+      document.getElementById("maximum").style.color = "red";
+    }
+    else{
+      document.getElementById("current").style.color = "black";
+      document.getElementById("maximum").style.color = "black";
+    }
   }
 }
 
