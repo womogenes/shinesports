@@ -94,11 +94,17 @@ export const load = async ({ params }) => {
       star: doc.data()["star"],
       title: doc.data()["title"],
       comment: doc.data()["comment"],
-      date: doc.data()["date"],
+      time: doc.data()["time"],
       type: doc.data()["type"],
     }
     reviewList.push(review);
   })
+
+  const compareTime = (a, b) => {
+    return b.time - a.time;
+  }
+
+  reviewList = reviewList.sort(compareTime);
 
   return {
     team,
