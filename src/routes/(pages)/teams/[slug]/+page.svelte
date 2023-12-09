@@ -24,11 +24,36 @@
   // const { teamRows, allTeamsInfo } = data;
   const { team, coords, subList, reviewList } = data;
 
+  let currentReviews = reviewList;
+
   let snap;
 
   onMount(() => {
     onSnapshot(collection(db, "teams", team.name, "reviews"), (snapshot) => {
       snap = snapshot.docs;
+
+      let newList = []
+  
+      snap.forEach((doc) => {
+        const review = 
+        {
+          id: doc.id,
+          username: doc.data()["username"],
+          star: doc.data()["star"],
+          title: doc.data()["title"],
+          comment: doc.data()["comment"],
+          time: doc.data()["time"],
+          type: doc.data()["type"],
+          edited: doc.data()["edited"],
+        }
+        newList.push(review);
+      })
+      const compareTime = (a, b) => {
+        return b.time - a.time;
+      }
+
+      currentReviews = newList.sort(compareTime);
+      console.log("changes")
     });
   });
 
@@ -52,11 +77,19 @@
       star: rating,
       title: title,
       comment: comment,
+      edited: false,
     });
     rating = null;
     title = "";
     comment = "";
   };
+
+  let editing = false;
+
+  const changeMode = (mode) => {
+    editing = mode;
+    console.log(mode);
+  } 
 
   let utils = new Utils();
 
@@ -144,12 +177,20 @@
           </div>
         {/each}
       </div>
-      <div class="w-full m-10">
-        <h3>Reviews</h3>
-        {#each reviewList as review}
-          <Review bind:review></Review>
-        {/each}
-        <Button on:click={() => (showModal = true)}>Write a Review!</Button>
+      <div class="w-full">
+        <div class="w-full px-10">
+          <h3>Reviews</h3>
+        </div>
+        <div class="w-full my-10">
+          <hr>
+          {#each currentReviews as review}
+          <Review bind:review editTrue="{() => changeMode(true)}" editFalse="{() => changeMode(false)}" editing="{editing}" username="{testUser.name}" teamName="{team.name}"></Review>
+          {/each}
+          <hr>
+        </div>
+        <div class="w-full p-10">
+          <Button on:click={() => (showModal = true)}>Write a Review!</Button>
+        </div>
       </div>
       <div>
       </div>
@@ -157,7 +198,6 @@
         <div class="p-10 max-h-32">
           <form class="grid grid-rows-6" on:submit={handleSubmit}>
             <StarRating bind:rating={rating} staticStars="{false}"/>
-            <Input type="hidden" id="rating" name="rating" value={rating}></Input>
             <input class="p-5 w-32 h-10 px-3 my-5" type="text" id="title" name="title" placeholder="Title" maxlength=100 bind:value={title}/>
             <div class="flex flex-col">
               <textarea class="h-32" id="comment" name="comment" placeholder="Comments" style="resize: none;" maxlength=5000 bind:value={comment} on:input={() => utils.countChar()}></textarea>  

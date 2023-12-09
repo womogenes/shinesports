@@ -96,6 +96,7 @@ export const load = async ({ params }) => {
       comment: doc.data()["comment"],
       time: doc.data()["time"],
       type: doc.data()["type"],
+      edited: doc.data()["edited"],
     }
     reviewList.push(review);
   })
