@@ -72,7 +72,6 @@
   let starRatios = countStarRatios(currentReviews);
 
 
-
   onMount(() => {
     onSnapshot(collection(db, "teams", team.name, "reviews"), (snapshot) => {
       snap = snapshot.docs;
@@ -226,7 +225,21 @@
       <div class="w-full">
         <div class="w-full px-10">
           <h3>Reviews</h3>
-          <ReviewPanel average={averageStar} ratio={starRatios} filter={createFilter} removeFilter={removeFilter}></ReviewPanel>
+          {#key snap}
+            <ReviewPanel {snap} bind:averageStar bind:starRatios filter={createFilter} removeFilter={removeFilter}></ReviewPanel>
+          {/key}
+          {#if currentReviews <= 0}
+            <div class="p-10 flex flex-col justify-center items-center">
+              <p>
+                Oops... Nobody has written a review yet!
+                <a href="#" class="underline text-blue-500" on:click={() => (showModal = true)}>Be the first!</a>
+              </p>
+            </div>
+          {:else}
+            <div class="w-full flex justify-center items-center p-10">
+              <Button on:click={() => (showModal = true)}>Write a Review!</Button>
+            </div>
+          {/if}
         </div>
         <div class="w-full my-10">
           <hr>
@@ -252,19 +265,9 @@
             {#each currentReviews as review}
               <Review bind:review editTrue="{() => changeMode(true)}" editFalse="{() => changeMode(false)}" editing="{editing}" username="{testUser.name}" teamName="{team.name}"></Review>
             {/each}
-          {:else}
-            <div class="p-10 flex flex-col justify-center items-center">
-              <p>
-                Oops... Nobody has written a review yet!
-                <a href="#" class="underline text-blue-500" on:click={() => (showModal = true)}>Be the first!</a>
-              </p>
-            </div>
           {/if}
           {/if}
           <hr>
-        </div>
-        <div class="w-full p-10">
-          <Button on:click={() => (showModal = true)}>Write a Review!</Button>
         </div>
       </div>
       <div>
@@ -272,7 +275,7 @@
       <Modal bind:showModal on:close{utils.countChar()}>
         <div class="p-10 max-h-32">
           <form class="grid grid-rows-6" on:submit={handleSubmit}>
-            <StarRating bind:rating={rating} staticStars="{false}"/>
+            <StarRating bind:rating={rating} setRating="" staticStars="{false}" partialStars="{false}"/>
             <input class="p-5 w-32 h-10 px-3 my-5" type="text" id="title" name="title" placeholder="Title" maxlength=100 bind:value={title}/>
             <div class="flex flex-col">
               <textarea class="h-32" id="comment" name="comment" placeholder="Comments" style="resize: none;" maxlength=5000 bind:value={comment} on:input={() => utils.countChar()}></textarea>  
@@ -281,9 +284,6 @@
               <span id="current">0</span>
               <span id="maximum">/ 5000</span>
             </div>
-            <div class="w-full flex justify-center items-center">
-              <Button class="w-64" type="submit" on:click={() => (showModal = false)}>Submit Review!</Button>       
-            </div> 
           </form>
         </div>
       </Modal>   

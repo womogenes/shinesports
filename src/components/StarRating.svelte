@@ -41,7 +41,9 @@
 	{#if staticStars}
 		{#each stars as star (star.id)}
 		<Star 
-			filled={setRating && (setRating >= star.id)} 
+			filled={setRating && (setRating >= star.id)}
+			partialFilled={false} 
+			partial=""
 			starId={star.id}
 		/>
 		{/each}	
@@ -49,7 +51,9 @@
 		{#each stars as star (star.id)}
 			{#if newRating >= star.id}
 				<Star 
-					filled={true} 
+					filled={true}
+					partialFilled={false} 
+					partial=""
 					starId={star.id}
 				/>
 			{:else if Math.ceil(setRating) == star.id}
@@ -61,6 +65,8 @@
 			{:else}
 				<Star 
 					filled={false}
+					partialFilled={false} 
+					partial=""
 					starId={star.id}
 				/>
 			{/if}	
@@ -68,7 +74,9 @@
 	{:else}
 		{#each stars as star (star.id)}
 			<Star 
-				filled={hoverRating ? (hoverRating >= star.id) : (rating >= star.id)} 
+				filled={hoverRating ? (hoverRating >= star.id) : (rating >= star.id)}
+				partialFilled={false} 
+				partial=""
 				starId={star.id}
 				on:mouseover={handleHover(star.id)} 
 				on:mouseleave={() => hoverRating = null}

@@ -84,7 +84,7 @@
         <form on:submit={handleSubmit}>
             <div class="flex flex-2 flex-col px-10 h-full bg-blue-40">
                 <div>
-                    <StarRating bind:rating={rating} staticStars="{false}"/>
+                    <StarRating bind:rating={rating} setRating="" staticStars="{false}" partialStars="{false}"/>
                 </div>
                 <div class="flex flex-col py-5 px-2">
                     <input class="p-5 w-32 h-10 px-3 my-5" type="text" id="title" name="title" placeholder="Title" bind:value={title} maxlength=100/>
@@ -109,7 +109,7 @@
             </div>
             <div class="flex flex-2 flex-col px-10 h-full bg-blue-40">
                 <div>
-                    <StarRating setRating="{review.star}" staticStars="{true}"/>
+                    <StarRating setRating="{review.star}" staticStars="{true}" partialStars="{false}"/>
                 </div>
                 <div class="py-5 px-2">
                     <h5 class="font-bold">{review.title}</h5>

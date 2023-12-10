@@ -1,21 +1,23 @@
 <script>
 import StarRating from "./StarRating.svelte";
 
-export let average;
+export let averageStar;
 
-export let ratio;
+export let starRatios;
 
 export let filter;
 
 export let removeFilter;
 
+export let snap;
+
 let sum = 0;
 
-ratio.forEach((num) => {
+starRatios.forEach((num) => {
     sum += num
 })
 
-let percentage = ratio.map((num) => {
+let percentage = starRatios.map((num) => {
     return Math.round((num / sum)*100)
 });
 
@@ -30,29 +32,31 @@ let stars = [
 
 <div class="w-full my-10">
     <div class="w-full flex flex-row items-center">
-        <StarRating setRating="{average}" partialStars="{true}" />
+        <StarRating setRating="{averageStar}" partialStars="{true}" staticStars="{false}"/>
         <p class="text-xl">({sum})</p>
     </div>
-    <hr class="my-10">
-    <div class="w-full flex">
-        <div class="flex-1 h-full flex-col justify-evenly">
-            {#each stars as star}
-                <a href="#" class="flex flex-row" on:click={() => filter(star.id)}>
-                    <div class="hoverline w-12 min-w-fit m-2 flex justify-start items-center">
-                        {star.id} star
-                    </div>
-                    <div id="{star.id}" class="w-full rounded-lg border-2 h-3 my-5 overflow-hidden">
-                        <div style="height: 100%; background-color: rgb(255, 179, 57); width: {star.value}%;">
+    {#if sum != 0}
+        <hr class="my-10">
+        <div class="w-full flex">
+            <div class="flex-1 h-full flex-col justify-evenly">
+                {#each stars as star}
+                    <a href="#" class="flex flex-row" on:click={() => filter(star.id)}>
+                        <div class="hoverline w-12 min-w-fit m-2 flex justify-start items-center">
+                            {star.id} star
                         </div>
-                    </div>
-                    <div class="hoverline w-12 min-w-fit m-2 flex justify-end items-center">
-                        <p>{star.value}%</p>
-                    </div>
-                </a>
-            {/each}
-            <a href="#" class="underline text-blue-500" on:click={() => removeFilter()}>see all reviews</a>
+                        <div id="{star.id}" class="w-full rounded-lg border-2 h-3 my-5 overflow-hidden">
+                            <div style="height: 100%; background-color: rgb(255, 179, 57); width: {star.value}%;">
+                            </div>
+                        </div>
+                        <div class="hoverline w-12 min-w-fit m-2 flex justify-end items-center">
+                            <p>{star.value}%</p>
+                        </div>
+                    </a>
+                {/each}
+                <a href="#" class="underline text-blue-500" on:click={() => removeFilter()}>see all reviews</a>
+            </div>
         </div>
-    </div>
+    {/if}
 </div>
 
 <style>
