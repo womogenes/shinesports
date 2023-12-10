@@ -8,7 +8,12 @@
 
 	export let staticStars;
 
+	export let partialStars;
+
 	export let setRating;
+
+	let partialRating = setRating % 1;
+	let newRating = setRating - partialRating;
 
 	const handleHover = (id) => () => {
 		hoverRating = id;
@@ -36,11 +41,30 @@
 	{#if staticStars}
 		{#each stars as star (star.id)}
 		<Star 
-			filled={setRating ? (setRating >= star.id) : (setRating >= star.id)} 
+			filled={setRating && (setRating >= star.id)} 
 			starId={star.id}
 		/>
 		{/each}	
-
+	{:else if partialStars}
+		{#each stars as star (star.id)}
+			{#if newRating >= star.id}
+				<Star 
+					filled={true} 
+					starId={star.id}
+				/>
+			{:else if Math.ceil(setRating) == star.id}
+				<Star 
+					partialFilled={true}
+					partial={partialRating}
+					starId={star.id}
+				/>
+			{:else}
+				<Star 
+					filled={false}
+					starId={star.id}
+				/>
+			{/if}	
+		{/each}
 	{:else}
 		{#each stars as star (star.id)}
 			<Star 

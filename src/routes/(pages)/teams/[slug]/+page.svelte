@@ -4,6 +4,7 @@
   import { A } from 'flowbite-svelte';
   import LeafletMap from '$components/LeafletMap.svelte';
   import Review from '$components/Review.svelte';
+  import ReviewPanel from '$components/ReviewPanel.svelte';
   import Modal from '$components/Modal.svelte';
   import StarRating from '$components/StarRating.svelte';
   import TeamLineInfo from '../TeamLineInfo.svelte';
@@ -27,6 +28,50 @@
   let currentReviews = reviewList;
 
   let snap;
+
+  let filtered = false;
+
+  let filteredId;
+
+  let filteredReviews;
+
+  const averageStarReviews = (list) => {
+    let sum = 0;
+    let size = list.length;
+    list.forEach((rating) => {
+      sum += rating.star;
+    })
+    return (sum / size);
+  };
+
+  const countStarRatios = (list) => {
+    let arr = [0, 0, 0, 0, 0]
+    list.forEach((rating) => {
+      let star = rating.star;
+      arr[star - 1] += 1;
+    })
+    return arr;
+  }
+
+  const createFilter = (id) => {
+    filtered = true;
+    filteredId = id;
+    filter(filteredId);
+  }
+
+  const removeFilter = () => {
+    filtered = false;
+  }
+
+  const filter = (id) => {
+    filteredReviews = currentReviews.filter((review) => review.star == id);
+  }
+
+  let averageStar = averageStarReviews(currentReviews);
+
+  let starRatios = countStarRatios(currentReviews);
+
+
 
   onMount(() => {
     onSnapshot(collection(db, "teams", team.name, "reviews"), (snapshot) => {
@@ -53,7 +98,9 @@
       }
 
       currentReviews = newList.sort(compareTime);
-      console.log("changes")
+      averageStar = averageStarReviews(currentReviews);
+      starRatios = countStarRatios(currentReviews);
+      filter(filteredId);
     });
   });
 
@@ -88,7 +135,6 @@
 
   const changeMode = (mode) => {
     editing = mode;
-    console.log(mode);
   } 
 
   let utils = new Utils();
@@ -180,12 +226,41 @@
       <div class="w-full">
         <div class="w-full px-10">
           <h3>Reviews</h3>
+          <ReviewPanel average={averageStar} ratio={starRatios} filter={createFilter} removeFilter={removeFilter}></ReviewPanel>
         </div>
         <div class="w-full my-10">
           <hr>
-          {#each currentReviews as review}
-          <Review bind:review editTrue="{() => changeMode(true)}" editFalse="{() => changeMode(false)}" editing="{editing}" username="{testUser.name}" teamName="{team.name}"></Review>
-          {/each}
+          {#if filtered}
+            {#if filteredReviews.length > 0}
+              {#each filteredReviews as review}
+                <Review bind:review editTrue="{() => changeMode(true)}" editFalse="{() => changeMode(false)}" editing="{editing}" username="{testUser.name}" teamName="{team.name}"></Review>
+              {/each}
+            {:else if currentReviews.length > 0}
+              <div class="h-24 flex justify-center items-center">
+                Oops... No reviews here!
+              </div>
+            {:else}
+              <div class="p-10 flex flex-col justify-center items-center">
+                <p>
+                  Oops... Nobody has written a review yet!
+                  <a href="#" class="underline text-blue-500" on:click={() => (showModal = true)}>Be the first!</a>
+                </p>
+              </div>
+            {/if}
+          {:else}
+          {#if currentReviews.length > 0}
+            {#each currentReviews as review}
+              <Review bind:review editTrue="{() => changeMode(true)}" editFalse="{() => changeMode(false)}" editing="{editing}" username="{testUser.name}" teamName="{team.name}"></Review>
+            {/each}
+          {:else}
+            <div class="p-10 flex flex-col justify-center items-center">
+              <p>
+                Oops... Nobody has written a review yet!
+                <a href="#" class="underline text-blue-500" on:click={() => (showModal = true)}>Be the first!</a>
+              </p>
+            </div>
+          {/if}
+          {/if}
           <hr>
         </div>
         <div class="w-full p-10">
