@@ -16,7 +16,7 @@
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
 	<div on:click|stopPropagation>
 		<div class="w-full flex justify-end">
-			<button class="text-xl" on:click={() => dialog.close()}>&#10006;</button>
+			<button class="text-xl fixed" on:click={() => dialog.close()}>&#10006;</button>
 		</div>
 		<slot />
 		<!-- svelte-ignore a11y-autofocus -->
