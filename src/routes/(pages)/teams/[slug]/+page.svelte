@@ -7,6 +7,7 @@
   import ReviewPanel from '$components/ReviewPanel.svelte';
   import Modal from '$components/Modal.svelte';
   import StarRating from '$components/StarRating.svelte';
+  import StatsReview from '$components/StatsReview.svelte';
   import TeamLineInfo from '../TeamLineInfo.svelte';
   import { Button, Input } from 'flowbite-svelte';
   import Utils from '/src/routes/utils.js';
@@ -34,6 +35,8 @@
   let filteredId;
 
   let filteredReviews;
+
+  let reviewMode;
 
   const averageStarReviews = (list) => {
     let sum = 0;
@@ -274,23 +277,42 @@
       </div>
       <Modal bind:showModal on:close{utils.countChar()}>
         <div class="p-10 max-h-32">
-          <form class="grid grid-rows-6" on:submit={handleSubmit}>
-            <StarRating bind:rating={rating} setRating="" staticStars="{false}" partialStars="{false}"/>
-            <input class="p-5 w-32 h-10 px-3 my-5" type="text" id="title" name="title" placeholder="Title" maxlength=100 bind:value={title}/>
-            <div class="flex flex-col">
+          <form class="grid grid-rows-7" on:submit={handleSubmit}>
+            <label for="mode">Choose a Review Mode:</label>
+            <select class="mb-10" name="mode" id="mode" bind:value={reviewMode}>
+              <option value="stars">Traditional</option>
+              <option value="stats">Stats Rankings</option>
+              <option value="both">Both</option>
+            </select>
+            {#if reviewMode === "stats"}
+              <StatsReview></StatsReview>
+            {:else if reviewMode === "stars"}
+              <StarRating bind:rating={rating} setRating="" staticStars="{false}" partialStars="{false}"/>
+              <input class="p-5 w-32 h-10 px-3 my-5" type="text" id="title" name="title" placeholder="Title" maxlength=100 bind:value={title}/>
               <textarea class="h-32" id="comment" name="comment" placeholder="Comments" style="resize: none;" maxlength=5000 bind:value={comment} on:input={() => utils.countChar()}></textarea>  
-            </div>
-            <div id="the-count">
-              <span id="current">0</span>
-              <span id="maximum">/ 5000</span>
-            </div>
+              <div id="the-count">
+                <span id="current">0</span>
+                <span id="maximum">/ 5000</span>
+              </div>
+            {:else}
+              <StatsReview></StatsReview>
+              <StarRating bind:rating={rating} setRating="" staticStars="{false}" partialStars="{false}"/>
+              <input class="p-5 w-32 h-10 px-3 my-5" type="text" id="title" name="title" placeholder="Title" maxlength=100 bind:value={title}/>
+              <textarea class="h-32" id="comment" name="comment" placeholder="Comments" style="resize: none;" maxlength=5000 bind:value={comment} on:input={() => utils.countChar()}></textarea>  
+              <div id="the-count">
+                <span id="current">0</span>
+                <span id="maximum">/ 5000</span>
+              </div>
+            {/if}
+            <div class="w-full flex justify-center items-center my-10">
+              <Button type="submit">Submit!</Button>
+            </div>            
           </form>
         </div>
       </Modal>   
     </div>
   </div>
 </div>
-
 
 <!-- <A class="mb-4" href="/teams">
   <Fa icon={faArrowLeft} />&nbsp;All teams
