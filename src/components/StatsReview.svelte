@@ -29,7 +29,7 @@
         <Slider bind:value={values[8]}></Slider>
         <p>Everyone feels included on the team</p>
         <Slider bind:value={values[9]}></Slider>
-        <p>Teammates push each other to be better as an athlete and as a person</p>
+        <p>Teammates push each other to be better as athletes and as people</p>
         <Slider bind:value={values[10]}></Slider>
     </div>
     <hr>
