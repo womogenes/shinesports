@@ -1,5 +1,6 @@
 <script>
 import StarRating from "./StarRating.svelte";
+import BarChart from './BarChart.svelte';
 
 export let averageStar;
 
@@ -56,6 +57,8 @@ let stars = [
                 <a href="#" class="underline text-blue-500" on:click={() => removeFilter()}>see all reviews</a>
             </div>
         </div>
+        <hr class="my-10">
+        <BarChart></BarChart>
     {/if}
 </div>
 

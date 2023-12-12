@@ -25,6 +25,7 @@
 	"dependencies": {
 		"@fortawesome/free-brands-svg-icons": "^6.4.2",
 		"@fortawesome/free-solid-svg-icons": "^6.4.2",
+		"d3-scale": "^4.0.2",
 		"firebase": "^10.5.2",
 		"flowbite": "^1.8.1",
 		"flowbite-svelte": "^0.43.2",
