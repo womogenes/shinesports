@@ -1,6 +1,10 @@
 <script>
 	export let showModal; // boolean
 
+	export const closeModal = () => {
+		showModal = false;
+	}
+
 	let dialog; // HTMLDialogElement
 
 	$: if (dialog && showModal) dialog.showModal();

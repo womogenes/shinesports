@@ -6,6 +6,8 @@ export let averageStar;
 
 export let starRatios;
 
+export let averageStats;
+
 export let filter;
 
 export let removeFilter;
@@ -13,6 +15,7 @@ export let removeFilter;
 export let snap;
 
 let sum = 0;
+
 
 starRatios.forEach((num) => {
     sum += num
@@ -58,7 +61,7 @@ let stars = [
             </div>
         </div>
         <hr class="my-10">
-        <BarChart></BarChart>
+        <BarChart bind:averageStats></BarChart>
     {/if}
 </div>
 

@@ -71,20 +71,12 @@ export const load = async ({ params }) => {
     subList.push(subTeam);
   })
 
-  const subTeam = subList.map((doc) => {
-    return {
-      name: doc.id,
-      coach: doc.coach,
-      schedule: doc.schedule,
-      size: doc.size,
-      email: doc.email,
-    }
-  })
-
   const teamReviewRef = collection(db, "teams", teamName, "reviews")
   const teamReview = await getDocs(teamReviewRef);
 
-  let reviewList = []
+  let starsList = []
+
+  let statsList = []
   
   teamReview.forEach((doc) => {
     const review = 
@@ -98,20 +90,52 @@ export const load = async ({ params }) => {
       type: doc.data()["type"],
       edited: doc.data()["edited"],
     }
-    reviewList.push(review);
+
+    if(doc.data()["type"] == "star" || doc.data()["type"] == "both"){
+        const review = 
+        {
+          id: doc.id,
+          username: doc.data()["username"],
+          star: doc.data()["star"],
+          title: doc.data()["title"],
+          comment: doc.data()["comment"],
+          time: doc.data()["time"],
+          type: doc.data()["type"],
+          edited: doc.data()["edited"],
+        }
+        starsList.push(review);
+      }
+      if(doc.data()["type"] == "stats" || doc.data()["type"] == "both"){
+        const review = 
+        {
+          id: doc.id,
+          username: doc.data()["username"],
+          time: doc.data()["time"],
+          type: doc.data()["type"],
+          stats: doc.data()["stats"]
+        }
+        statsList.push(review);
+      }
+    const compareTime = (a, b) => {
+      return b.time - a.time;
+    }
+
+    starsList = starsList.sort(compareTime);
+    statsList = statsList.sort(compareTime);
   })
 
   const compareTime = (a, b) => {
     return b.time - a.time;
   }
 
-  reviewList = reviewList.sort(compareTime);
+  starsList = starsList.sort(compareTime);
 
   return {
     team,
     coords,
     subList,
-    reviewList,
+    starsList,
+    statsList,
   };
 };
 

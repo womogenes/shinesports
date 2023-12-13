@@ -24,9 +24,9 @@
 
   export let data;
   // const { teamRows, allTeamsInfo } = data;
-  const { team, coords, subList, reviewList } = data;
+  const { team, coords, subList, starsList, statsList } = data;
 
-  let currentReviews = reviewList;
+  let starRating = starsList;
 
   let snap;
 
@@ -37,6 +37,8 @@
   let filteredReviews;
 
   let reviewMode;
+
+  let statsRating = statsList;
 
   const averageStarReviews = (list) => {
     let sum = 0;
@@ -56,6 +58,19 @@
     return arr;
   }
 
+  const averageStatsReviews = (list) => { 
+    let arr = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+    list.forEach((rating) => {
+      for (let i = 0; i < rating.stats.length; i++) {
+        arr[i] = arr[i] + rating.stats[i];
+      }
+    })
+    arr = arr.map((element) => {
+      return element / list.length
+    })
+    return arr;
+  }
+
   const createFilter = (id) => {
     filtered = true;
     filteredId = id;
@@ -67,41 +82,60 @@
   }
 
   const filter = (id) => {
-    filteredReviews = currentReviews.filter((review) => review.star == id);
+    filteredReviews = starRating.filter((review) => review.star == id);
   }
 
-  let averageStar = averageStarReviews(currentReviews);
+  let averageStar = averageStarReviews(starRating);
 
-  let starRatios = countStarRatios(currentReviews);
+  let starRatios = countStarRatios(starRating);
+
+  let averageStats = averageStatsReviews(statsRating);
 
 
   onMount(() => {
     onSnapshot(collection(db, "teams", team.name, "reviews"), (snapshot) => {
       snap = snapshot.docs;
 
-      let newList = []
+      let newStars = []
+
+      let newStats = []
   
       snap.forEach((doc) => {
-        const review = 
-        {
-          id: doc.id,
-          username: doc.data()["username"],
-          star: doc.data()["star"],
-          title: doc.data()["title"],
-          comment: doc.data()["comment"],
-          time: doc.data()["time"],
-          type: doc.data()["type"],
-          edited: doc.data()["edited"],
+        if(doc.data()["type"] == "star" || doc.data()["type"] == "both"){
+          const review = 
+          {
+            id: doc.id,
+            username: doc.data()["username"],
+            star: doc.data()["star"],
+            title: doc.data()["title"],
+            comment: doc.data()["comment"],
+            time: doc.data()["time"],
+            type: doc.data()["type"],
+            edited: doc.data()["edited"],
+          }
+          newStars.push(review);
         }
-        newList.push(review);
+        if(doc.data()["type"] == "stats" || doc.data()["type"] == "both"){
+          const review = 
+          {
+            id: doc.id,
+            username: doc.data()["username"],
+            time: doc.data()["time"],
+            type: doc.data()["type"],
+            stats: doc.data()["stats"]
+          }
+          newStats.push(review);
+        }
       })
       const compareTime = (a, b) => {
         return b.time - a.time;
       }
 
-      currentReviews = newList.sort(compareTime);
-      averageStar = averageStarReviews(currentReviews);
-      starRatios = countStarRatios(currentReviews);
+      starRating = newStars.sort(compareTime);
+      statsRating = newStats.sort(compareTime);
+      averageStar = averageStarReviews(starRating);
+      starRatios = countStarRatios(starRating);
+      averageStats = averageStatsReviews(statsRating);
       filter(filteredId);
     });
   });
@@ -114,23 +148,53 @@
   let title;
   let comment;
 
+  let stats;
+
+  let closeModal;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const Id = crypto.randomUUID();
     const date = new Date();
     const time = date.getTime();
-    await setDoc(doc(db, "teams", team.name, "reviews", Id), {
-      username: testUser.name,
-      time: time,
-      type: "star",
-      star: rating,
-      title: title,
-      comment: comment,
-      edited: false,
-    });
-    rating = null;
-    title = "";
-    comment = "";
+    if(reviewMode == "star"){
+      await setDoc(doc(db, "teams", team.name, "reviews", Id), {
+        username: testUser.name,
+        time: time,
+        type: "star",
+        star: rating,
+        title: title,
+        comment: comment,
+        edited: false,
+      });
+      rating = null;
+      title = "";
+      comment = "";
+    }
+    else if(reviewMode == "stats"){
+      await setDoc(doc(db, "teams", team.name, "reviews", Id), {
+        username: testUser.name,
+        time: time,
+        type: "stats",
+        stats: stats,
+      });
+    }
+    else{
+      await setDoc(doc(db, "teams", team.name, "reviews", Id), {
+        username: testUser.name,
+        time: time,
+        type: "both",
+        star: rating,
+        title: title,
+        comment: comment,
+        edited: false,
+        stats: stats,
+      });
+      rating = null;
+      title = "";
+      comment = "";
+    }
+    closeModal();
   };
 
   let editing = false;
@@ -229,9 +293,9 @@
         <div class="w-full px-10">
           <h3>Reviews</h3>
           {#key snap}
-            <ReviewPanel {snap} bind:averageStar bind:starRatios filter={createFilter} removeFilter={removeFilter}></ReviewPanel>
+            <ReviewPanel {snap} bind:averageStar bind:starRatios bind:averageStats filter={createFilter} removeFilter={removeFilter}></ReviewPanel>
           {/key}
-          {#if currentReviews <= 0}
+          {#if starRating <= 0}
             <div class="p-10 flex flex-col justify-center items-center">
               <p>
                 Oops... Nobody has written a review yet!
@@ -251,7 +315,7 @@
               {#each filteredReviews as review}
                 <Review bind:review editTrue="{() => changeMode(true)}" editFalse="{() => changeMode(false)}" editing="{editing}" username="{testUser.name}" teamName="{team.name}"></Review>
               {/each}
-            {:else if currentReviews.length > 0}
+            {:else if starRating.length > 0}
               <div class="h-24 flex justify-center items-center">
                 Oops... No reviews here!
               </div>
@@ -264,8 +328,8 @@
               </div>
             {/if}
           {:else}
-          {#if currentReviews.length > 0}
-            {#each currentReviews as review}
+          {#if starRating.length > 0}
+            {#each starRating as review}
               <Review bind:review editTrue="{() => changeMode(true)}" editFalse="{() => changeMode(false)}" editing="{editing}" username="{testUser.name}" teamName="{team.name}"></Review>
             {/each}
           {/if}
@@ -275,7 +339,7 @@
       </div>
       <div>
       </div>
-      <Modal bind:showModal on:close{utils.countChar()}>
+      <Modal bind:showModal bind:closeModal={closeModal} on:close{utils.countChar()}>
         <div class="p-10 max-h-32">
           <form class="grid grid-rows-7" on:submit={handleSubmit}>
             <label for="mode">Choose a Review Mode:</label>
@@ -285,7 +349,7 @@
               <option value="both">Both</option>
             </select>
             {#if reviewMode === "stats"}
-              <StatsReview></StatsReview>
+              <StatsReview bind:values={stats}></StatsReview>
             {:else if reviewMode === "stars"}
               <StarRating bind:rating={rating} setRating="" staticStars="{false}" partialStars="{false}"/>
               <input class="p-5 w-32 h-10 px-3 my-5" type="text" id="title" name="title" placeholder="Title" maxlength=100 bind:value={title}/>
@@ -295,7 +359,7 @@
                 <span id="maximum">/ 5000</span>
               </div>
             {:else}
-              <StatsReview></StatsReview>
+              <StatsReview bind:values={stats}></StatsReview>
               <StarRating bind:rating={rating} setRating="" staticStars="{false}" partialStars="{false}"/>
               <input class="p-5 w-32 h-10 px-3 my-5" type="text" id="title" name="title" placeholder="Title" maxlength=100 bind:value={title}/>
               <textarea class="h-32" id="comment" name="comment" placeholder="Comments" style="resize: none;" maxlength=5000 bind:value={comment} on:input={() => utils.countChar()}></textarea>  
