@@ -1,6 +1,8 @@
 <script>
   import Utils from './utils.js';
   import { A, Alert, Helper, Input, Label, Review, Button } from 'flowbite-svelte';
+  import Carousel from 'svelte-carousel'
+  import ReviewExample from '$components/ReviewExample.svelte';
   export let user;
 
   let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
@@ -201,26 +203,18 @@
 
 <div class="relative w-full bg-sky-800 px-10 py-10 text-center md:py-40">
   <h1 class="mb-20 text-white">See Reviews From Real Athletes!</h1>
-  <div class="w-full">
-    <!-- <Carousel autoplay="7500">
+  <div class="m-auto flex justify-center grow" style="max-width: 2000px;">
+    <Carousel autoplay="10000" pauseOnFocus={true} swiping={true} arrows={false} dots={false}>
       {#each reviews as review}
         <ReviewExample text={review['text']} image={review['image']}></ReviewExample>
       {/each}
-    </Carousel> -->
-    <!-- <Carousel
-      autoplay
-      autoplayDuration={7500}
-    >
-      {#each reviews as review}
-        <ReviewExample text={review['text']} image={review['image']}></ReviewExample>
-      {/each}
-    </Carousel> -->
+    </Carousel>
   </div>
 </div>
 
-<div class="flex w-full justify-center bg-blue-900 px-10 py-10 sm:py-40">
+<!-- <div class="flex w-full justify-center bg-blue-900 px-10 py-10 sm:py-40">
   <div class="flex flex-col items-center gap-4 text-center text-white">
-    <!-- <p class="font-medium uppercase tracking-widest text-amber-500">
+    <p class="font-medium uppercase tracking-widest text-amber-500">
       {new Date().getFullYear() + 1} rankings
     </p>
     <p class="text-4xl font-bold">
@@ -266,9 +260,9 @@
         />
         <p>Best Recruitment</p>
       </a>
-    </div> -->
+    </div>
   </div>
-</div>
+</div> -->
 <!-- 
 <div class="flex w-full justify-center px-10 py-10 sm:py-40">
   <div class="flex w-full max-w-3xl flex-col gap-10 sm:flex-row">
@@ -294,3 +288,9 @@
     </div>
   </div>
 </div> -->
+
+<style>
+  .grow { transition: all .2s ease-in-out; }
+
+  .grow:hover { transform: scale(1.02); }
+</style>

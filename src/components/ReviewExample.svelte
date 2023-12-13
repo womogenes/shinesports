@@ -16,14 +16,16 @@
     </div>
 </div> -->
 
-<div class="w-full gap-10 grid grid-cols-2 px-50">
-    <div class="left-0 rounded" style="background-image: url({image});" id="image">
-    </div>
-    <div class="flex justify-end items-center">
-        <div class="relative bubble-bottom-left flex justify-end items-center p-10 rounded-3xl" style="background-color: #ef4444">
-            <p class="text-left text-2xl text-white font-bold leading-relaxed">{text}</p>
+<div class="w-full">
+    <div class="flex justify-row items-center justify-center px-50">
+        <div class="left-0 rounded m-5" style="background-image: url({image});" id="image">
         </div>
-        <img class="bottom-0 m-10 rounded-full object-cover" src="https://source.unsplash.com/random/50x50/?face/{randomInd}" alt="" style="width: 75px; height: 75px;"/>
+        <div class="flex justify-end items-center m-5">
+            <div class="relative bubble-bottom-left flex justify-end items-center p-10 rounded-3xl w-96" style="background-color: #ef4444">
+                <p class="text-left text-xl text-white font-bold leading-relaxed">{text}</p>
+            </div>
+            <img class="bottom-0 m-10 rounded-full object-cover" src="https://source.unsplash.com/random/50x50/?face/{randomInd}" alt="" style="width: 75px; height: 75px;"/>
+        </div>
     </div>
 </div>
 
@@ -33,6 +35,8 @@
         background-attachment: fixed;
         background-position: center;
         background-size: cover;
+        width: 400px;
+        height: 400px;
     }
 
     .bubble-bottom-left:before {
