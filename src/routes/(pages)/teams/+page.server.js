@@ -18,7 +18,16 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 export const load = async (search) => {
   // console.log('results: ' + JSON.stringify(search));
 
-  const q = query(collection(db, 'teams'));
+  const type = 'crew';
+
+  let q;
+
+  if(type == 'crew'){
+    q = query(collection(db, 'teams'));    
+  }
+  else if(type == 'swim'){
+    q = query(collection(db, 'swim'));
+  }
 
   const qTeams = await getDocs(q);
 
@@ -27,11 +36,11 @@ export const load = async (search) => {
     teamList.push(doc);
   });
 
-  let allTeams = teamList.map(parseData);
+  let allTeams = teamList.map((doc) => parseData(doc, type));
 
   // console.log(actions);
 
   // console.log("sport: " + sport + ", zip" + zip);
 
-  return { allTeams };
+  return { allTeams, type };
 };

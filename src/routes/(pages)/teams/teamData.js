@@ -31,7 +31,7 @@ export const parseSheet1Row = (row) => {
   };
 };
 
-export const parseData = (doc) => {
+export const parseData = (doc, type) => {
 
   let googleDriveRegex = /file\/d\/(.+)\/view/g.exec(doc.data()["logo"]);
 
@@ -41,34 +41,34 @@ export const parseData = (doc) => {
   } else {
     imgURL = doc.data()["logo"];
   }
-  return {
-    slug: slugify(doc.id),
-    schoolOrClub: doc.data()["school/club"],
-    name: doc.id,
-    address: doc.data()["address"],
-    teamTypes: doc.data()["m/w"],
-    scullSweep: doc.data()["scull/sweep"],
-    logoURL: imgURL,
+
+  if (type == 'swim'){
+    
   }
-};
 
-export const parseData2 = (doc) => {
-
-  let googleDriveRegex = /file\/d\/(.+)\/view/g.exec(doc.data()["logo"]);
-
-  let imgURL;
-  if (googleDriveRegex) {
-    imgURL = `https://lh3.googleusercontent.com/d/${googleDriveRegex[1]}=s200`;
-  } else {
-    imgURL = doc.data()["logo"];
+  if(type == 'crew'){
+    return {
+      slug: slugify(doc.id),
+      schoolOrClub: doc.data()["school/club"],
+      name: doc.id,
+      address: doc.data()["address"],
+      teamTypes: doc.data()["m/w"],
+      scullSweep: doc.data()["scull/sweep"],
+      logoURL: imgURL,
+    }
   }
-  return {
-    slug: slugify(doc.id),
-    schoolOrClub: slugify(doc.data()["school/club"]),
-    name: slugify(doc.id),
-    address: slugify(doc.data()["address"]),
-    teamTypes: slugify(doc.data()["m/w"]),
-    scullSweep: slugify(doc.data()["scull/sweep"]),
-    logoURL: slugify(imgURL),
+  else if(type == 'swim'){
+    return {
+      slug: slugify(doc.id),
+      schoolOrClub: doc.data()["school/club"],
+      name: doc.id,
+      address: doc.data()["address"],
+      teamTypes: doc.data()["m/w"],
+      scullSweep: doc.data()["scull/sweep"],
+      logoURL: imgURL,
+    }
+  }
+  else{
+    return false;
   }
 };
