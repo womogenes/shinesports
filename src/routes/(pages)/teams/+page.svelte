@@ -5,6 +5,7 @@
   import { fade, fly } from 'svelte/transition';
 
   import Crew from './sports/crew.svelte';
+  import Swim from './sports/swim.svelte';
 
 
   export let data;
@@ -25,5 +26,10 @@
 
 </script>
 
-<Crew {allTeams}></Crew>
+{#if type == "crew"}
+  <Crew {allTeams}></Crew>
+{:else if type == "swim"}
+  <Swim {allTeams}></Swim>
+{/if}
+
 

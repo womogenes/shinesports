@@ -11,6 +11,8 @@ export const load = async ({ params }) => {
   // Search for this team in the spreadsheet
   // const sheet1 = await fetchSpreadsheet('Sheet1');
 
+  let type = "swim";
+
   const teamNameList = params.slug.split("-");
 
   const teamName = (() => {
@@ -24,7 +26,7 @@ export const load = async ({ params }) => {
     return(currName)
   })()
 
-  const teamRef = doc(db, "teams", teamName)
+  const teamRef = doc(db, type, teamName)
   const teamQuery = await getDoc(teamRef);
 
   const geocoded = await geocode(teamQuery.data()["address"].replace('\n', ' '));
@@ -39,39 +41,66 @@ export const load = async ({ params }) => {
     } else {
       imgURL = teamQuery.data()["logo"];
     }
-    return {
-      slug: slugify(teamQuery.id),
-      schoolOrClub: teamQuery.data()["school/club"],
-      name: teamQuery.id,
-      address: teamQuery.data()["address"],
-      teamTypes: teamQuery.data()["m/w"],
-      scullSweep: teamQuery.data()["scull/sweep"],
-      logoURL: imgURL,
-      contact: teamQuery.data()["contact"],
-      website: teamQuery.data()["website"],
-      age: teamQuery.data()["age"],
-      email: teamQuery.data()["email"],
+    if(type == "crew"){
+      return {
+        slug: slugify(teamQuery.id),
+        schoolOrClub: teamQuery.data()["school/club"],
+        name: teamQuery.id,
+        address: teamQuery.data()["address"],
+        teamTypes: teamQuery.data()["m/w"],
+        scullSweep: teamQuery.data()["scull/sweep"],
+        logoURL: imgURL,
+        contact: teamQuery.data()["contact"],
+        website: teamQuery.data()["website"],
+        age: teamQuery.data()["age"],
+        email: teamQuery.data()["email"],
+      }
+    }
+    else if(type == "swim"){
+      let addressList = [teamQuery.data()["address"]];
+    
+      for(let i = 2; i > 0; i++){
+        let address = teamQuery.data()["address" + i];
+        if(typeof address != "undefined"){
+          addressList.push(address);
+        }
+        else{
+          break;
+        }
+      }
+      return {
+        slug: slugify(teamQuery.id),
+        name: teamQuery.id,
+        address: addressList,
+        website: teamQuery.data()["website"],
+        swimcloud: teamQuery.data()["swimcloud"],
+        frank: teamQuery.data()["frank"],
+        mrank: teamQuery.data()["mrank"],
+        logoURL: imgURL,
+      }
     }
   })();
 
-  const subTeamRef = collection(db, "teams", teamName, "teams")
-  const subTeamQuery = await getDocs(subTeamRef);
-
   let subList = []
-  
-  subTeamQuery.forEach((doc) => {
-    const subTeam = 
-    {
-      name: doc.id,
-      coach: doc.data()["coach"],
-      schedule: doc.data()["schedule"],
-      size: doc.data()["size"],
-      email: doc.data()["email"],
-    }
-    subList.push(subTeam);
-  })
+  if(type == "crew"){
+    const subTeamRef = collection(db, type, teamName, "teams")
+    const subTeamQuery = await getDocs(subTeamRef);
+    
+    subTeamQuery.forEach((doc) => {
+      const subTeam = 
+      {
+        name: doc.id,
+        coach: doc.data()["coach"],
+        schedule: doc.data()["schedule"],
+        size: doc.data()["size"],
+        email: doc.data()["email"],
+      }
+      subList.push(subTeam);
+    })
+  }
 
-  const teamReviewRef = collection(db, "teams", teamName, "reviews")
+    
+  const teamReviewRef = collection(db, type, teamName, "reviews")
   const teamReview = await getDocs(teamReviewRef);
 
   let starsList = []
@@ -131,6 +160,7 @@ export const load = async ({ params }) => {
   starsList = starsList.sort(compareTime);
 
   return {
+    type,
     team,
     coords,
     subList,

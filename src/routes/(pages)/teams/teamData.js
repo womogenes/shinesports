@@ -58,13 +58,23 @@ export const parseData = (doc, type) => {
     }
   }
   else if(type == 'swim'){
+    let addressList = [doc.data()["address"]];
+    
+    for(let i = 2; i > 0; i++){
+      let address = doc.data()["address" + i];
+      if(typeof address != "undefined"){
+        addressList.push(address);
+      }
+      else{
+        break;
+      }
+    }
     return {
       slug: slugify(doc.id),
-      schoolOrClub: doc.data()["school/club"],
       name: doc.id,
-      address: doc.data()["address"],
-      teamTypes: doc.data()["m/w"],
-      scullSweep: doc.data()["scull/sweep"],
+      address: addressList,
+      frank: doc.data()["frank"],
+      mrank: doc.data()["mrank"],
       logoURL: imgURL,
     }
   }

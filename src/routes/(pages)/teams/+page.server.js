@@ -18,16 +18,9 @@ import { collection, query, where, getDocs } from 'firebase/firestore';
 export const load = async (search) => {
   // console.log('results: ' + JSON.stringify(search));
 
-  const type = 'crew';
+  const type = 'swim';
 
-  let q;
-
-  if(type == 'crew'){
-    q = query(collection(db, 'teams'));    
-  }
-  else if(type == 'swim'){
-    q = query(collection(db, 'swim'));
-  }
+  let q = query(collection(db, type)); ;
 
   const qTeams = await getDocs(q);
 

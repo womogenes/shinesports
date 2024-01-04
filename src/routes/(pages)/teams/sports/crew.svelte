@@ -103,7 +103,7 @@
                 <!-- Actual content -->
                 <div class="box-border p-5">
                 <h4 class="mb-1 text-[#346dc2]">{team.name}</h4>
-                <TeamLineInfo data={team} />
+                <TeamLineInfo data={team} type={"crew"}/>
                 </div>
 
                 <img
