@@ -51,6 +51,6 @@
           {team.swimcloud}
         </A>
       </p>
-    <p><b>mrank: </b> {team.mrank}</p>
-    <p><b>frank: </b> {team.frank}</p>
+    <p><b>Male Rank: </b> {team.mrank}</p>
+    <p><b>Female Rank: </b> {team.frank}</p>
 </div>
