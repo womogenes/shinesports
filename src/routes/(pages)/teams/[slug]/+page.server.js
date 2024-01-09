@@ -18,19 +18,52 @@ export const load = async ({ params }) => {
   const teamName = (() => {
     let currName = "";
     teamNameList.forEach((word) => {
-      const newWord = word[0].toUpperCase() + word.substr(1);
-      currName += newWord;
+      currName += word;
       currName += " ";
     })
     currName = currName.substr(0, currName.length - 1);
     return(currName)
   })()
 
-  const teamRef = doc(db, type, teamName)
+  const teamRef = doc(db, type, teamName);
   const teamQuery = await getDoc(teamRef);
 
-  const geocoded = await geocode(teamQuery.data()["address"].replace('\n', ' '));
-  const coords = [parseFloat(geocoded.lat), parseFloat(geocoded.lon)];
+  let addressList;
+  let geocoded;
+  let coords;
+
+  if(type == "crew"){
+    if(teamQuery.data()["address"] === "175 Emigrant Lake Rd, Ashland, OR 97520"){ // Hard coded location
+      coords = [42.15332645390886, -122.62117574907515]
+    }
+    else{
+      geocoded = await geocode(teamQuery.data()["address"].replace('\n', ' '));
+      coords = [parseFloat(geocoded.lat), parseFloat(geocoded.lon)];
+    }
+  }
+  else if(type == "swim"){
+    addressList = [teamQuery.data()["address"]];
+    geocoded = await geocode(teamQuery.data()["address"].replace('\n', ' '));
+    coords = [[parseFloat(geocoded.lat), parseFloat(geocoded.lon)]];
+    for(let i = 2; i > 0; i++){
+      let address = teamQuery.data()["address" + i];
+      if(typeof address != "undefined"){
+        addressList.push(address);
+        // console.log(address)
+
+        if(address === "4280 Klahanie Dr. SE, Issaquah, WA 98029"){ // Hard coded location
+          coords.push([47.568286194331826, -122.00197205767105])
+        }
+        else{
+          geocoded = await geocode(address.replace('\n', ' '));
+          coords.push([parseFloat(geocoded.lat), parseFloat(geocoded.lon)]);
+        }
+      }
+      else{
+        break;
+      }
+    }
+  }
 
   const team = (() => {
     let googleDriveRegex = /file\/d\/(.+)\/view/g.exec(teamQuery.data()["logo"]);
@@ -45,7 +78,7 @@ export const load = async ({ params }) => {
       return {
         slug: slugify(teamQuery.id),
         schoolOrClub: teamQuery.data()["school/club"],
-        name: teamQuery.id,
+        name: teamQuery.data()["name"],
         address: teamQuery.data()["address"],
         teamTypes: teamQuery.data()["m/w"],
         scullSweep: teamQuery.data()["scull/sweep"],
@@ -57,20 +90,9 @@ export const load = async ({ params }) => {
       }
     }
     else if(type == "swim"){
-      let addressList = [teamQuery.data()["address"]];
-    
-      for(let i = 2; i > 0; i++){
-        let address = teamQuery.data()["address" + i];
-        if(typeof address != "undefined"){
-          addressList.push(address);
-        }
-        else{
-          break;
-        }
-      }
       return {
         slug: slugify(teamQuery.id),
-        name: teamQuery.id,
+        name: teamQuery.data()["name"],
         address: addressList,
         website: teamQuery.data()["website"],
         swimcloud: teamQuery.data()["swimcloud"],

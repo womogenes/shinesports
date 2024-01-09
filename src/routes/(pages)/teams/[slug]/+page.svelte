@@ -211,6 +211,24 @@
   let showModal = false;
 </script>
 
+<div class="w-full flex justify-end">
+  <form method="POST" action="/teams" id="search">
+    <div class="grid grid-cols-2 gap-4 sm:gap-6">
+      <div class="relative mb-6">
+        <Input list="list" placeholder="Search Sport" name="sport" required></Input>
+        <datalist id="list">
+          <option value="Crew"></option>
+          <option value="Swim"></option>
+          <option value="Soccer"></option>
+        </datalist>
+      </div>
+    </div>
+    <!-- <div style="margin: auto; text-align: center;">
+      <Button type="submit" class="w-full">Search!</Button>
+    </div> -->
+  </form>
+</div>
+
 <div class="w-full my-20 flex justify-center">
   <div class="w-full max-w-5xl">
     <A class="mb-4" href="/teams">

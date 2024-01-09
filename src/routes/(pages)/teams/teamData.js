@@ -50,7 +50,7 @@ export const parseData = (doc, type) => {
     return {
       slug: slugify(doc.id),
       schoolOrClub: doc.data()["school/club"],
-      name: doc.id,
+      name: doc.data()["name"],
       address: doc.data()["address"],
       teamTypes: doc.data()["m/w"],
       scullSweep: doc.data()["scull/sweep"],
@@ -71,7 +71,7 @@ export const parseData = (doc, type) => {
     }
     return {
       slug: slugify(doc.id),
-      name: doc.id,
+      name: doc.data()["name"],
       address: addressList,
       frank: doc.data()["frank"],
       mrank: doc.data()["mrank"],

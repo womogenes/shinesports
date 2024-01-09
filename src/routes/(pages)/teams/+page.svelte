@@ -1,5 +1,5 @@
 <script>
-  import { A, Checkbox, Radio } from 'flowbite-svelte';
+  import { A, Checkbox, Radio, Input, Button } from 'flowbite-svelte';
   import TeamLineInfo from './TeamLineInfo.svelte';
   import { flip } from 'svelte/animate';
   import { fade, fly } from 'svelte/transition';
@@ -26,13 +26,26 @@
   let { allTeams, type } = data;
 
 </script>
+<div style="background-color: #0041b3">
+  <div class="w-full flex justify-end absolute p-2">
+    <form method="POST" action="teams" id="search">
+      <Input list="list" placeholder="Search Sport" name="sport" required></Input>
+      <datalist id="list">
+        <option value="Crew"></option>
+        <option value="Swim"></option>
+        <option value="Soccer"></option>
+      </datalist>
+    </form>
+  </div>
+  
+  {#if type == "crew"}
+    <Crew {allTeams} {type}></Crew>
+  {:else if type == "swim"}
+    <Swim {allTeams} {type}></Swim>
+  {:else}
+    <Empty></Empty>
+  {/if}
+</div>
 
-{#if type == "crew"}
-  <Crew {allTeams} {type}></Crew>
-{:else if type == "swim"}
-  <Swim {allTeams} {type}></Swim>
-{:else}
-  <Empty></Empty>
-{/if}
 
 

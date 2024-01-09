@@ -4,19 +4,19 @@
     import { A } from 'flowbite-svelte';
     export let data = data;
 
-    const { team, coords, subList} = data;
+    const { team, coords} = data;
 </script>
 
 
 
 <div class="!pointer-events-none -z-10 h-72 sm:h-96">
-    <LeafletMap coords={coords} />
-  </div>
+    <LeafletMap coords={coords}/>
+</div>
   <div class="relative">
     <div
       class="absolute -top-7 left-0 bg-white px-4 py-1 font-medium shadow-xl sm:left-8"
     >
-      {team.schoolOrClub}
+      {"Club"}
     </div>
     <div class="relative z-10 bg-white px-4 py-4 sm:px-8">
       <A

@@ -14,16 +14,45 @@
     if (!browser) return;
 
     const leaflet = await import('leaflet');
-    map = leaflet.map(mapElement).setView(coords, 11);
+
+    if(coords[0] && coords[0] instanceof Array){
+      let averageLat = 0;
+      let averageLon = 0;
+      let averageCoords;
+      coords.forEach((element) => {
+        averageLat += element[0];
+        averageLon += element[1];
+      })
+
+      averageCoords = [averageLat/coords.length, averageLon/coords.length]
+
+
+      // averageCoords = [(averageLat/coords.length), (averageLon/coords.length)]
+
+      map = leaflet.map(mapElement).setView(averageCoords, 10);
+    }
+    else{
+      map = leaflet.map(mapElement).setView(coords, 11);
+    }
+
 
     leaflet
-      .tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-      })
-      .addTo(map);
+    .tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    })
+    .addTo(map);
 
-    leaflet.marker(coords).addTo(map);
+    if(coords[0] && coords[0] instanceof Array){
+      coords.forEach((element) => {
+        leaflet.marker(element).addTo(map);
+      })
+    }
+    else{
+      leaflet.marker(coords).addTo(map); 
+    }
+
+
     /* .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
         .openPopup(); */
   });
