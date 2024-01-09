@@ -96,7 +96,7 @@
 
 
   onMount(() => {
-    onSnapshot(collection(db, type, team.name, "reviews"), (snapshot) => {
+    onSnapshot(collection(db, type, team.ref, "reviews"), (snapshot) => {
       snap = snapshot.docs;
 
       let newStars = []

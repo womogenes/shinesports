@@ -77,6 +77,7 @@ export const load = async ({ params }) => {
     if(type == "crew"){
       return {
         slug: slugify(teamQuery.id),
+        ref: teamName,
         schoolOrClub: teamQuery.data()["school/club"],
         name: teamQuery.data()["name"],
         address: teamQuery.data()["address"],
@@ -92,6 +93,7 @@ export const load = async ({ params }) => {
     else if(type == "swim"){
       return {
         slug: slugify(teamQuery.id),
+        ref: teamName,
         name: teamQuery.data()["name"],
         address: addressList,
         website: teamQuery.data()["website"],
