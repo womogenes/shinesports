@@ -5,8 +5,6 @@
   import ReviewExample from '$components/ReviewExample.svelte';
   export let user;
 
-  let colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple'];
-
   let reviews = [
     {
       text: 'Before I joined my team, I had no idea what I was getting myself into. I would’ve loved getting to hear from older athletes on the team about their experiences before joining so the adjustment period could be smoother.',
@@ -75,11 +73,11 @@
           Start your search
         </p>
         <div class="container-fluid">
-          <form method="GET" action="teams" id="search">
+          <form method="POST" action="teams" id="search">
             <div class="grid grid-cols-2 gap-4 sm:gap-6">
               <div class="relative mb-6">
-                <Input list="list" placeholder="Sport" required></Input>
-                <datalist name="sport" id="list">
+                <Input list="list" placeholder="Sport" name="sport" required></Input>
+                <datalist id="list">
                   <option value="Crew"></option>
                   <option value="Swim"></option>
                   <option value="Soccer"></option>

@@ -6,6 +6,7 @@
 
   import Crew from './sports/crew.svelte';
   import Swim from './sports/swim.svelte';
+  import Empty from './sports/empty.svelte';
 
 
   export let data;
@@ -27,9 +28,11 @@
 </script>
 
 {#if type == "crew"}
-  <Crew {allTeams}></Crew>
+  <Crew {allTeams} {type}></Crew>
 {:else if type == "swim"}
-  <Swim {allTeams}></Swim>
+  <Swim {allTeams} {type}></Swim>
+{:else}
+  <Empty></Empty>
 {/if}
 
 

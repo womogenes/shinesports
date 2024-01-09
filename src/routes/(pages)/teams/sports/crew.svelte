@@ -6,6 +6,9 @@
 
 
     export let allTeams = allTeams;
+    export let type = type;
+
+
     let filters = {
         schoolOrClub: 'Any',
         hasWomens: false,
@@ -96,7 +99,7 @@
             {#each filteredTeams as team (team.slug)}
             <a
                 class="border-0.5 flex w-full flex-row items-center justify-between gap-0 border border-neutral-200 transition-all hover:bg-neutral-50 sm:gap-4"
-                href="/teams/{team.slug}"
+                href="/teams/{team.slug}-{type}"
                 in:fade={{ duration: 500 }}
                 animate:flip={{ duration: 500 }}
             >

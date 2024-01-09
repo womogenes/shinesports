@@ -11,9 +11,9 @@ export const load = async ({ params }) => {
   // Search for this team in the spreadsheet
   // const sheet1 = await fetchSpreadsheet('Sheet1');
 
-  let type = "swim";
-
   const teamNameList = params.slug.split("-");
+
+  const type = teamNameList.pop();
 
   const teamName = (() => {
     let currName = "";

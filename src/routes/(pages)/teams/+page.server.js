@@ -13,12 +13,18 @@ import { parseData } from './teamData.js';
 import db from '/src/firebase.js';
 import { collection, query, where, getDocs } from 'firebase/firestore';
 
-// const { sport, zip } = actions;
+let type;
 
-export const load = async (search) => {
-  // console.log('results: ' + JSON.stringify(search));
+export const actions = {
+  default: async ({ request }) => {
+    const formData = await request.formData();
+    const sport = formData.get('sport');
+    const zip = formData.get('zip');
+    type = sport.toLowerCase()
+  },
+};
 
-  const type = 'swim';
+export const load = async () => {
 
   let q = query(collection(db, type)); ;
 
@@ -30,10 +36,6 @@ export const load = async (search) => {
   });
 
   let allTeams = teamList.map((doc) => parseData(doc, type));
-
-  // console.log(actions);
-
-  // console.log("sport: " + sport + ", zip" + zip);
 
   return { allTeams, type };
 };
