@@ -26,7 +26,7 @@
   let { allTeams, type } = data;
 
 </script>
-<div style="background-color: #0041b3">
+<div style="background-color: #ccf3ff">
   <div class="w-full flex justify-end absolute p-2">
     <form method="POST" action="teams" id="search">
       <Input list="list" placeholder="Search Sport" name="sport" required></Input>
