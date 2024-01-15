@@ -46,8 +46,9 @@
 <div class="flex w-full flex-col sm:flex-row" id="hero">
   <div class="w-full">
     <img
-      class="h-full object-cover"
-      src="https://source.unsplash.com/random/1920x1080/?rowing"
+      class="h-full w-full object-cover"
+      style="height: 960px;"
+      src="{data.randImage}"
       alt=""
     />
   </div>

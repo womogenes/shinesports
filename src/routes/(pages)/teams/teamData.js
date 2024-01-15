@@ -42,10 +42,6 @@ export const parseData = (doc, type) => {
     imgURL = doc.data()["logo"];
   }
 
-  if (type == 'swim'){
-    
-  }
-
   if(type == 'crew'){
     return {
       slug: slugify(doc.id),
