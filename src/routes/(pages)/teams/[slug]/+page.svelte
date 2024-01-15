@@ -160,8 +160,9 @@
     const Id = crypto.randomUUID();
     const date = new Date();
     const time = date.getTime();
+    console.log(reviewMode);
     if(reviewMode == "star"){
-      await setDoc(doc(db, type, team.name, "reviews", Id), {
+      await setDoc(doc(db, type, team.ref, "reviews", Id), {
         username: testUser.name,
         time: time,
         type: "star",
@@ -175,7 +176,7 @@
       comment = "";
     }
     else if(reviewMode == "stats"){
-      await setDoc(doc(db, type, team.name, "reviews", Id), {
+      await setDoc(doc(db, type, team.ref, "reviews", Id), {
         username: testUser.name,
         time: time,
         type: "stats",
@@ -183,7 +184,7 @@
       });
     }
     else{
-      await setDoc(doc(db, type, team.name, "reviews", Id), {
+      await setDoc(doc(db, type, team.ref, "reviews", Id), {
         username: testUser.name,
         time: time,
         type: "both",
@@ -300,13 +301,13 @@
           <form class="grid grid-rows-7" on:submit={handleSubmit}>
             <label for="mode">Choose a Review Mode:</label>
             <select class="mb-10" name="mode" id="mode" bind:value={reviewMode}>
-              <option value="stars">Traditional</option>
+              <option value="star">Traditional</option>
               <option value="stats">Stats Rankings</option>
               <option value="both">Both</option>
             </select>
             {#if reviewMode === "stats"}
               <StatsReview bind:values={stats}></StatsReview>
-            {:else if reviewMode === "stars"}
+            {:else if reviewMode === "star"}
               <StarRating bind:rating={rating} setRating="" staticStars="{false}" partialStars="{false}"/>
               <input class="p-5 w-32 h-10 px-3 my-5" type="text" id="title" name="title" placeholder="Title" maxlength=100 bind:value={title}/>
               <textarea class="h-32" id="comment" name="comment" placeholder="Comments" style="resize: none;" maxlength=5000 bind:value={comment} on:input={() => utils.countChar()}></textarea>  
